@@ -1,0 +1,30 @@
+{
+  "id": "fixture",
+  "name": "Fixture Game",
+  "generation": 1,
+  "versions": [{ "id": "a", "name": "Version A" }, { "id": "b", "name": "Version B" }],
+  "verified": false,
+  "source": { "name": "Test fixture, not challenge data" },
+  "sections": [
+    {
+      "id": "first",
+      "label": "Before Leader One",
+      "leader": "Leader One",
+      "entries": [
+        { "id": "0016", "name": "Pidgey", "location": "Route A", "method": "catch" },
+        { "id": "0019", "name": "Rattata", "location": "Route A", "method": "catch" },
+        { "id": "0025", "name": "Pikachu", "location": "Forest A", "method": "catch" },
+        { "id": "0023", "name": "Ekans", "location": "Route B", "method": "catch", "versions": ["a"] },
+        { "id": "0027", "name": "Sandshrew", "location": "Route B", "method": "catch", "versions": ["b"] }
+      ]
+    },
+    {
+      "id": "second",
+      "label": "Before Leader Two",
+      "leader": "Leader Two",
+      "entries": [
+        { "id": "0001", "name": "Bulbasaur", "location": "Town A", "method": "gift" }
+      ]
+    }
+  ]
+}

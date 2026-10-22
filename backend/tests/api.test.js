@@ -80,9 +80,9 @@ describe("User privacy", () => {
 describe("Games catalog", () => {
   test("lists games and returns a full guide", async () => {
     const list = await request(app).get("/api/games");
-    expect(list.body.some((g) => g.id === "red-blue")).toBe(true);
-    const guide = await request(app).get("/api/games/red-blue");
-    expect(guide.body.sections[0].id).toBe("brock");
+    expect(list.body.some((g) => g.id === "fixture")).toBe(true);
+    const guide = await request(app).get("/api/games/fixture");
+    expect(guide.body.sections[0].id).toBe("first");
     expect((await request(app).get("/api/games/nope")).status).toBe(404);
   });
 
@@ -106,15 +106,15 @@ describe("Runs", () => {
   });
 
   test("create validates game and version", async () => {
-    expect((await request(app).post("/api/runs").set(owner.auth).send({ game_id: "nope", version: "red" })).status).toBe(400);
-    expect((await request(app).post("/api/runs").set(owner.auth).send({ game_id: "red-blue", version: "gold" })).status).toBe(400);
-    const res = await request(app).post("/api/runs").set(owner.auth).send({ game_id: "red-blue", version: "red" });
+    expect((await request(app).post("/api/runs").set(owner.auth).send({ game_id: "nope", version: "a" })).status).toBe(400);
+    expect((await request(app).post("/api/runs").set(owner.auth).send({ game_id: "fixture", version: "z" })).status).toBe(400);
+    const res = await request(app).post("/api/runs").set(owner.auth).send({ game_id: "fixture", version: "a" });
     expect(res.status).toBe(201);
-    expect(res.body.title).toBe("Pokémon Red & Blue: Red");
-    // Red run excludes Blue exclusives from the total
-    const guide = getGuide("red-blue");
-    const blueOnly = guide.sections.flatMap((s) => s.entries).filter((e) => e.versions?.includes("blue") && !e.versions.includes("red"));
-    expect(res.body.progress).toEqual({ caught: 0, total: 151 - blueOnly.length });
+    expect(res.body.title).toBe("Fixture Game: Version A");
+    // A version-A run leaves version-B exclusives out of the total
+    const guide = getGuide("fixture");
+    const all = guide.sections.flatMap((s) => s.entries);
+    expect(res.body.progress).toEqual({ caught: 0, total: all.length - 1 });
     runId = res.body.id;
   });
 

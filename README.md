@@ -50,19 +50,19 @@ Guides live in `backend/data/guides/<game>.json` and are checked when the API st
 
 ```json
 {
-  "id": "red-blue",
-  "name": "Pokémon Red & Blue",
+  "id": "yellow",
+  "name": "Pokémon Yellow",
   "generation": 1,
-  "versions": [{ "id": "red", "name": "Red" }, { "id": "blue", "name": "Blue" }],
+  "versions": [{ "id": "yellow", "name": "Yellow" }],
   "verified": false,
+  "source": { "name": "Mewlax's Professor Oak Challenge Guide: Pokémon Yellow", "url": "https://docs.google.com/..." },
   "sections": [
     {
       "id": "brock",
       "label": "Before Brock",
       "leader": "Brock",
-      "area": "Pallet Town to Pewter City",
       "entries": [
-        { "id": "0023", "name": "Ekans", "location": "Route 4", "method": "catch", "versions": ["red"] }
+        { "id": "0016", "name": "Pidgey", "location": "<as written in the guide>", "method": "catch", "notes": "<optional>" }
       ]
     }
   ]
@@ -73,7 +73,17 @@ Guides live in `backend/data/guides/<game>.json` and are checked when the API st
 - `method`: one of `catch`, `evolve`, `stone`, `trade-evolve`, `gift`, `fossil`, `static`, `in-game-trade`, `prize`, `trade`, `event`.
 - `versions`: leave it out when an entry is in every version.
 
-**The bundled Red/Blue guide is draft data.** It was written from general game knowledge, not copied from Mewlax84's guide, so some locations and milestone placements will be off. Check it section by section, then set `"verified": true`. The UI shows a warning while it is false. To add a game, drop a new JSON file in the folder.
+### Source data
+
+Guide content must come from Mewlax84's guides, not be written by hand from memory. The guides are Google Docs:
+
+- [Yellow](https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit)
+- [FireRed/LeafGreen](https://docs.google.com/document/d/1KF_Qkn5YnPcYvSDVaI3mMhS8RgBsHRsXmbXWCzOhRk0/edit)
+- [Emerald](https://docs.google.com/document/d/1cn5awGNEVZx3wuv-2EsIn3e746RfH5-Spm7mnP-_PxU/edit)
+
+The full list is in the [Reddit index post](https://www.reddit.com/r/ProfessorOak/comments/bj6yeh/professor_oak_challenge_guides/). No guide is bundled yet. Each one is converted from its document into a JSON file and keeps the guide's own sections, locations and notes. Set `"verified": true` once the converted file has been checked against the document.
+
+Tests use a small fixture in `backend/tests/fixtures/guides/`. It is not challenge data.
 
 ## API
 
@@ -111,7 +121,7 @@ All run routes need `Authorization: Bearer <token>`. The one exception is `GET /
 
 ## Roadmap
 
-- Verify the Red/Blue guide. Add more games (FireRed/LeafGreen, Gold/Silver/Crystal, ...).
+- Import Mewlax84's guides, starting with Yellow.
 - Guest mode: track in the browser without an account, and import the run on sign-up.
 - Export and import a run as JSON.
 - Run stats: the date each milestone was cleared, and catches per section.

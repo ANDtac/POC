@@ -22,6 +22,18 @@ export default function NewRun() {
   if (isPending) return <p className="muted">Loading games…</p>;
   if (error) return <p className="error" role="alert">{error.message}</p>;
 
+  if (games.length === 0) {
+    return (
+      <div className="narrow">
+        <h1>New run</h1>
+        <div className="empty">
+          <p>No challenge guides are installed yet.</p>
+          <p className="muted small">Guides are added as JSON files in <code>backend/data/guides/</code>.</p>
+        </div>
+      </div>
+    );
+  }
+
   const game = games.find((g) => g.id === gameId);
 
   return (
