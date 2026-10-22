@@ -143,7 +143,10 @@
             "description": "Validation error"
           },
           "401": {
-            "description": "Unauthorized or wrong current password"
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Wrong current password"
           },
           "409": {
             "description": "Username or email in use"

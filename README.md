@@ -1,96 +1,119 @@
 # Professor Oak Challenge
-Website with pokemon Professor Oak Challenge - Guides
 
-Guides made by [Mewlax84](https://www.reddit.com/r/ProfessorOak/comments/bj6yeh/professor_oak_challenge_guides/?show=original)
+A tracker for the Professor Oak Challenge: before each gym leader, catch and evolve every Pokémon you can get up to that point.
 
-## Installation
-
-1. **Clone the repository**
-   ```sh
-   git clone https://github.com/vlldnt/POC.git
-   cd POC
-   ```
-
-## 2. Dependencies
-
-- **express**: Web framework for Node.js
-- **sequelize**: SQL ORM for models and relations
-- **pg** / **mysql2** / **sqlite3**: Database driver (choose according to your DB)
-- **bcrypt**: Password hashing
-- **jsonwebtoken**: JWT authentication
-- **body-parser**: Parses incoming request bodies
-- **swagger-ui-express**: Swagger documentation UI
-- **swagger-jsdoc**: Swagger documentation generator
-- **nodemon**: Auto-reload for development (dev dependency)
-
-You can see all dependencies in your `package.json`.
-    ```
-
-   ```sh
-   npm install
-   ```
-3. **Run the server**
-```sh
-npm start
-```
-or for development with auto-reload:
-```sh
-npm run dev
-```
+Challenge structure follows the [guides by Mewlax84](https://www.reddit.com/r/ProfessorOak/comments/bj6yeh/professor_oak_challenge_guides/?show=original).
 
 ## Features
 
-- **User authentication:** (register, login, JWT verification)
-- **User profile management:** (view, update, delete)
-- **Guide management:** (start a guide, view guides)
-- **Pokémon capture tracking:** (add, view, delete caught Pokémon)
-- **Swagger API documentation:** at `/api-docs`
+- **Runs.** Start a run for a game and version. Exclusives from the other version are hidden and left out of the totals by default.
+- **Tracker.**
+  - One section per milestone ("Before Brock", "Before Misty", ...), each with its own progress bar.
+  - Tap a Pokémon to mark it caught. A 5-second undo follows every tap.
+  - Once a section is complete, the tracker says you are ready for the gym and lets you advance.
+- **Location view.** Everything left on a route in one list. Evolutions sit in their own group.
+- **Filters.** Search by name, dex number or location (press `/` to focus). Filter by method (catch, level up, stone, trade evo, NPC trade, prize, ...). Show missing only. Show or hide other-version exclusives.
+- **Sharing.** Make a run public and anyone with the link can view it, read-only.
+- **Accounts.** Register, log in, edit profile, change password (the current password is required), delete account (runs are deleted with it).
+- **API docs.** Swagger at `/api-docs`.
 
-## Main API Routes
+## Setup
+
+Requires Node 22.9 or newer.
+
+```sh
+git clone https://github.com/ANDtac/POC.git
+cd POC
+npm run install:all
+cp backend/.env.example backend/.env   # then set JWT_SECRET
+npm run dev
+```
+
+- Web app: http://localhost:3000. Vite proxies `/api` to the backend.
+- API: http://localhost:5050
+- API docs: http://localhost:5050/api-docs
+
+The API refuses to start without `JWT_SECRET`. The SQLite file (`backend/database.sqlite`) is created on first start and is not committed. If you have a database from the old schema, delete it.
+
+## Tests
+
+```sh
+npm test
+```
+
+- Backend: Jest and supertest against the real Express app, on an in-memory SQLite database.
+- Frontend: Vitest on the guide helpers (progress, filters, location grouping).
+
+## Guide data
+
+Guides live in `backend/data/guides/<game>.json` and are checked when the API starts. A malformed guide stops startup with a clear error.
+
+```json
+{
+  "id": "red-blue",
+  "name": "Pokémon Red & Blue",
+  "generation": 1,
+  "versions": [{ "id": "red", "name": "Red" }, { "id": "blue", "name": "Blue" }],
+  "verified": false,
+  "sections": [
+    {
+      "id": "brock",
+      "label": "Before Brock",
+      "leader": "Brock",
+      "area": "Pallet Town to Pewter City",
+      "entries": [
+        { "id": "0023", "name": "Ekans", "location": "Route 4", "method": "catch", "versions": ["red"] }
+      ]
+    }
+  ]
+}
+```
+
+- `id`: four-digit national dex number, with an optional form suffix (`0052-alola`).
+- `method`: one of `catch`, `evolve`, `stone`, `trade-evolve`, `gift`, `fossil`, `static`, `in-game-trade`, `prize`, `trade`, `event`.
+- `versions`: leave it out when an entry is in every version.
+
+**The bundled Red/Blue guide is draft data.** It was written from general game knowledge, not copied from Mewlax84's guide, so some locations and milestone placements will be off. Check it section by section, then set `"verified": true`. The UI shows a warning while it is false. To add a game, drop a new JSON file in the folder.
+
+## API
+
+All run routes need `Authorization: Bearer <token>`. The one exception is `GET /api/runs/:id` on a public run.
 
 ### Auth
 
-- `POST /api/auth/register`: Register a new user
-
-- `POST /api/auth/login`: Login and receive a JWT token
-
-- `GET /api/auth/verify`: Verify JWT token
+- `POST /api/auth/register`: create an account. Returns `{ token, user }`.
+- `POST /api/auth/login`: returns `{ token, user }`.
+- `GET /api/auth/verify`: returns the current user.
 
 ### User
 
-- `GET /api/user/`: Get current authenticated user profile
+- `GET /api/user`: get your profile.
+- `PATCH /api/user`: update your profile.
+- `DELETE /api/user`: delete your account.
+- `GET /api/user/all`: list users, id and username only. Needs a token.
+- `GET /api/user/:id`: public lookup, id and username only.
 
-- `PATCH /api/user/`: Update current user profile
+### Games
 
-- `DELETE /api/user/`: Delete current user account
+- `GET /api/games`: list the games that have a guide.
+- `GET /api/games/:id`: get the full guide.
 
-- `GET /api/user/all`: Get all users (admin only)
+### Runs
 
-- `GET /api/user/{id}`: Get user by ID
+- `GET /api/runs`: list your runs with progress.
+- `POST /api/runs`: start a run. Body: `{ game_id, version, title? }`.
+- `GET /api/runs/:id`: get a run with its caught list.
+- `PATCH /api/runs/:id`: update `title`, `current_section`, `status` or `is_public`.
+- `DELETE /api/runs/:id`: delete a run.
+- `PUT /api/runs/:id/caught/:pokemon_id`: mark a Pokémon caught. Idempotent.
+- `DELETE /api/runs/:id/caught/:pokemon_id`: unmark it. Idempotent.
+- `PATCH /api/runs/:id/caught`: bulk change. Body: `{ add: [], remove: [] }`.
 
-### Guides
+## Roadmap
 
-- `POST /api/userGuides`: Start a new guide for the authenticated user
-
-- `GET /api/userGuides`: Get all user guides
-
-### Caught Pokémon
-
-- `POST /api/caught`: Add a caught Pokémon to the current guide  
-  **Body:**  
-  ```json
-  {
-    "guide_id": "GUIDE_UUID",
-    "pokemon_id": "001"
-  }
-  ```
-
-- `DELETE /api/caught/{pokemon_id}`: Delete a caught Pokémon from the current guide
-
-## Documentation
-
-- Interactive API docs available at [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
-
----
-
-Feel free to contribute
+- Verify the Red/Blue guide. Add more games (FireRed/LeafGreen, Gold/Silver/Crystal, ...).
+- Guest mode: track in the browser without an account, and import the run on sign-up.
+- Export and import a run as JSON.
+- Run stats: the date each milestone was cleared, and catches per section.
+- Notes on each Pokémon, such as nickname or encounter details.
+- Offline support (PWA): cache guides and sprites.

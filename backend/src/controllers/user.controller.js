@@ -36,7 +36,7 @@ export const updateProfile = async (req, res) => {
     }
     // Changing the password requires the old one, so a stolen token can't lock the owner out.
     if (!current_password || !(await bcrypt.compare(current_password, req.user.password))) {
-      return res.status(401).json({ error: "Current password is incorrect" });
+      return res.status(403).json({ error: "Current password is incorrect" });
     }
   }
 

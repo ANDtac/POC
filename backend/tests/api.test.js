@@ -71,7 +71,7 @@ describe("User privacy", () => {
   test("password change requires the current password", async () => {
     const { auth } = await register("gary");
     const denied = await request(app).patch("/api/user").set(auth).send({ password: "NewPass123" });
-    expect(denied.status).toBe(401);
+    expect(denied.status).toBe(403);
     const ok = await request(app).patch("/api/user").set(auth).send({ password: "NewPass123", current_password: password });
     expect(ok.status).toBe(200);
   });

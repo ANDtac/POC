@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "concurrently --kill-others-on-fail --names \"API,Web\" --prefix-colors \"yellow,magenta\" \"npm run backend\" \"npm run frontend\"",
     "backend": "cd backend && npm run dev",
-    "frontend": "cd frontend && npm start 2>/dev/null",
+    "frontend": "cd frontend && npm run dev",
+    "test": "cd backend && npm test && cd ../frontend && npm test",
     "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install"
   },
   "devDependencies": {
