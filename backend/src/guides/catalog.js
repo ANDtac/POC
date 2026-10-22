@@ -1,12 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-export const METHODS = [
-  "catch", "evolve", "trade-evolve", "stone", "gift", "fossil",
-  "static", "in-game-trade", "prize", "trade", "event",
-];
-
-const ENTRY_ID = /^\d{4}(-[a-z]+)?$/;
+const ENTRY_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 // Throws on malformed guide data so a bad JSON edit fails at startup, not mid-run.
 export const validateGuide = (guide) => {
@@ -15,29 +10,36 @@ export const validateGuide = (guide) => {
   if (!Array.isArray(guide.versions) || guide.versions.length === 0) fail("versions must be a non-empty array");
   if (!Array.isArray(guide.sections) || guide.sections.length === 0) fail("sections must be a non-empty array");
 
-  const versionIds = new Set(guide.versions.map((v) => v.id));
   const sectionIds = new Set();
-  const entryIds = new Set();
+  const choiceKeys = new Set();
+  const required = [];
   for (const section of guide.sections) {
     if (!section.id || !section.label) fail("each section needs id and label");
     if (sectionIds.has(section.id)) fail(`duplicate section ${section.id}`);
     sectionIds.add(section.id);
+    for (const choice of section.choices ?? []) {
+      if (!choice.key || !Number.isInteger(choice.cap) || choice.cap < 1) fail(`section ${section.id}: bad choice block`);
+      if (!Array.isArray(choice.options) || choice.options.length === 0) fail(`choice ${choice.key} has no options`);
+      choiceKeys.add(choice.key);
+    }
     for (const entry of section.entries ?? []) {
       if (!ENTRY_ID.test(entry.id ?? "")) fail(`bad entry id ${entry.id}`);
-      if (entryIds.has(entry.id)) fail(`duplicate entry ${entry.id}`);
-      entryIds.add(entry.id);
-      if (!entry.name || !entry.location) fail(`entry ${entry.id} needs name and location`);
-      if (!METHODS.includes(entry.method)) fail(`entry ${entry.id} has unknown method ${entry.method}`);
-      for (const v of entry.versions ?? []) {
-        if (!versionIds.has(v)) fail(`entry ${entry.id} names unknown version ${v}`);
+      if (!entry.name || typeof entry.method !== "string") fail(`entry ${entry.id} needs name and method`);
+      for (const r of [...(entry.requires ?? []), ...(entry.requiresNot ?? [])]) {
+        if (!r.key || r.value === undefined) fail(`entry ${entry.id} has a malformed requirement`);
+        required.push([entry.id, r.key]);
       }
     }
+  }
+  for (const [entryId, key] of required) {
+    if (!choiceKeys.has(key)) fail(`entry ${entryId} requires unknown choice ${key}`);
   }
   return guide;
 };
 
 const loadGuides = (dir) => {
   const guides = new Map();
+  if (!fs.existsSync(dir)) return guides;
   for (const file of fs.readdirSync(dir).filter((f) => f.endsWith(".json")).sort()) {
     const guide = validateGuide(JSON.parse(fs.readFileSync(path.join(dir, file), "utf8")));
     guides.set(guide.id, guide);
@@ -47,24 +49,57 @@ const loadGuides = (dir) => {
 
 const guides = loadGuides(process.env.GUIDES_DIR || path.resolve("data/guides"));
 
-export const getGuide = (id) => guides.get(id);
+const indexes = new WeakMap();
 
-export const listGuides = () => [...guides.values()].map((g) => ({
-  id: g.id,
-  name: g.name,
-  generation: g.generation,
-  versions: g.versions,
-  verified: Boolean(g.verified),
-  sections: g.sections.length,
-  entries: g.sections.reduce((n, s) => n + s.entries.length, 0),
-}));
-
-export const findEntry = (guide, entryId) => {
-  for (const section of guide.sections) {
-    const entry = section.entries.find((e) => e.id === entryId);
-    if (entry) return entry;
+// Lookup tables per guide: entry ids and choice definitions (a key can span several sections).
+export const guideIndex = (guide) => {
+  if (!indexes.has(guide)) {
+    const entryIds = new Set();
+    const choices = new Map();
+    for (const section of guide.sections) {
+      for (const entry of section.entries ?? []) entryIds.add(entry.id);
+      for (const choice of section.choices ?? []) {
+        const def = choices.get(choice.key) ?? { cap: 1, values: new Set() };
+        def.cap = Math.max(def.cap, choice.cap);
+        for (const option of choice.options) def.values.add(option.value);
+        choices.set(choice.key, def);
+      }
+    }
+    indexes.set(guide, { entryIds, choices });
   }
-  return null;
+  return indexes.get(guide);
 };
 
-export const isInVersion = (entry, version) => !entry.versions || entry.versions.includes(version);
+export const getGuide = (id) => guides.get(id);
+
+export const listGuides = () => [...guides.values()]
+  .sort((a, b) => (a.order ?? Infinity) - (b.order ?? Infinity) || a.name.localeCompare(b.name))
+  .map((g) => ({
+    id: g.id,
+    name: g.name,
+    region: g.region ?? null,
+    generation: g.generation ?? null,
+    versions: g.versions,
+    sections: g.sections.length,
+    entries: guideIndex(g).entryIds.size,
+  }));
+
+// Same rule as the source tracker: every `requires` pair is selected, no `requiresNot` pair is.
+export const meetsRequirements = (entry, choices) => {
+  const has = ({ key, value }) => (choices?.[key] ?? []).includes(value);
+  return (entry.requires ?? []).every(has) && !(entry.requiresNot ?? []).some(has);
+};
+
+export const progressOf = (guide, choices, caughtIds) => {
+  const caught = new Set(caughtIds);
+  let total = 0;
+  let done = 0;
+  for (const section of guide.sections) {
+    for (const entry of section.entries ?? []) {
+      if (!meetsRequirements(entry, choices)) continue;
+      total += 1;
+      if (caught.has(entry.id)) done += 1;
+    }
+  }
+  return { caught: done, total };
+};

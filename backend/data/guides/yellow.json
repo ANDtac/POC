@@ -1,0 +1,1152 @@
+{
+  "id": "yellow",
+  "name": "Pokémon Yellow",
+  "region": "Kanto",
+  "order": 2,
+  "generation": 1,
+  "versions": [
+    {
+      "id": "yellow",
+      "name": "Yellow"
+    }
+  ],
+  "spriteSet": "generation-i/yellow/transparent",
+  "about": "<section class=\"game-intro-content\">\n      <ul>\n        <li>I played this version AFTER FireRed and this is much harder due to the abysmal move sets that a pokemon learns from levelling up. A prime example at the start of the game is Pidgey who only knows Quick Attack and Gust until it learns Wing Attack in its late 20s! You also need to get used to PC boxes being full, lack of running shoes/Vs Seeker, your bag getting full etc.</li>\n        <li>This will be a very grindy challenge. If you don’t think you’ve got the patience, then now would be the time to back out. The first part of the game alone (before Brock) will take you tens of hours! It gets less grindy as the game proceeds, but it will be a long road. </li>\n        <li>Learning new moves shouldn’t be taken for granted, particularly with pokemon that evolve at higher levels. During a normal game you might be quick to replace weaker moves with stronger ones but getting rid of non-attacking moves is a better strategy here. Also consider stopping your pokemon from evolving if they are a three stage evolution so that you can learn more/better moves. Again, on the first part of the challenge before Brock, you are battling low level pokemon and will run out of PP very quickly while your exp gained goes up very slowly. You need to maximize the amount of pokemon you can defeat, so having multiple attacking moves, regardless of how weak they are, will be beneficial. You have no need for moves like Growl or Sand Attack.</li>\n        <li>This challenge is a fun alternative to a regular play through and you may really appreciate having to train pokemon up yourself that you never trained before. On the other hand you may end up despising certain pokemon due to their inability to attack when you first get them or their generally poor levelling up moves. </li>\n        <li>It’s not really a rule, but my preferred method is that you train them yourself except when they can’t battle themselves (i.e. Magikarp before it learns Tackle). This is all down to your own limitations that you set. I don’t like using Rare Candy anymore as it defeats the purpose of the challenge and I don’t like using any exp sharing items. </li>\n        <li>Please note that this is not a full guide to the game, I am only listing the pokemon you can catch at the earliest opportunities and any required items. I do not go into full detail on optimal exp gains or where to find the highest level for an individual pokemon etc. This playthrough and guide were done as a casual play rather than a speed run. Please consult other guides for a full walkthrough or more detailed information.</li>\n      </ul>\n      <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>\n    </section>",
+  "source": {
+    "guide": {
+      "name": "Professor Oak Challenge guides by u/mewlax84",
+      "url": "https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing"
+    },
+    "data": {
+      "name": "Oak Challenge Tracker by EzraSkwarka",
+      "url": "https://github.com/EzraSkwarka/OakChallenge",
+      "license": "MIT",
+      "commit": "025e51a2fe0c732555dc7082b4ce35025020df6a"
+    }
+  },
+  "sections": [
+    {
+      "id": "brock",
+      "label": "Pre Badge #1 - Brock",
+      "summaryShort": "This first part will cover everything you can do BEFORE you get that first badge from Brock. This is probably the most daunting part of the challenge…",
+      "summaryHtml": "<h5>Pallet Town</h5>\n        <p>\n          Starting off in your home town, you’ll soon be given the chance to grab your first starter pokemon which is of course Pikachu. This is less challenging than picking the usual starters, or at least it would be were there not one additional pokemon added to this selection in Yellow. Go to Viridian City, grab the parcel from the Pokemart, deliver it to Professor Oak and grab that important pokedex and some pokeballs to go with it.\n        </p>\n        <pre>Pikachu</pre>\n        <p>\n          Straight off we’re stuck with a non-evolving pokemon since you can’t use a Thunder Stone on Pikachu successfully and there are no other Pikachu in the game which means that Raichu is completely unobtainable.\n        </p>\n\n        <h5>Route 1</h5>\n        <p>\n          Only two pokemon to catch and evolve here:\n        </p>\n        <pre>Pidgey → Lv. 18 → Pidgeotto → Lv. 36 → Pidgeot\nRattata → Lv. 20 → Raticate</pre>\n\n        <h5>Route 22</h5>\n        <p>\n          Pass through Viridian City and go West to Route 22 where you can catch:\n        </p>\n        <pre>Nidoran F → Lv. 16 → Nidorina\nNidoran M → Lv. 16 → Nidorino\nSpearow → Lv. 20 → Fearow\nMankey → Lv. 28 → Primeape</pre>\n        <p>\n          You can battle your rival here should you need to battle a trainer that gives a bit more experience than wild Pokémon. Mankey or Pidgey/Pidgeotto could use it. Nidorina and Nidorino can’t evolve any further just yet.\n        </p>\n\n        <h5>Viridian Forest</h5>\n        <p>\n          Back into Viridian City, head north this time and skip over Route 2 to Viridian Forest.\n        </p>\n        <pre>Caterpie → Lv. 7 → Metapod → Lv. 10 → Butterfree</pre>\n        <p>\n          Viridian Forest is somewhat of a double-edged sword in comparison to Red and Blue. On the plus side, there’s no Weedle to poison you. The downside is that instead of Weedle and Kakuna, you will find Pidgey and a very rare Pidgeotto. Pidgey gives much worse exp than Kakuna and is more common than Metapod so grinding levels here will take longer. On top of that, Metapod is rarely found above Lv4 so grinding takes a lot longer than Red/Blue.\n        </p>\n\n        <h5>Pewter City</h5>\n        <p>\n          You can enter Pewter City but can’t advance until you get your first badge.\n        </p>\n\n        <h5>Levelling up tips</h5>\n        <p>\n          This will be the longest part of your challenge and is made even more painful without any way to rematch trainers or run/cycle. The real killers are getting Pidgeot followed by Primeape. I tend to continuously battle using the same pokemon until it runs out of PP or is KO’d or you could level each pokemon up in your team once and then switch your lead pokemon to make it less tedious. As mentioned earlier, definitely prioritize attacking moves over non attack moves. I actually decided NOT to evolve Pidgey until it learned Wing Attack at Lv28 otherwise Pidgeotto won’t learn it until Lv31 and it’d be stuck with only two attacking moves and will level VERY slowly due to running out of PP. For some extra experience, go defeat the trainers in the gym, just make sure you don’t talk to Brock until you’ve maxed out the dex for this part.\n        </p>\n\n        <p>\n          <strong>End of part 1:</strong><br/>\n          Caught 17, Remaining 134\n        </p>\n              <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "choices": [],
+      "entries": [
+        {
+          "id": "pikachu",
+          "name": "Pikachu",
+          "dex": 25,
+          "method": "Starter (cannot evolve in Yellow)"
+        },
+        {
+          "id": "pidgey",
+          "name": "Pidgey",
+          "dex": 16,
+          "method": "Catch on Route 1"
+        },
+        {
+          "id": "pidgeotto",
+          "name": "Pidgeotto",
+          "dex": 17,
+          "method": "Evolve from Pidgey at level 18"
+        },
+        {
+          "id": "pidgeot",
+          "name": "Pidgeot",
+          "dex": 18,
+          "method": "Evolve from Pidgeotto at level 36"
+        },
+        {
+          "id": "rattata",
+          "name": "Rattata",
+          "dex": 19,
+          "method": "Catch on Route 1"
+        },
+        {
+          "id": "raticate",
+          "name": "Raticate",
+          "dex": 20,
+          "method": "Evolve from Rattata at level 20"
+        },
+        {
+          "id": "nidoran-f",
+          "name": "Nidoran F",
+          "dex": 29,
+          "method": "Catch on Route 22"
+        },
+        {
+          "id": "nidorina",
+          "name": "Nidorina",
+          "dex": 30,
+          "method": "Evolve from Nidoran F at level 16"
+        },
+        {
+          "id": "nidoran-m",
+          "name": "Nidoran M",
+          "dex": 32,
+          "method": "Catch on Route 22"
+        },
+        {
+          "id": "nidorino",
+          "name": "Nidorino",
+          "dex": 33,
+          "method": "Evolve from Nidoran M at level 16"
+        },
+        {
+          "id": "spearow",
+          "name": "Spearow",
+          "dex": 21,
+          "method": "Catch on Route 22"
+        },
+        {
+          "id": "fearow",
+          "name": "Fearow",
+          "dex": 22,
+          "method": "Evolve from Spearow at level 20"
+        },
+        {
+          "id": "mankey",
+          "name": "Mankey",
+          "dex": 56,
+          "method": "Catch on Route 22"
+        },
+        {
+          "id": "primeape",
+          "name": "Primeape",
+          "dex": 57,
+          "method": "Evolve from Mankey at level 28"
+        },
+        {
+          "id": "caterpie",
+          "name": "Caterpie",
+          "dex": 10,
+          "method": "Catch in Viridian Forest"
+        },
+        {
+          "id": "metapod",
+          "name": "Metapod",
+          "dex": 11,
+          "method": "Evolve from Caterpie at level 7"
+        },
+        {
+          "id": "butterfree",
+          "name": "Butterfree",
+          "dex": 12,
+          "method": "Evolve from Metapod at level 10"
+        }
+      ]
+    },
+    {
+      "id": "misty",
+      "label": "Pre Badge #2 - Misty",
+      "summaryShort": "Take on Brock with your fearsome team and get that first badge. You can finally leave through the eastern exit of Pewter City.",
+      "summaryHtml": "<h5>Route 3</h5>\n        <p>\n          Now that you don’t need any experience, lots of trainers will be trying to challenge you! Try to skip as many as you can so you can come back with new pokemon. Past the trainers you will find some patches of grass to catch:\n        </p>\n        <pre>Sandshrew → Lv. 22 → Sandslash</pre>\n        <p>Or you can wait until Mt Moon instead to catch one.</p>\n\n        <h5>Route 4</h5>\n        <p>\n          Go north from Route 3 and buy a Magikarp from the salesman in the pokemon center. Bait and switch Magikarp on the trainers on Route 3 for some help levelling it up. Alternatively you can wait until Vermilion City where you’ll get the Old Rod which gives 100% encounter rate for Magikarp in any fishable area.\n        </p>\n        <pre>Magikarp → Lv. 20 → Gyarados</pre>\n\n        <h5>Mt Moon</h5>\n        <p>\n          Be cautious about proceeding through the cave too fast, there is a point of no return which will make or break the success of this challenge. Once you leave the cave and hop over the ledge on the other side, you won’t be able to get back without another badge, therefore failing the challenge. In the cave you can catch:\n        </p>\n        <pre>Zubat → Lv. 22 → Golbat\nGeodude → Lv. 25 → Graveler\nParas → Lv. 24 → Parasect\nClefairy</pre>\n        <p>\n          Paras and Clefairy are more common the deeper you go. Graveler won’t EVER be able to evolve into Golem since you can’t trade. Catching Clefairy completes your set for moon stone evolution pokemon but at this point in time you won’t have any. You’ll need four Moon Stones in total. There are two moon stones inside Mt Moon. One is a standard item to pick up, the other is invisible. You’ll find it in the narrow alcove on the right just before you pick up the fossils. The remaining two Moon Stones you need will come later in the challenge.\n        </p>\n        <p>\n          Make sure you catch another Clefairy for a trade coming up. Pick up one of the fossils on your way out. If you’re confident you’ve caught Geodude, Zubat, Paras, TWO Clefairy and obtained the two Moon Stones, you can finally leave the cave.\n        </p>\n\n        <h5>Cerulean City</h5>\n        <p>\n          In one of the houses you can pick up a Bulbasaur if your Pikachu is happy enough. This depends on whether you’ve actually been training it given the nature of the challenge. You can spam Potions even if they won’t do anything and Pikachu will soon be happy enough.\n        </p>\n        <pre>Bulbasaur → Lv. 16 → Ivysaur → Lv. 32 → Venusaur</pre>\n\n        <h5>Route 24</h5>\n        <p>\n          Enter Cerulean City and once you’re healed up, go north to route 24.\n        </p>\n        <pre>Venonat → Lv. 31 → Venomoth\nOddish → Lv. 21 → Gloom\nBellsprout → Lv. 21 → Weepinbell</pre>\n        <p>\n          If you talk to the trainer in the top left area of the route after Nugget Bridge, he will give you a Charmander. Continue east and go to Bill’s house where you can get the SS Ticket.\n        </p>\n        <pre>Charmander → Lv. 16 → Charmeleon → Lv. 36 → Charizard</pre>\n\n        <h5>Route 5</h5>\n        <p>\n          Go back to Cerulean City but forget the Cerulean Gym. We can come back later. Go through the burgled house to go south to route 5. Here you’ll find:\n        </p>\n        <pre>Abra → Lv. 16 → Kadabra\nJigglypuff</pre>\n        <p>\n          With Jigglypuff you now have all four Moon Stone evolutions so it’s your choice who to evolve. The remaining two Moon Stones are available in the next section.\n        </p>\n        <pre>Nidorina/ Nidorino/ Clefairy/ Jigglypuff → Moon Stone → Nidoqueen/ Nidoking/ Clefable/ Wigglytuff</pre>\n\n        <h5>Vermilion City</h5>\n        <p>\n          Go through the underground tunnel on Route 5, skip the next route as there’s nothing new and go south to Vermilion City. Grab the bike voucher from the fan club’s president if you want it (you don’t need to).\n        </p>\n\n        <h5>Route 11</h5>\n        <p>\n          Go east from Vermilion City to Route 11 and catch:\n        </p>\n        <pre>Drowzee → Lv. 26 → Hypno</pre>\n\n        <h5>Diglett Cave</h5>\n        <p>\n          Take your spare Clefairy with you through Diglett Cave. You want to leave through the far exit. On the way, catch a Diglett.\n        </p>\n        <pre>Diglett → Lv. 26 → Dugtrio</pre>\n        <p>\n          You can either evolve one or catch a wild Dugtrio.\n        </p>\n\n        <h5>Route 2</h5>\n        <p>\n          Leave the north exit in Diglett Cave and enter the house to trade your Clefairy for a Mr. Mime.\n        </p>\n        <pre>Mr. Mime</pre>\n\n        <h5>SS Anne</h5>\n        <p>\n          Go back to Vermilion City and clear the SS Anne to get the HM for Cut. There’s nothing more you can do without the badge to use Cut which is by beating Misty in Cerulean City.\n        </p>\n\n        <h5>Levelling Tips</h5>\n        <p>\n          Battle everyone you can! Aside from defeating all the trainers available (don’t forget the ones in Cerulean Gym) the best place to train would be Diglett Cave as Diglett give fairly good exp despite being quite frail.\n        </p>\n\n        <p>\n          <strong>End of part 2:</strong><br/>\n          Caught 50, Remaining 101\n        </p>\n              <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "choices": [
+        {
+          "key": "moon-stone-1",
+          "title": "Pick two Pokémon to use your Moon Stones on:",
+          "cap": 2,
+          "options": [
+            {
+              "value": "nidoqueen",
+              "name": "Nidoqueen",
+              "dex": 31,
+              "method": "Use a Moon Stone on Nidorina"
+            },
+            {
+              "value": "nidoking",
+              "name": "Nidoking",
+              "dex": 34,
+              "method": "Use a Moon Stone on Nidorino"
+            },
+            {
+              "value": "clefable",
+              "name": "Clefable",
+              "dex": 36,
+              "method": "Use a Moon Stone on Clefairy"
+            },
+            {
+              "value": "wigglytuff",
+              "name": "Wigglytuff",
+              "dex": 40,
+              "method": "Use a Moon Stone on Jigglypuff"
+            }
+          ]
+        },
+        {
+          "key": "fossil",
+          "title": "Choose which Fossil to revive:",
+          "cap": 1,
+          "options": [
+            {
+              "value": "kabuto",
+              "name": "Kabuto",
+              "dex": 140,
+              "method": "Revive Dome Fossil (Cinnabar Lab)"
+            },
+            {
+              "value": "omanyte",
+              "name": "Omanyte",
+              "dex": 138,
+              "method": "Revive Helix Fossil (Cinnabar Lab)"
+            }
+          ]
+        }
+      ],
+      "entries": [
+        {
+          "id": "sandshrew",
+          "name": "Sandshrew",
+          "dex": 27,
+          "method": "Catch on Route 3 (or later in Mt. Moon)"
+        },
+        {
+          "id": "sandslash",
+          "name": "Sandslash",
+          "dex": 28,
+          "method": "Evolve from Sandshrew at level 22"
+        },
+        {
+          "id": "magikarp",
+          "name": "Magikarp",
+          "dex": 129,
+          "method": "Buy from Route 4 Pokémon Center (or fish later with Old Rod)"
+        },
+        {
+          "id": "gyarados",
+          "name": "Gyarados",
+          "dex": 130,
+          "method": "Evolve from Magikarp at level 20"
+        },
+        {
+          "id": "zubat",
+          "name": "Zubat",
+          "dex": 41,
+          "method": "Catch in Mt. Moon"
+        },
+        {
+          "id": "golbat",
+          "name": "Golbat",
+          "dex": 42,
+          "method": "Evolve from Zubat at level 22"
+        },
+        {
+          "id": "geodude",
+          "name": "Geodude",
+          "dex": 74,
+          "method": "Catch in Mt. Moon"
+        },
+        {
+          "id": "graveler",
+          "name": "Graveler",
+          "dex": 75,
+          "method": "Evolve from Geodude at level 25"
+        },
+        {
+          "id": "paras",
+          "name": "Paras",
+          "dex": 46,
+          "method": "Catch in Mt. Moon"
+        },
+        {
+          "id": "parasect",
+          "name": "Parasect",
+          "dex": 47,
+          "method": "Evolve from Paras at level 24"
+        },
+        {
+          "id": "clefairy",
+          "name": "Clefairy",
+          "dex": 35,
+          "method": "Catch in Mt. Moon (catch two for later trade)"
+        },
+        {
+          "id": "bulbasaur",
+          "name": "Bulbasaur",
+          "dex": 1,
+          "method": "Gift in Cerulean City (requires high Pikachu friendship)"
+        },
+        {
+          "id": "ivysaur",
+          "name": "Ivysaur",
+          "dex": 2,
+          "method": "Evolve from Bulbasaur at level 16"
+        },
+        {
+          "id": "venusaur",
+          "name": "Venusaur",
+          "dex": 3,
+          "method": "Evolve from Ivysaur at level 32"
+        },
+        {
+          "id": "venonat",
+          "name": "Venonat",
+          "dex": 48,
+          "method": "Catch on Route 24"
+        },
+        {
+          "id": "venomoth",
+          "name": "Venomoth",
+          "dex": 49,
+          "method": "Evolve from Venonat at level 31"
+        },
+        {
+          "id": "oddish",
+          "name": "Oddish",
+          "dex": 43,
+          "method": "Catch on Route 24"
+        },
+        {
+          "id": "gloom",
+          "name": "Gloom",
+          "dex": 44,
+          "method": "Evolve from Oddish at level 21"
+        },
+        {
+          "id": "bellsprout",
+          "name": "Bellsprout",
+          "dex": 69,
+          "method": "Catch on Route 24"
+        },
+        {
+          "id": "weepinbell",
+          "name": "Weepinbell",
+          "dex": 70,
+          "method": "Evolve from Bellsprout at level 21"
+        },
+        {
+          "id": "charmander",
+          "name": "Charmander",
+          "dex": 4,
+          "method": "Gift from trainer after Nugget Bridge (Route 24)"
+        },
+        {
+          "id": "charmeleon",
+          "name": "Charmeleon",
+          "dex": 5,
+          "method": "Evolve from Charmander at level 16"
+        },
+        {
+          "id": "charizard",
+          "name": "Charizard",
+          "dex": 6,
+          "method": "Evolve from Charmeleon at level 36"
+        },
+        {
+          "id": "abra",
+          "name": "Abra",
+          "dex": 63,
+          "method": "Catch on Route 5"
+        },
+        {
+          "id": "kadabra",
+          "name": "Kadabra",
+          "dex": 64,
+          "method": "Evolve from Abra at level 16"
+        },
+        {
+          "id": "jigglypuff",
+          "name": "Jigglypuff",
+          "dex": 39,
+          "method": "Catch on Route 5"
+        },
+        {
+          "id": "nidoqueen",
+          "name": "Nidoqueen",
+          "dex": 31,
+          "method": "Use a Moon Stone on Nidorina",
+          "requires": [
+            {
+              "key": "moon-stone-1",
+              "value": "nidoqueen"
+            }
+          ]
+        },
+        {
+          "id": "nidoking",
+          "name": "Nidoking",
+          "dex": 34,
+          "method": "Use a Moon Stone on Nidorino",
+          "requires": [
+            {
+              "key": "moon-stone-1",
+              "value": "nidoking"
+            }
+          ]
+        },
+        {
+          "id": "clefable",
+          "name": "Clefable",
+          "dex": 36,
+          "method": "Use a Moon Stone on Clefairy",
+          "requires": [
+            {
+              "key": "moon-stone-1",
+              "value": "clefable"
+            }
+          ]
+        },
+        {
+          "id": "wigglytuff",
+          "name": "Wigglytuff",
+          "dex": 40,
+          "method": "Use a Moon Stone on Jigglypuff",
+          "requires": [
+            {
+              "key": "moon-stone-1",
+              "value": "wigglytuff"
+            }
+          ]
+        },
+        {
+          "id": "drowzee",
+          "name": "Drowzee",
+          "dex": 96,
+          "method": "Catch on Route 11"
+        },
+        {
+          "id": "hypno",
+          "name": "Hypno",
+          "dex": 97,
+          "method": "Evolve from Drowzee at level 26"
+        },
+        {
+          "id": "diglett",
+          "name": "Diglett",
+          "dex": 50,
+          "method": "Catch in Diglett Cave"
+        },
+        {
+          "id": "dugtrio",
+          "name": "Dugtrio",
+          "dex": 51,
+          "method": "Evolve from Diglett at level 26 (or catch a wild Dugtrio)"
+        },
+        {
+          "id": "mr-mime",
+          "name": "Mr. Mime",
+          "dex": 122,
+          "method": "Trade Clefairy for Mr. Mime (house north of Diglett Cave)"
+        }
+      ]
+    },
+    {
+      "id": "koga",
+      "label": "Pre Badge #3 - Koga",
+      "summaryShort": "Defeat Misty and get that Cascade Badge and the ability to use Cut. Whilst you’re in Cerulean City, exchange the bike voucher for a bike for faster movement whilst grinding. There’s no need to defeat Lt Surge as this only gives you access to Fly and three more pokemon so we can skip this gym until later. There is a LOT open to you at this point before considering another badge and you have almost the entirety of Kanto accessible.",
+      "summaryHtml": "<h5>Route 2/Pewter City</h5>\n        <p>\n          Go back through Diglett Cave and use Cut on Route 4 to get the HM for Flash and an extra Moon Stone as well as the Old Amber from the side entrance of the Pewter City Museum. You can now evolve your third Moon Stone pokemon.\n        </p>\n        <pre>Nidorina/ Nidorino/ Clefairy/ Jigglypuff → Moon Stone → Nidoqueen/ Nidoking/ Clefable/ Wigglytuff</pre>\n\n        <h5>Route 9/Route 10</h5>\n        <p>\n          East of Cerulean City, cut the tree down and pass through route 9 to go to route 10. The patch of grass by the water contains a new pokemon.\n        </p>\n        <pre>Machop → Lv. 28 → Machoke\nMagnemite → Lv. 30 → Magneton</pre>\n        <p>\n          Machop is fairly rare so you may want to wait until Rock Tunnel. You CAN evolve your Machop now but there’s a much easier way to get Machoke shortly…\n        </p>\n\n        <h5>Rock Tunnel</h5>\n        <p>\n          Flash will be helpful but isn’t essential. In the tunnel you can catch Onix lurking in the lower floors:\n        </p>\n        <pre>Onix</pre>\n\n        <h5>Celadon City</h5>\n        <p>\n          Once you’ve reached Lavender Town, head west, skip over Routes 7 and 8 and go straight to Celadon City. Here you can pick up:\n        </p>\n        <pre>Eevee\nVulpix\nPorygon</pre>\n        <p>\n          Eevee can be found in the back entrance of one of the tall buildings. The Game Corner has a few pokemon, some of which will be in the safari zone so we won’t buy them here (they can still be caught before getting the next badge). Vulpix and Porygon are the only two you will have to buy. If you can’t afford it now, come back once you’ve battled every trainer you can in this section to get enough cash to exchange for coins (1000 for Vulpix, 9999 for Porygon). Go to Celadon Department Store and buy stones to evolve some of your pokemon:\n        </p>\n        <pre>Eevee → Fire/Thunder/Water Stone → Flareon/Jolteon/Vaporeon\nVulpix → Fire Stone → Ninetales\nGloom → Leaf Stone → Vileplume\nWeepinbell → Leaf Stone → Victreebel</pre>\n        <p>\n          From now on, every time you catch a pokemon that needs a stone, come back here to buy one. While you’re in Celadon, clear out the Rocket Hideout at the Game Corner to obtain the Silph Scope. There is also another Moon Stone here within the hideout for you to evolve your final Moon Stone pokemon.\n        </p>\n        <pre>Nidorina/ Nidorino/ Clefairy/ Jigglypuff → Moon Stone → Nidoqueen/ Nidoking/ Clefable/ Wigglytuff</pre>\n\n        <h5>Route 16</h5>\n        <p>\n          Head West to Route 16 and use Cut to access the grass to catch a Doduo.\n        </p>\n        <pre>Doduo → Lv. 31 → Dodrio</pre>\n\n        <h5>Lavender Town</h5>\n        <p>\n          Return to Lavender Town and rescue Mr. Fuji from Pokemon Tower. With the Silph Scope you can now catch the pokemon here.\n        </p>\n        <pre>Gastly → Lv. 25 → Haunter\nCubone → Lv. 28 → Marowak</pre>\n        <p>\n          Catch a second Cubone and go back to the underground tunnel between Cerulean and Vermilion to trade it for a Machoke which will then evolve into a Machamp! As a reward for saving Mr. Fuji you’ll get the pokeflute. Head south from Lavender Town and catch Snorlax.\n        </p>\n        <pre>Machoke → Evolves when received → Machamp\nSnorlax</pre>\n\n        <h5>Route 12</h5>\n        <p>\n          Continue south past Snorlax and enter the house to get the Super Rod.\n        </p>\n\n        <h5>Route 17</h5>\n        <p>\n          Defeat or catch the other Snorlax West of Celadon and go down Cycling Road where you’ll find a Ponyta in the grass:\n        </p>\n        <pre>Ponyta → Lv. 40 → Rapidash</pre>\n\n        <h5>Fishing Spree</h5>\n        <p>\n          Carry on down Cycling Road to get to Fuschia City where you can pick up a Good Rod. Touring through Kanto again with the Good Rod and Super Rod you can catch and evolve a multitude of pokemon. If you fish in the same routes with the Super Rod you can also find the evolved forms of most of these Pokémon (Poliwhirl, Seaking, Kingler, Seadra and Tentacruel)\n        </p>\n        <pre>Shellder → Water Stone → Cloyster (Super Rod –Route 17)\nPoliwag → Lv. 25 → Poliwhirl → Water Stone → Poliwrath (Super Rod – Route 22)\nGoldeen → Lv. 33 → Seaking (Super Rod – Route 24)\nKrabby → Lv. 28 → Kingler (Super Rod – Route 10)\nHorsea → Lv. 32 → Seadra  (Super Rod – Route 12)\nStaryu → Water Stone → Starmie (Super Rod – Route 19)\nTentacool → Lv. 30 → Tentacruel (Super Rod – Route 19)</pre>\n\n        <h5>Route 13</h5>\n        <p>\n          Between Fuschia City and Lavender Town in Route 13 you can find a wild Farfetch’d. This are the last standard wild encounter for this portion of the challenge.\n        </p>\n        <pre>Farfetch’d</pre>\n\n        <h5>Safari Zone</h5>\n        <p>\n          You may have to go here several times! Pick up the HM for Surf and the Gold Teeth so you can trade for the Strength HM. For catching pokemon, you’ll be obtaining:\n        </p>\n        <pre>Dratini → Lv. 30 → Dragonair → Lv. 55 → Dragonite\nExeggcute → Leaf Stone → Exeggutor\nRhyhorn → Lv. 42 → Rhydon\nTangela\nChansey\nScyther\nPinsir\nTauros\nKangaskhan</pre>\n        <p>\n          In any area, fish in the water with the Super Rod for Dratini. Yellow gives you more of a headache as the rare pokemon are more numerous since you’ve got BOTH version exclusives (Scyther and Pinsir) as well as Tangela thrown in as well. Tangela is best found in Area 1, Tauros and Chansey in Area 2, Kangaskhan and Scyther in Area 3 and Pinsir in Area 4. All have low encounter rates in those areas and also have low capture rates which may really frustrate you! Honestly it’s best to simply throw a safari ball than mess around with bait or rocks. If it says “you missed the Pokémon” you’re not doing anything wrong, it just has a low capture rate. When the ball does hit you’ve guaranteed a catch. You can also save in the safari zone so soft resetting on an unlucky expedition is a great way to save money.\n        </p>\n\n        <h5>Saffron City</h5>\n        <p>\n          You can beat the Dojo and get either Hitmonlee or Hitmonchan.\n        </p>\n        <pre>Hitmonlee/Hitmonchan</pre>\n        <p>\n          You can also clear out Silph Co and get the Lapras from the Silph employee.\n        </p>\n        <pre>Lapras</pre>\n        <p>\n          Now it’s finally time to get another badge! Did you ever imagine you could complete two thirds of the pokedex with only two badges???\n        </p>\n\n        <h5>Levelling Tips</h5>\n        <p>\n          Getting that Dragonite will certainly be a difficult task. Consider teaching it Surf to avoid wasting a TM. Trying to keep as many trainers from battling you is a great idea. The two Rocket areas (Game Corner and Silph Co) can be great for lots of battles. Wrap in Gen 1 means the enemy can’t attack, so it’s certainly helpful since Dratini has terrible levelling up moves. There’s also no real reason to keep it unevolved to learn moves quicker, Dragon Rage isn’t much help at this stage in the game. For general grinding, the areas to the East and West of Fuschia City give the highest exp.\n        </p>\n\n        <p>\n          <strong>End of part 3:</strong><br/>\n          Caught 105, Remaining 46\n        </p>\n              <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "choices": [
+        {
+          "key": "eeveelution",
+          "title": "Choose your Eeveelution:",
+          "cap": 1,
+          "options": [
+            {
+              "value": "flareon",
+              "name": "Flareon",
+              "dex": 136,
+              "method": "Use a Fire Stone on Eevee"
+            },
+            {
+              "value": "jolteon",
+              "name": "Jolteon",
+              "dex": 135,
+              "method": "Use a Thunder Stone on Eevee"
+            },
+            {
+              "value": "vaporeon",
+              "name": "Vaporeon",
+              "dex": 134,
+              "method": "Use a Water Stone on Eevee"
+            }
+          ]
+        },
+        {
+          "key": "hitmon",
+          "title": "Choose your Hitmon:",
+          "cap": 1,
+          "options": [
+            {
+              "value": "hitmonlee",
+              "name": "Hitmonlee",
+              "dex": 106,
+              "method": "Fighting Dojo (choose one)"
+            },
+            {
+              "value": "hitmonchan",
+              "name": "Hitmonchan",
+              "dex": 107,
+              "method": "Fighting Dojo (choose one)"
+            }
+          ]
+        }
+      ],
+      "entries": [
+        {
+          "id": "nidoqueen",
+          "name": "Nidoqueen",
+          "dex": 31,
+          "method": "Use a Moon Stone on Nidorina",
+          "requiresNot": [
+            {
+              "key": "moon-stone-1",
+              "value": "nidoqueen"
+            }
+          ]
+        },
+        {
+          "id": "nidoking",
+          "name": "Nidoking",
+          "dex": 34,
+          "method": "Use a Moon Stone on Nidorino",
+          "requiresNot": [
+            {
+              "key": "moon-stone-1",
+              "value": "nidoking"
+            }
+          ]
+        },
+        {
+          "id": "clefable",
+          "name": "Clefable",
+          "dex": 36,
+          "method": "Use a Moon Stone on Clefairy",
+          "requiresNot": [
+            {
+              "key": "moon-stone-1",
+              "value": "clefable"
+            }
+          ]
+        },
+        {
+          "id": "wigglytuff",
+          "name": "Wigglytuff",
+          "dex": 40,
+          "method": "Use a Moon Stone on Jigglypuff",
+          "requiresNot": [
+            {
+              "key": "moon-stone-1",
+              "value": "wigglytuff"
+            }
+          ]
+        },
+        {
+          "id": "machop",
+          "name": "Machop",
+          "dex": 66,
+          "method": "Catch on Route 10 (grass by water)"
+        },
+        {
+          "id": "machoke",
+          "name": "Machoke",
+          "dex": 67,
+          "method": "Evolve from Machop at level 28"
+        },
+        {
+          "id": "magnemite",
+          "name": "Magnemite",
+          "dex": 81,
+          "method": "Catch on Route 10 (grass by water)"
+        },
+        {
+          "id": "magneton",
+          "name": "Magneton",
+          "dex": 82,
+          "method": "Evolve from Magnemite at level 30"
+        },
+        {
+          "id": "onix",
+          "name": "Onix",
+          "dex": 95,
+          "method": "Catch in Rock Tunnel"
+        },
+        {
+          "id": "eevee",
+          "name": "Eevee",
+          "dex": 133,
+          "method": "Celadon City (back entrance)"
+        },
+        {
+          "id": "vulpix",
+          "name": "Vulpix",
+          "dex": 37,
+          "method": "Celadon Game Corner (purchase)"
+        },
+        {
+          "id": "porygon",
+          "name": "Porygon",
+          "dex": 137,
+          "method": "Celadon Game Corner (purchase)"
+        },
+        {
+          "id": "flareon",
+          "name": "Flareon",
+          "dex": 136,
+          "method": "Use a Fire Stone on Eevee",
+          "requires": [
+            {
+              "key": "eeveelution",
+              "value": "flareon"
+            }
+          ]
+        },
+        {
+          "id": "jolteon",
+          "name": "Jolteon",
+          "dex": 135,
+          "method": "Use a Thunder Stone on Eevee",
+          "requires": [
+            {
+              "key": "eeveelution",
+              "value": "jolteon"
+            }
+          ]
+        },
+        {
+          "id": "vaporeon",
+          "name": "Vaporeon",
+          "dex": 134,
+          "method": "Use a Water Stone on Eevee",
+          "requires": [
+            {
+              "key": "eeveelution",
+              "value": "vaporeon"
+            }
+          ]
+        },
+        {
+          "id": "ninetales",
+          "name": "Ninetales",
+          "dex": 38,
+          "method": "Use a Fire Stone on Vulpix"
+        },
+        {
+          "id": "vileplume",
+          "name": "Vileplume",
+          "dex": 45,
+          "method": "Use a Leaf Stone on Gloom"
+        },
+        {
+          "id": "victreebel",
+          "name": "Victreebel",
+          "dex": 71,
+          "method": "Use a Leaf Stone on Weepinbell"
+        },
+        {
+          "id": "nidoqueen",
+          "name": "Nidoqueen",
+          "dex": 31,
+          "method": "Use a Moon Stone on Nidorina (Rocket Hideout Moon Stone)"
+        },
+        {
+          "id": "nidoking",
+          "name": "Nidoking",
+          "dex": 34,
+          "method": "Use a Moon Stone on Nidorino (Rocket Hideout Moon Stone)"
+        },
+        {
+          "id": "clefable",
+          "name": "Clefable",
+          "dex": 36,
+          "method": "Use a Moon Stone on Clefairy (Rocket Hideout Moon Stone)"
+        },
+        {
+          "id": "wigglytuff",
+          "name": "Wigglytuff",
+          "dex": 40,
+          "method": "Use a Moon Stone on Jigglypuff (Rocket Hideout Moon Stone)"
+        },
+        {
+          "id": "doduo",
+          "name": "Doduo",
+          "dex": 84,
+          "method": "Catch on Route 16"
+        },
+        {
+          "id": "dodrio",
+          "name": "Dodrio",
+          "dex": 85,
+          "method": "Evolve from Doduo at level 31"
+        },
+        {
+          "id": "gastly",
+          "name": "Gastly",
+          "dex": 92,
+          "method": "Catch in Pokémon Tower"
+        },
+        {
+          "id": "haunter",
+          "name": "Haunter",
+          "dex": 93,
+          "method": "Evolve from Gastly at level 25"
+        },
+        {
+          "id": "cubone",
+          "name": "Cubone",
+          "dex": 104,
+          "method": "Catch in Pokémon Tower"
+        },
+        {
+          "id": "marowak",
+          "name": "Marowak",
+          "dex": 105,
+          "method": "Evolve from Cubone at level 28"
+        },
+        {
+          "id": "machamp",
+          "name": "Machamp",
+          "dex": 68,
+          "method": "Trade: receive Machoke (auto-evolves to Machamp)"
+        },
+        {
+          "id": "snorlax",
+          "name": "Snorlax",
+          "dex": 143,
+          "method": "Snorlax encounter (Poké Flute)"
+        },
+        {
+          "id": "ponyta",
+          "name": "Ponyta",
+          "dex": 77,
+          "method": "Catch on Route 17 (Cycling Road)"
+        },
+        {
+          "id": "rapidash",
+          "name": "Rapidash",
+          "dex": 78,
+          "method": "Evolve from Ponyta at level 40"
+        },
+        {
+          "id": "shellder",
+          "name": "Shellder",
+          "dex": 90,
+          "method": "Super Rod — Route 17"
+        },
+        {
+          "id": "cloyster",
+          "name": "Cloyster",
+          "dex": 91,
+          "method": "Use a Water Stone on Shellder"
+        },
+        {
+          "id": "poliwag",
+          "name": "Poliwag",
+          "dex": 60,
+          "method": "Super Rod — Route 22"
+        },
+        {
+          "id": "poliwhirl",
+          "name": "Poliwhirl",
+          "dex": 61,
+          "method": "Evolve from Poliwag at level 25"
+        },
+        {
+          "id": "poliwrath",
+          "name": "Poliwrath",
+          "dex": 62,
+          "method": "Use a Water Stone on Poliwhirl"
+        },
+        {
+          "id": "goldeen",
+          "name": "Goldeen",
+          "dex": 118,
+          "method": "Super Rod — Route 24"
+        },
+        {
+          "id": "seaking",
+          "name": "Seaking",
+          "dex": 119,
+          "method": "Evolve from Goldeen at level 33"
+        },
+        {
+          "id": "krabby",
+          "name": "Krabby",
+          "dex": 98,
+          "method": "Super Rod — Route 10"
+        },
+        {
+          "id": "kingler",
+          "name": "Kingler",
+          "dex": 99,
+          "method": "Evolve from Krabby at level 28"
+        },
+        {
+          "id": "horsea",
+          "name": "Horsea",
+          "dex": 116,
+          "method": "Super Rod — Route 12"
+        },
+        {
+          "id": "seadra",
+          "name": "Seadra",
+          "dex": 117,
+          "method": "Evolve from Horsea at level 32"
+        },
+        {
+          "id": "staryu",
+          "name": "Staryu",
+          "dex": 120,
+          "method": "Super Rod — Route 19"
+        },
+        {
+          "id": "starmie",
+          "name": "Starmie",
+          "dex": 121,
+          "method": "Use a Water Stone on Staryu"
+        },
+        {
+          "id": "tentacool",
+          "name": "Tentacool",
+          "dex": 72,
+          "method": "Super Rod — Route 19"
+        },
+        {
+          "id": "tentacruel",
+          "name": "Tentacruel",
+          "dex": 73,
+          "method": "Evolve from Tentacool at level 30"
+        },
+        {
+          "id": "farfetch-d",
+          "name": "Farfetch'd",
+          "dex": 83,
+          "method": "Catch on Route 13"
+        },
+        {
+          "id": "dratini",
+          "name": "Dratini",
+          "dex": 147,
+          "method": "Safari Zone (fish with Super Rod)"
+        },
+        {
+          "id": "dragonair",
+          "name": "Dragonair",
+          "dex": 148,
+          "method": "Evolve from Dratini at level 30"
+        },
+        {
+          "id": "dragonite",
+          "name": "Dragonite",
+          "dex": 149,
+          "method": "Evolve from Dragonair at level 55"
+        },
+        {
+          "id": "exeggcute",
+          "name": "Exeggcute",
+          "dex": 102,
+          "method": "Safari Zone"
+        },
+        {
+          "id": "exeggutor",
+          "name": "Exeggutor",
+          "dex": 103,
+          "method": "Use a Leaf Stone on Exeggcute"
+        },
+        {
+          "id": "rhyhorn",
+          "name": "Rhyhorn",
+          "dex": 111,
+          "method": "Safari Zone"
+        },
+        {
+          "id": "rhydon",
+          "name": "Rhydon",
+          "dex": 112,
+          "method": "Evolve from Rhyhorn at level 42"
+        },
+        {
+          "id": "tangela",
+          "name": "Tangela",
+          "dex": 114,
+          "method": "Safari Zone"
+        },
+        {
+          "id": "chansey",
+          "name": "Chansey",
+          "dex": 113,
+          "method": "Safari Zone"
+        },
+        {
+          "id": "scyther",
+          "name": "Scyther",
+          "dex": 123,
+          "method": "Safari Zone"
+        },
+        {
+          "id": "pinsir",
+          "name": "Pinsir",
+          "dex": 127,
+          "method": "Safari Zone"
+        },
+        {
+          "id": "tauros",
+          "name": "Tauros",
+          "dex": 128,
+          "method": "Safari Zone"
+        },
+        {
+          "id": "kangaskhan",
+          "name": "Kangaskhan",
+          "dex": 115,
+          "method": "Safari Zone"
+        },
+        {
+          "id": "hitmonlee",
+          "name": "Hitmonlee",
+          "dex": 106,
+          "method": "Fighting Dojo",
+          "requires": [
+            {
+              "key": "hitmon",
+              "value": "hitmonlee"
+            }
+          ]
+        },
+        {
+          "id": "hitmonchan",
+          "name": "Hitmonchan",
+          "dex": 107,
+          "method": "Fighting Dojo",
+          "requires": [
+            {
+              "key": "hitmon",
+              "value": "hitmonchan"
+            }
+          ]
+        },
+        {
+          "id": "lapras",
+          "name": "Lapras",
+          "dex": 131,
+          "method": "Silph Co. (gift from employee)"
+        }
+      ]
+    },
+    {
+      "id": "surge",
+      "label": "Pre Badge #4 - Lt Surge",
+      "summaryShort": "You can pick between Lt. Surge, Sabrina, Koga and Erika at this point. Sabrina’s badge unlocks nothing, Erika’s Strength won’t actually be used anywhere without Surf, so it’s between Lt Surge (3 pokemon) or Koga (a lot more) so go get that Soul Badge! There’s a few places to go with Surf now unlocked.",
+      "summaryHtml": "<h5>Route 6/Route 12</h5>\n        <p>\n          Revisit these routes and Surf around to encounter a couple of pokemon that can’t be fished like they could in Red and Blue. Psyduck is on Route 6 while Slowpoke is on Route 12\n        </p>\n        <pre>Psyduck → Lv. 33 → Golduck\nSlowpoke → Lv. 37 → Slowbro</pre>\n\n        <h5>Power Plant</h5>\n        <p>\n          Surf to the Power Plant where you can catch a few electric types and a Red version exclusive:\n        </p>\n        <pre>Voltorb → Lv. 30 → Electrode\nGrimer → Lv. 38 → Muk\nZapdos</pre>\n        <p>\n          Yes, you are really catching a legendary pokemon with only three badges :)\n        </p>\n\n        <h5>Cinnabar Island</h5>\n        <p>\n          You can finally Surf to Cinnabar Island. Visit the lab to revive the fossil from Mt Moon and the Old Amber from Pewter City.\n        </p>\n        <pre>Aerodactyl\nKabuto/Omanyte → Lv. 40 → Kabutops/Omastar</pre>\n        <p>\n          In Pokemon Mansion, there are a few new pokemon running around. Growlithe is found in the entrance floor while Ditto is found in the basement. Also grab the key to the gym while you’re here.\n        </p>\n        <pre>Growlithe → Fire Stone → Arcanine\nDitto</pre>\n\n        <h5>Seafoam Island</h5>\n        <p>\n          Surf east from Cinnabar to Seafoam Island where you’ll only be able to catch Seel for now.\n        </p>\n        <pre>Seel → Lv. 34 → Dewgong</pre>\n\n        <p>\n          There are no more pokemon to catch without more badges so this was a short section!\n        </p>\n\n        <h5>Levelling Tips</h5>\n        <p>\n          Again, try to preserve as many trainers as you can so that when your new pokemon are a bit more capable, they can mow down the competition. Hanging around nearby Fuschia City still works, but you also have the above new areas if you want to try something different.\n        </p>\n\n        <p>\n          <strong>End of part 4:</strong><br/>\n          Caught 122, Remaining 29\n        </p>\n              <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "choices": [],
+      "entries": [
+        {
+          "id": "psyduck",
+          "name": "Psyduck",
+          "dex": 54,
+          "method": "Surf encounter on Route 6"
+        },
+        {
+          "id": "golduck",
+          "name": "Golduck",
+          "dex": 55,
+          "method": "Evolve from Psyduck at level 33"
+        },
+        {
+          "id": "slowpoke",
+          "name": "Slowpoke",
+          "dex": 79,
+          "method": "Surf encounter on Route 12"
+        },
+        {
+          "id": "slowbro",
+          "name": "Slowbro",
+          "dex": 80,
+          "method": "Evolve from Slowpoke at level 37"
+        },
+        {
+          "id": "voltorb",
+          "name": "Voltorb",
+          "dex": 100,
+          "method": "Power Plant"
+        },
+        {
+          "id": "electrode",
+          "name": "Electrode",
+          "dex": 101,
+          "method": "Evolve from Voltorb at level 30"
+        },
+        {
+          "id": "grimer",
+          "name": "Grimer",
+          "dex": 88,
+          "method": "Power Plant"
+        },
+        {
+          "id": "muk",
+          "name": "Muk",
+          "dex": 89,
+          "method": "Evolve from Grimer at level 38"
+        },
+        {
+          "id": "zapdos",
+          "name": "Zapdos",
+          "dex": 145,
+          "method": "Power Plant"
+        },
+        {
+          "id": "aerodactyl",
+          "name": "Aerodactyl",
+          "dex": 142,
+          "method": "Revive Old Amber (Cinnabar Lab)"
+        },
+        {
+          "id": "kabuto",
+          "name": "Kabuto",
+          "dex": 140,
+          "method": "Revive Dome Fossil (Cinnabar Lab)",
+          "requires": [
+            {
+              "key": "fossil",
+              "value": "kabuto"
+            }
+          ]
+        },
+        {
+          "id": "kabutops",
+          "name": "Kabutops",
+          "dex": 141,
+          "method": "Evolve from Kabuto at level 40",
+          "requires": [
+            {
+              "key": "fossil",
+              "value": "kabuto"
+            }
+          ]
+        },
+        {
+          "id": "omanyte",
+          "name": "Omanyte",
+          "dex": 138,
+          "method": "Revive Helix Fossil (Cinnabar Lab)",
+          "requires": [
+            {
+              "key": "fossil",
+              "value": "omanyte"
+            }
+          ]
+        },
+        {
+          "id": "omastar",
+          "name": "Omastar",
+          "dex": 139,
+          "method": "Evolve from Omanyte at level 40",
+          "requires": [
+            {
+              "key": "fossil",
+              "value": "omanyte"
+            }
+          ]
+        },
+        {
+          "id": "growlithe",
+          "name": "Growlithe",
+          "dex": 58,
+          "method": "Pokémon Mansion (entrance floor)"
+        },
+        {
+          "id": "arcanine",
+          "name": "Arcanine",
+          "dex": 59,
+          "method": "Use a Fire Stone on Growlithe"
+        },
+        {
+          "id": "ditto",
+          "name": "Ditto",
+          "dex": 132,
+          "method": "Pokémon Mansion (basement)"
+        },
+        {
+          "id": "seel",
+          "name": "Seel",
+          "dex": 86,
+          "method": "Seafoam Island"
+        },
+        {
+          "id": "dewgong",
+          "name": "Dewgong",
+          "dex": 87,
+          "method": "Evolve from Seel at level 34"
+        }
+      ]
+    },
+    {
+      "id": "erika",
+      "label": "Pre Badge #5 - Erika",
+      "summaryShort": "Normally we would defeat Erika in Red and Blue next for Strength but that only unlocks one new pokemon whereas Lt. Surge gives three, so we’ll beat Surge now.",
+      "summaryHtml": "<h5>Vermilion City</h5>\n        <p>\n          Once that badge is yours, speak to Officer Jenny who is out in the open and she’ll give you a Squirtle, much later than intended compared to a normal play through!\n        </p>\n        <pre>Squirtle → Lv. 16 → Wartortle → Lv. 36 → Blastoise</pre>\n\n        <h5>Levelling Tips</h5>\n        <p>\n          Once it’s in its late teens, train in Diglett Cave for a while and then in mid 20s venture onwards to any of your favourite training spots!\n        </p>\n\n        <p>\n          <strong>End of part 5:</strong><br/>\n          Caught 125, Remaining 26\n        </p>\n              <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "choices": [],
+      "entries": [
+        {
+          "id": "squirtle",
+          "name": "Squirtle",
+          "dex": 7,
+          "method": "Gift from Officer Jenny in Vermilion City after defeating Lt. Surge"
+        },
+        {
+          "id": "wartortle",
+          "name": "Wartortle",
+          "dex": 8,
+          "method": "Evolve from Squirtle at level 16"
+        },
+        {
+          "id": "blastoise",
+          "name": "Blastoise",
+          "dex": 9,
+          "method": "Evolve from Wartortle at level 36"
+        }
+      ]
+    },
+    {
+      "id": "6-8",
+      "label": "Pre Badges #6 to #8 - Giovanni",
+      "summaryShort": "There’s hardly any pokemon left in the challenge so it’s slim pickings at the moment. Defeating Erika gives you Strength which you can now use to catch ONE pokemon! No other badges by themselves give any benefits of new pokemon.",
+      "summaryHtml": "<h5>Seafoam Island Revisited</h5>\n        <p>\n          Solve the puzzles with the boulders to slow down the current and you can reach the area with Articuno and catch your second legendary.\n        </p>\n        <pre>Articuno</pre>\n\n        <p>\n          <strong>End of part 6:</strong><br/>\n          Caught 126, Remaining 25\n        </p>\n              <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "choices": [],
+      "entries": [
+        {
+          "id": "articuno",
+          "name": "Articuno",
+          "dex": 144,
+          "method": "Seafoam Island (use Strength to reach)"
+        }
+      ]
+    },
+    {
+      "id": "e4",
+      "label": "Pre Elite Four",
+      "summaryShort": "Since there’s only one pokemon left to catch before the Elite Four, your Pokemon League challenge can continue in full swing. Defeat Sabrina, Blaine and Giovanni for the last badges and then head up to Victory Road.",
+      "summaryHtml": "<h5>Victory Road</h5>\n        <p>\n          On the way through the cave you’ll find your third legendary bird, Moltres.\n        </p>\n        <pre>Moltres</pre>\n\n        <p>\n          <strong>End of part 7:</strong><br/>\n          Caught 127, Remaining 24\n        </p>\n              <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "summaryOpen": true,
+      "choices": [],
+      "entries": [
+        {
+          "id": "moltres",
+          "name": "Moltres",
+          "dex": 146,
+          "method": "Victory Road (cave encounter)"
+        }
+      ]
+    },
+    {
+      "id": "pg",
+      "label": "Post Game",
+      "summaryShort": "March up to the pokemon league and kick the Elite Four’s butts. You’re now the Champion! But there’s still one final challenge left…",
+      "summaryHtml": "<h5>Cerulean Cave</h5>\n        <p>\n          Leave Cerulean City from the north exit, cross Nugget Bridge and then Surf along the river to reach Cerulean Cave. Once you reach the lower floors you may be able to find a wild Lickitung. Deep inside the cave you’ll find the 150th pokemon, Mewtwo. Throw that Master Ball! Or if you want to do it legitimately, Mewtwo is Lv. 70 so bring your best ‘mons.\n        </p>\n        <pre>Lickitung\nMewtwo</pre>\n\n        <p>\n          And with that, the challenge is complete!\n        </p>\n\n        <p>\n          <strong>End of the challenge:</strong><br/>\n          Caught 129, Remaining 22 (5 more pokemon than Red and Blue!)\n        </p>\n              <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/1_ffM1uUOhfVgxkQfhe41qPq1KHZ_ISAzxnJtHt23u9M/edit?usp=sharing\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "choices": [],
+      "entries": [
+        {
+          "id": "lickitung",
+          "name": "Lickitung",
+          "dex": 108,
+          "method": "Cerulean Cave (wild encounter in lower floors)"
+        },
+        {
+          "id": "mewtwo",
+          "name": "Mewtwo",
+          "dex": 150,
+          "method": "Cerulean Cave (deepest floors)"
+        }
+      ]
+    }
+  ]
+}

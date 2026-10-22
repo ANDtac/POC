@@ -147,6 +147,7 @@ h2 { font-size: 1.25rem; margin: 0 0 0.75rem; }
 }
 
 .narrow { max-width: 32rem; margin: 0 auto; }
+.narrow--wide { max-width: 48rem; }
 
 .page-head {
   display: flex;

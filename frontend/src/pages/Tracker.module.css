@@ -204,7 +204,7 @@
   list-style: none;
 }
 
-.locationHead {
+.placeHead {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -216,6 +216,57 @@
 
 .section > .grid {
   padding: 0 1rem 1rem;
+}
+
+.about,
+.notes {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.notes {
+  margin-bottom: 0.75rem;
+  background: var(--bg);
+}
+
+.about > summary,
+.notes > summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.prose {
+  padding: 0 1rem 1rem;
+  max-width: 48rem;
+  font-size: 0.9375rem;
+}
+
+.prose h5 {
+  margin: 1.25rem 0 0.25rem;
+  font-size: 1rem;
+}
+
+.prose p {
+  margin: 0.5rem 0;
+}
+
+.prose pre {
+  margin: 0.5rem 0;
+  padding: 0.5rem 0.75rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  background: var(--surface-2);
+  border-radius: 6px;
+  white-space: pre;
+}
+
+.prose ul {
+  padding-left: 1.25rem;
 }
 
 .share {

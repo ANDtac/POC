@@ -3,12 +3,21 @@ import { useNavigate } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../api.js";
 
+const groupByGeneration = (games) => {
+  const groups = new Map();
+  for (const game of games) {
+    const key = `Gen ${game.generation ?? "?"}${game.region ? ` · ${game.region}` : ""}`;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(game);
+  }
+  return [...groups.entries()];
+};
+
 export default function NewRun() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const { data: games, isPending, error } = useQuery({ queryKey: ["games"], queryFn: () => api("/api/games") });
   const [gameId, setGameId] = useState(null);
-  const [version, setVersion] = useState(null);
   const [title, setTitle] = useState("");
 
   const create = useMutation({
@@ -28,7 +37,7 @@ export default function NewRun() {
         <h1>New run</h1>
         <div className="empty">
           <p>No challenge guides are installed yet.</p>
-          <p className="muted small">Guides are added as JSON files in <code>backend/data/guides/</code>.</p>
+          <p className="muted small">Run <code>npm run import-guides</code> in <code>backend/</code> to add them.</p>
         </div>
       </div>
     );
@@ -37,67 +46,41 @@ export default function NewRun() {
   const game = games.find((g) => g.id === gameId);
 
   return (
-    <div className="narrow">
+    <div className="narrow narrow--wide">
       <h1>New run</h1>
       <form
         className="form"
         onSubmit={(e) => {
           e.preventDefault();
-          create.mutate({ game_id: gameId, version, title });
+          create.mutate({ game_id: gameId, title });
         }}
       >
-        <fieldset>
-          <legend>Game</legend>
-          <div className="choice-grid">
-            {games.map((g) => (
-              <label key={g.id} className="choice">
-                <input
-                  type="radio"
-                  name="game"
-                  value={g.id}
-                  checked={gameId === g.id}
-                  onChange={() => { setGameId(g.id); setVersion(g.versions.length === 1 ? g.versions[0].id : null); }}
-                />
-                <span>
-                  <strong>{g.name}</strong>
-                  <span className="muted small">Gen {g.generation} · {g.entries} Pokémon · {g.sections} milestones</span>
-                  {!g.verified && <span className="tag tag--warn">Draft data</span>}
-                </span>
-              </label>
-            ))}
-          </div>
-        </fieldset>
-
-        {game && (
-          <fieldset>
-            <legend>Version</legend>
+        {groupByGeneration(games).map(([label, list]) => (
+          <fieldset key={label}>
+            <legend>{label}</legend>
             <div className="choice-grid choice-grid--row">
-              {game.versions.map((v) => (
-                <label key={v.id} className="choice">
-                  <input type="radio" name="version" value={v.id} checked={version === v.id} onChange={() => setVersion(v.id)} />
-                  <span><strong>{v.name}</strong></span>
+              {list.map((g) => (
+                <label key={g.id} className="choice">
+                  <input type="radio" name="game" value={g.id} checked={gameId === g.id} onChange={() => setGameId(g.id)} />
+                  <span>
+                    <strong>{g.name.replace(/^Pokémon\s+/, "")}</strong>
+                    <span className="muted small">{g.entries} Pokémon · {g.sections} sections</span>
+                  </span>
                 </label>
               ))}
             </div>
           </fieldset>
-        )}
+        ))}
 
         {game && (
           <label>
             Run name <span className="muted">(optional)</span>
-            <input value={title} onChange={(e) => setTitle(e.target.value)} maxLength={60} placeholder={`${game.name}: ${game.versions.find((v) => v.id === version)?.name ?? "…"}`} />
+            <input value={title} onChange={(e) => setTitle(e.target.value)} maxLength={60} placeholder={game.name} />
           </label>
         )}
 
-        {game && !game.verified && (
-          <p className="notice">
-            This guide is draft data and has not been checked against the published challenge guide yet.
-            Locations and milestone placement may be off.
-          </p>
-        )}
-
         {create.error && <p className="error" role="alert">{create.error.message}</p>}
-        <button className="button" disabled={!gameId || !version || create.isPending}>
+        <button className="button" disabled={!gameId || create.isPending}>
           {create.isPending ? "Starting…" : "Start run"}
         </button>
       </form>

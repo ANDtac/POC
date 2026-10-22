@@ -1,0 +1,1350 @@
+{
+  "id": "sapphire",
+  "name": "Pokémon Sapphire",
+  "region": "Hoenn",
+  "order": 7,
+  "generation": 3,
+  "versions": [
+    {
+      "id": "sapphire",
+      "name": "Sapphire"
+    }
+  ],
+  "spriteSet": "generation-iii/ruby-sapphire",
+  "about": "<section class=\"game-intro-content\">\n      <ul>\n        <li>Playing this after the Professor Oak Challenge on FireRed I found this one not only longer, but harder. The main reason being that there is no Vs Seeker in this game, only the Trainer Eye functionality of the PokeNav which has awful mechanics and involves entering and re-entering a route multiple times and hoping that the trainer wants a rematch. You could also only get it after 5 badges. Overall I found the rematches unreliable so I was grinding against wild pokemon for almost the entire run. You want to make sure that any new trainer battles are prioritized for when you actually have pokemon with you that you want to level up. Exploring every route to get all the trainers (e.g. along the sea routes) is recommended.</li>\n        <li>This will be a very grindy challenge. If you don’t think you’ve got the patience, then now would be the time to back out. The first part of the game alone (before Roxanne) will take you about 30 hours! It gets less grindy as the game proceeds, but it will be a long road. </li>\n        <li>Learning new moves shouldn’t be taken for granted, particularly with pokemon that evolve at higher levels. During a normal game you might be quick to replace a weak move with a stronger one but getting rid of non-attacking moves is a better strategy here. Again, on the first part of the challenge before Roxanne, you are battling low level pokemon and will run out of PP very quickly while that exp bar goes up very slowly. You need to maximize the amount of pokemon you can defeat, so having multiple attacking moves, regardless of how weak they are, will be beneficial. You have no need for moves like Growl or Sand Attack.</li>\n        <li>This challenge is a fun alternative to a regular play through and you may really appreciate having to train pokemon up yourself that you never trained before. On the other hand you may end up despising certain pokemon due to their inability to attack when you first get them or their generally poor stats/levelling up moves. </li>\n        <li>If you’re playing this on a real cartridge rather than an emulator, the dry battery may be a serious obstacle. The battery that controls the clock is dead, so you can either open up your cartridge and replace it (not recommended, it’s not as simple as you’d think) or ensure that you set the clock AT THE START OF THE GAME for a time that results in a low tide in Shoal Cave (3am-8:59am or 3pm-8.59pm). Failure to do so will end up in a nasty surprise when you realise you can’t catch Snorunt!</li>\n        <li>It’s not really a rule, but my preferred method is that you train them yourself except when they can’t battle themselves (i.e. Magikarp before it learns Tackle). This is all down to your own limitations that you set. I don’t like using Rare Candy anymore as it defeats the purpose of the challenge and I don’t like using any exp sharing items. But remember that this is YOUR challenge so feel free to add or remove restrictions as you see fit.</li>\n        <li>Please note that this is not a full guide to the game, I am only listing the pokemon you can catch at the earliest opportunities and any required items. I do not go into full detail on optimal exp gains or where to find the highest level for an individual pokemon etc. This playthrough and guide were done as a casual play rather than a speed run. Please consult other guides for a full walkthrough or more detailed information. </li>\n      </ul>\n      \n      <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/11szWXYGe7h9SgX8LVKPs7EWHJ2SZeeaAR8__8tRuCCk/edit?tab=t.0#heading=h.gjdgxs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>\n    </section>",
+  "source": {
+    "guide": {
+      "name": "Professor Oak Challenge guides by u/mewlax84",
+      "url": "https://docs.google.com/document/d/11szWXYGe7h9SgX8LVKPs7EWHJ2SZeeaAR8__8tRuCCk/edit?tab=t.0#heading=h.gjdgxs"
+    },
+    "data": {
+      "name": "Oak Challenge Tracker by EzraSkwarka",
+      "url": "https://github.com/EzraSkwarka/OakChallenge",
+      "license": "MIT",
+      "commit": "025e51a2fe0c732555dc7082b4ce35025020df6a"
+    }
+  },
+  "sections": [
+    {
+      "id": "roxanne",
+      "label": "Pre Badge 1 - Roxanne",
+      "summaryShort": "This first part will cover everything you can do BEFORE you get that first badge from Roxanne. This is probably the most daunting part of the challenge…",
+      "summaryHtml": "<h5>Littleroot Town</h5>\n        <p>\n          Starting off in your new home, you’ll soon be given the chance to grab your first starter pokemon. There’s no real advantage over any of them in this game, your primary location for grinding will be against Whismur in Rusturf Tunnel so there’s no type advantages to worry about. Even if you pick Torchic, your Blaziken will know Fighting type moves for the gym battle against Roxanne. For this guide, I picked Mudkip. Head north to Route 103 to meet your rival and then come back to Birch’s lab to officially start your adventure. You can now evolve:\n        </p>\n        <pre>Mudkip → Lv. 16 → Marshtomp → Lv. 36 → Swampert\nOR\nTreecko → Lv. 16 → Grovyle → Lv. 36 → Sceptile\nOR\nTorchic → Lv. 16 → Combusken → Lv. 36 → Blaziken</pre>\n        <p>\n          You’re not honestly expected to do this right now, you have all the time in the world…well, right up until you need to beat Roxanne. This will likely be one of the last pokemon you’ll evolve in this first section.\n        </p>\n\n        <h5>Route 101</h5>\n        <p>\n          Back to the first route of the game where are three pokemon to catch and evolve here:\n        </p>\n        <pre>Zigzagoon → Lv. 20 → Linoone\nPoochyena → Lv. 18 → Mightyena\nWurmple → Lv. 7 → Silcoon → Lv. 10 → Beautifly\nWurmple → Lv. 7 → Cascoon → Lv. 10 → Dustox</pre>\n        <p>\n          Evolving Wurmple into both evolutions could be frustrating for you as there’s no way to know which it will evolve into. I got Silcoon on my first evolution, another Silcoon on the second and finally Cascoon on the third. Alternatively you can catch a Silcoon/Cascoon in Petalburg woods although it won’t have any attacking moves so you may need to bait and switch for it to level up.\n        </p>\n\n        <h5>Route 103</h5>\n        <p>\n          Pass through Oldale Town back to where you battled your rival where you can catch:\n        </p>\n        <pre>Wingull → Lv. 25 → Pelipper</pre>\n\n        <h5>Route 102</h5>\n        <p>\n          Back to Oldale Town, head west this time to Route 102. Be patient for that rare 1% Surskit!\n        </p>\n        <pre>Ralts → Lv. 20 → Kirlia → Lv. 30 → Gardevoir\nSurskit → Lv. 22 → Masquerain\nLotad → Lv. 14 → Lombre</pre>\n        <p>\n          You can’t get a Water or Leaf Stone at this point in the game so Lombre/Nuzleaf will stay unevolved for quite a while.\n        </p>\n\n        <h5>Petalburg City and Route 104</h5>\n        <p>\n          Go to the gym and help Wally catch his Ralts. Afterwards, head west out of town to Route 104 and catch a Taillow.\n        </p>\n        <pre>Taillow → Lv. 22 → Swellow</pre>\n\n        <h5>Petalburg Woods</h5>\n        <p>\n          This can be a good location to train up a bit although Shroomish’s Effect Spore can be irritating so be cautious of direct contact moves. A few new pokemon to catch:\n        </p>\n        <pre>Shroomish → Lv. 23 → Breloom\nSlakoth → Lv. 18 → Vigoroth → Lv. 36 → Slaking</pre>\n        <p>\n          Catch another Slakoth for a trade.\n        </p>\n\n        <h5>Rustboro City</h5>\n        <p>\n          Within the city you can complete the trade for your spare Slakoth for a Makuhita (in the building next to the gym), which you can’t normally obtain until after the first badge.\n        </p>\n        <pre>Makuhita → Lv. 24 → Hariyama</pre>\n\n        <h5>Route 116</h5>\n        <p>\n          We’re not ready for the gym yet, so head out of the north east exit to Route 116 and catch a few new additions:\n        </p>\n        <pre>Skitty\nWhismur → Lv. 20 → Loudred → Lv. 40 → Exploud\nNincada → Lv. 20 → Ninjask AND Shedinja (with a spare slot in your team)</pre>\n        <p>\n          You have a lot of pokemon to evolve but make sure that you keep that spare slot in your team when you are ready to evolve Nincada otherwise Shedinja will simply disappear! You have now caught everything you can, it’s just a matter of evolving them which is easier said than done…\n        </p>\n\n        <h5>Levelling up tips</h5>\n        <p>\n          The best spot to train for simplicity is Rusturf Tunnel against Whismur. This will be the longest part of your challenge…The bad part is that you have a lot of pokemon to evolve and some evolve as high as level 40…You can either continuously battle with the same pokemon until it runs out of PP or maybe level each pokemon in your team once and switch to make it less tedious. As mentioned earlier, definitely prioritize attacking moves over non attack moves. For some extra experience, go defeat the trainers in the gym, just make sure you don’t talk to Roxanne until you’ve maxed out the dex for this part.\n        </p>\n        <p>\n          The pokemon you may have trouble with are:\n          Makuhita – Received in a trade so it will start to disobey you more frequently as it levels up\n          Kirlia – Just doesn’t have the PP to level up efficiently and is very slow at levelling up. Trace will copy Soundproof which makes you immune to one of Whismur’s two attacks\n          Nincada – Also slow to level up and has weak moves\n          Exploud – Why level 40????\n          Slakoth – Truant is a real pain, but once you’ve got Vigoroth it’s smooth sailing.\n          For late evolvers, it may be worthwhile catching a few Zigzagoon so you can Pickup Rare Candies to cut those last few levels off.\n        </p>\n\n        <p>\n          <strong>End of part 1:</strong><br/>\n          Caught 37, Remaining 165\n        </p>\n\n        \n      <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/11szWXYGe7h9SgX8LVKPs7EWHJ2SZeeaAR8__8tRuCCk/edit?tab=t.0#heading=h.gjdgxs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "choices": [
+        {
+          "key": "starter",
+          "title": null,
+          "cap": 1,
+          "options": [
+            {
+              "value": "mudkip",
+              "name": "Mudkip",
+              "dex": 258,
+              "method": "Choose Mudkip as your starter"
+            },
+            {
+              "value": "treecko",
+              "name": "Treecko",
+              "dex": 252,
+              "method": "Choose Treecko as your starter"
+            },
+            {
+              "value": "torchic",
+              "name": "Torchic",
+              "dex": 255,
+              "method": "Choose Torchic as your starter"
+            }
+          ]
+        }
+      ],
+      "entries": [
+        {
+          "id": "mudkip",
+          "name": "Mudkip",
+          "dex": 258,
+          "method": "Choose as Starter",
+          "requires": [
+            {
+              "key": "starter",
+              "value": "mudkip"
+            }
+          ]
+        },
+        {
+          "id": "marshtomp",
+          "name": "Marshtomp",
+          "dex": 259,
+          "method": "Evolve from Mudkip at level 16",
+          "requires": [
+            {
+              "key": "starter",
+              "value": "mudkip"
+            }
+          ]
+        },
+        {
+          "id": "swampert",
+          "name": "Swampert",
+          "dex": 260,
+          "method": "Evolve from Marshtomp at level 36",
+          "requires": [
+            {
+              "key": "starter",
+              "value": "mudkip"
+            }
+          ]
+        },
+        {
+          "id": "treecko",
+          "name": "Treecko",
+          "dex": 252,
+          "method": "Choose as Starter",
+          "requires": [
+            {
+              "key": "starter",
+              "value": "treecko"
+            }
+          ]
+        },
+        {
+          "id": "grovyle",
+          "name": "Grovyle",
+          "dex": 253,
+          "method": "Evolve from Treecko at level 16",
+          "requires": [
+            {
+              "key": "starter",
+              "value": "treecko"
+            }
+          ]
+        },
+        {
+          "id": "sceptile",
+          "name": "Sceptile",
+          "dex": 254,
+          "method": "Evolve from Grovyle at level 36",
+          "requires": [
+            {
+              "key": "starter",
+              "value": "treecko"
+            }
+          ]
+        },
+        {
+          "id": "torchic",
+          "name": "Torchic",
+          "dex": 255,
+          "method": "Choose as Starter",
+          "requires": [
+            {
+              "key": "starter",
+              "value": "torchic"
+            }
+          ]
+        },
+        {
+          "id": "combusken",
+          "name": "Combusken",
+          "dex": 256,
+          "method": "Evolve from Torchic at level 16",
+          "requires": [
+            {
+              "key": "starter",
+              "value": "torchic"
+            }
+          ]
+        },
+        {
+          "id": "blaziken",
+          "name": "Blaziken",
+          "dex": 257,
+          "method": "Evolve from Combusken at level 36",
+          "requires": [
+            {
+              "key": "starter",
+              "value": "torchic"
+            }
+          ]
+        },
+        {
+          "id": "zigzagoon",
+          "name": "Zigzagoon",
+          "dex": 263,
+          "method": "Catch on Route 101"
+        },
+        {
+          "id": "linoone",
+          "name": "Linoone",
+          "dex": 264,
+          "method": "Evolve from Zigzagoon at level 20"
+        },
+        {
+          "id": "poochyena",
+          "name": "Poochyena",
+          "dex": 261,
+          "method": "Catch on Route 101"
+        },
+        {
+          "id": "mightyena",
+          "name": "Mightyena",
+          "dex": 262,
+          "method": "Evolve from Poochyena at level 18"
+        },
+        {
+          "id": "wurmple",
+          "name": "Wurmple",
+          "dex": 265,
+          "method": "Catch on Route 101"
+        },
+        {
+          "id": "silcoon",
+          "name": "Silcoon",
+          "dex": 266,
+          "method": "Evolve from Wurmple at level 7 (branch evolution)"
+        },
+        {
+          "id": "beautifly",
+          "name": "Beautifly",
+          "dex": 267,
+          "method": "Evolve from Silcoon at level 10"
+        },
+        {
+          "id": "cascoon",
+          "name": "Cascoon",
+          "dex": 268,
+          "method": "Evolve from Wurmple at level 7 (branch evolution)"
+        },
+        {
+          "id": "dustox",
+          "name": "Dustox",
+          "dex": 269,
+          "method": "Evolve from Cascoon at level 10"
+        },
+        {
+          "id": "wingull",
+          "name": "Wingull",
+          "dex": 278,
+          "method": "Catch on Route 103"
+        },
+        {
+          "id": "pelipper",
+          "name": "Pelipper",
+          "dex": 279,
+          "method": "Evolve from Wingull at level 25"
+        },
+        {
+          "id": "ralts",
+          "name": "Ralts",
+          "dex": 280,
+          "method": "Catch on Route 102"
+        },
+        {
+          "id": "kirlia",
+          "name": "Kirlia",
+          "dex": 281,
+          "method": "Evolve from Ralts at level 20"
+        },
+        {
+          "id": "gardevoir",
+          "name": "Gardevoir",
+          "dex": 282,
+          "method": "Evolve from Kirlia at level 30"
+        },
+        {
+          "id": "surskit",
+          "name": "Surskit",
+          "dex": 283,
+          "method": "Catch on Route 102 (rare 1%)"
+        },
+        {
+          "id": "masquerain",
+          "name": "Masquerain",
+          "dex": 284,
+          "method": "Evolve from Surskit at level 22"
+        },
+        {
+          "id": "seedot",
+          "name": "Seedot",
+          "dex": 273,
+          "method": "(Ruby) Catch on Route 102"
+        },
+        {
+          "id": "nuzleaf",
+          "name": "Nuzleaf",
+          "dex": 274,
+          "method": "Evolve from Seedot at level 14"
+        },
+        {
+          "id": "taillow",
+          "name": "Taillow",
+          "dex": 276,
+          "method": "Catch on Route 104"
+        },
+        {
+          "id": "swellow",
+          "name": "Swellow",
+          "dex": 277,
+          "method": "Evolve from Taillow at level 22"
+        },
+        {
+          "id": "shroomish",
+          "name": "Shroomish",
+          "dex": 285,
+          "method": "Catch in Petalburg Woods"
+        },
+        {
+          "id": "breloom",
+          "name": "Breloom",
+          "dex": 286,
+          "method": "Evolve from Shroomish at level 23"
+        },
+        {
+          "id": "slakoth",
+          "name": "Slakoth",
+          "dex": 287,
+          "method": "Catch in Petalburg Woods"
+        },
+        {
+          "id": "vigoroth",
+          "name": "Vigoroth",
+          "dex": 288,
+          "method": "Evolve from Slakoth at level 18"
+        },
+        {
+          "id": "slaking",
+          "name": "Slaking",
+          "dex": 289,
+          "method": "Evolve from Vigoroth at level 36"
+        },
+        {
+          "id": "makuhita",
+          "name": "Makuhita",
+          "dex": 296,
+          "method": "Trade Slakoth for Makuhita (Rustboro City)"
+        },
+        {
+          "id": "hariyama",
+          "name": "Hariyama",
+          "dex": 297,
+          "method": "Evolve from Makuhita at level 24"
+        },
+        {
+          "id": "skitty",
+          "name": "Skitty",
+          "dex": 300,
+          "method": "Catch on Route 116"
+        },
+        {
+          "id": "whismur",
+          "name": "Whismur",
+          "dex": 293,
+          "method": "Catch on Route 116"
+        },
+        {
+          "id": "loudred",
+          "name": "Loudred",
+          "dex": 294,
+          "method": "Evolve from Whismur at level 20"
+        },
+        {
+          "id": "exploud",
+          "name": "Exploud",
+          "dex": 295,
+          "method": "Evolve from Loudred at level 40"
+        },
+        {
+          "id": "nincada",
+          "name": "Nincada",
+          "dex": 290,
+          "method": "Catch on Route 116"
+        },
+        {
+          "id": "ninjask",
+          "name": "Ninjask",
+          "dex": 291,
+          "method": "Evolve from Nincada at level 20"
+        },
+        {
+          "id": "shedinja",
+          "name": "Shedinja",
+          "dex": 292,
+          "method": "Evolve from Nincada at level 20 with a spare party slot"
+        }
+      ]
+    },
+    {
+      "id": "wattson",
+      "label": "Pre Badge 2 - Wattson",
+      "summaryShort": "Once you’ve got that first shiny badge and helped Mr. Briney at Rusturf Tunnel, you can return to his shack on Route 104 and take his boat to Dewford Town. Speak to the fisherman here to get the Old Rod. Fish on the waters here to catch a Magikarp and Tentacool, then head back to Route 102 or Petalburg City to fish for Goldeen.",
+      "summaryHtml": "<p>\n          Magikarp → Lv. 20 → Gyarados<br/>\n          Tentacool → Lv. 30 → Tentacruel<br/>\n          Goldeen → Lv. 33 → Seaking\n        </p>\n\n        <h5>Granite Cave</h5>\n        <p>\n          Zubat, Geodude and Abra can be found in the first room of the cave. Head down the ladder to find Sableye and Aron. Deliver the letter to Steven Stone by passing through the cave.\n        </p>\n        <pre>Zubat → Lv. 22 → Golbat → Happiness → Crobat\nGeodude → Lv. 25 → Graveler\nAbra → Lv. 16 → Kadabra\nSableye\nAron → Lv. 32 → Lairon → Lv. 42 → Aggron</pre>\n        <p>\n          Graveler and Kadabra are the first of your trade evolution pokemon who obviously can’t be obtained in a solo play through. Once Zubat has evolved you may want to keep it in your party and not battle for a while to raise its happiness level and then try evolving it later on in this section. Brawly can actually be skipped until you need to defeat Norman so as long as you’ve delivered the letter to Steven, you can hop back in the boat and go to Slateport City.\n        </p>\n\n        <h5>Route 110</h5>\n        <p>\n          After leaving the city, go north to Route 110. The grass here contains a few new pokemon:\n        </p>\n        <pre>Plusle\nMinun\nElectrike → Lv. 26 → Manectric\nOddish → Lv. 21 → Gloom\nGulpin → Lv. 26 → Swalot</pre>\n        <p>\n          Catching a second Oddish and evolving it into Gloom is optional as you can catch Gloom in the wild near to where you will get the Sun Stone to evolve it into Bellossom.\n        </p>\n\n        <h5>Route 117</h5>\n        <p>\n          Head up to Mauville City and leave through the west exit to Route 117, home of the pokemon daycare. This is the last batch of pokemon before needing another badge.\n        </p>\n        <pre>Volbeat\nIllumise\nRoselia\nMarill → Lv. 18 → Azumarill</pre>\n        <p>\n          Either Volbeat or Illumise (depending on your version) is extremely rare so it might be best to train here and catch it when you see it. We don’t have the Sea Incense so Azurill can’t be bred yet. Try to catch a female Marill if possible for breeding as there’s no Ditto in this game.\n        </p>\n\n        <h5>Levelling Tips</h5>\n        <p>\n          Training on Route 117 is probably the best place to train until you’ve got Surf. Roselia and Volbeat/Illumise give excellent exp! Volbeat will annoy you with its Double Team/Confuse Ray/Moonlight combo but once you’re able to OHKO it, it becomes less of a problem. Be careful with contact moves on Roselia as this may poison you.\n        </p>\n\n        <p>\n          <strong>End of part 2:</strong><br/>\n          Caught 67, Remaining 135\n        </p>\n\n        \n      <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/11szWXYGe7h9SgX8LVKPs7EWHJ2SZeeaAR8__8tRuCCk/edit?tab=t.0#heading=h.gjdgxs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "choices": [],
+      "entries": [
+        {
+          "id": "magikarp",
+          "name": "Magikarp",
+          "dex": 129,
+          "method": "Old Rod — Dewford Town waters"
+        },
+        {
+          "id": "gyarados",
+          "name": "Gyarados",
+          "dex": 130,
+          "method": "Evolve from Magikarp at level 20"
+        },
+        {
+          "id": "tentacool",
+          "name": "Tentacool",
+          "dex": 72,
+          "method": "Old Rod — Dewford Town waters"
+        },
+        {
+          "id": "tentacruel",
+          "name": "Tentacruel",
+          "dex": 73,
+          "method": "Evolve from Tentacool at level 30"
+        },
+        {
+          "id": "goldeen",
+          "name": "Goldeen",
+          "dex": 118,
+          "method": "Old Rod — Route 102 or Petalburg City"
+        },
+        {
+          "id": "seaking",
+          "name": "Seaking",
+          "dex": 119,
+          "method": "Evolve from Goldeen at level 33"
+        },
+        {
+          "id": "zubat",
+          "name": "Zubat",
+          "dex": 41,
+          "method": "Granite Cave 1F"
+        },
+        {
+          "id": "golbat",
+          "name": "Golbat",
+          "dex": 42,
+          "method": "Evolve from Zubat at level 22"
+        },
+        {
+          "id": "crobat",
+          "name": "Crobat",
+          "dex": 169,
+          "method": "Evolve from Golbat with high Friendship"
+        },
+        {
+          "id": "geodude",
+          "name": "Geodude",
+          "dex": 74,
+          "method": "Granite Cave 1F"
+        },
+        {
+          "id": "graveler",
+          "name": "Graveler",
+          "dex": 75,
+          "method": "Evolve from Geodude at level 25"
+        },
+        {
+          "id": "abra",
+          "name": "Abra",
+          "dex": 63,
+          "method": "Granite Cave 1F"
+        },
+        {
+          "id": "kadabra",
+          "name": "Kadabra",
+          "dex": 64,
+          "method": "Evolve from Abra at level 16"
+        },
+        {
+          "id": "sableye",
+          "name": "Sableye",
+          "dex": 302,
+          "method": "Granite Cave B1F"
+        },
+        {
+          "id": "aron",
+          "name": "Aron",
+          "dex": 304,
+          "method": "Granite Cave lower floors"
+        },
+        {
+          "id": "lairon",
+          "name": "Lairon",
+          "dex": 305,
+          "method": "Evolve from Aron at level 32"
+        },
+        {
+          "id": "aggron",
+          "name": "Aggron",
+          "dex": 306,
+          "method": "Evolve from Lairon at level 42"
+        },
+        {
+          "id": "plusle",
+          "name": "Plusle",
+          "dex": 311,
+          "method": "Catch on Route 110"
+        },
+        {
+          "id": "minun",
+          "name": "Minun",
+          "dex": 312,
+          "method": "Catch on Route 110"
+        },
+        {
+          "id": "electrike",
+          "name": "Electrike",
+          "dex": 309,
+          "method": "Catch on Route 110"
+        },
+        {
+          "id": "manectric",
+          "name": "Manectric",
+          "dex": 310,
+          "method": "Evolve from Electrike at level 26"
+        },
+        {
+          "id": "oddish",
+          "name": "Oddish",
+          "dex": 43,
+          "method": "Catch on Route 110"
+        },
+        {
+          "id": "gloom",
+          "name": "Gloom",
+          "dex": 44,
+          "method": "Evolve from Oddish at level 21"
+        },
+        {
+          "id": "gulpin",
+          "name": "Gulpin",
+          "dex": 316,
+          "method": "Catch on Route 110"
+        },
+        {
+          "id": "swalot",
+          "name": "Swalot",
+          "dex": 317,
+          "method": "Evolve from Gulpin at level 26"
+        },
+        {
+          "id": "volbeat",
+          "name": "Volbeat",
+          "dex": 313,
+          "method": "Catch on Route 117 (very rare; version-dependent swarm rates)"
+        },
+        {
+          "id": "illumise",
+          "name": "Illumise",
+          "dex": 314,
+          "method": "Catch on Route 117 (very rare; version-dependent swarm rates)"
+        },
+        {
+          "id": "roselia",
+          "name": "Roselia",
+          "dex": 315,
+          "method": "Catch on Route 117"
+        },
+        {
+          "id": "marill",
+          "name": "Marill",
+          "dex": 183,
+          "method": "Catch on Route 117 (try for a female for future breeding)"
+        },
+        {
+          "id": "azumarill",
+          "name": "Azumarill",
+          "dex": 184,
+          "method": "Evolve from Marill at level 18"
+        }
+      ]
+    },
+    {
+      "id": "flannery",
+      "label": "Pre Badge 3 - Flannery",
+      "summaryShort": "Defeat Wattson and get that badge and the ability to use Rock Smash. Before heading north, go back to Mr. Briney south of Slateport City and return to Dewford. In the lower floors of Granite Cave you’ll find some rocks you can smash. Within these you might find Roxanne’s signature pokemon, Nosepass!",
+      "summaryHtml": "<h5>Granite Cave</h5>\n        <p>\n          Defeat Wattson and get that badge and the ability to use Rock Smash. Before heading north, go back to Mr. Briney south of Slateport City and return to Dewford. In the lower floors of Granite Cave you’ll find some rocks you can smash. Within these you might find Roxanne’s signature pokemon, Nosepass!\n        </p>\n        <pre>Nosepass</pre>\n\n        <h5>Route 112</h5>\n        <p>\n          Go back to Mauville and go north to Route 111 and then west to Route 112 and catch a couple of pokemon outside Fiery Path:\n        </p>\n        <pre>Numel → Lv. 33 → Camerupt\nMachop → Lv. 28 → Machoke</pre>\n\n        <h5>Fiery Path</h5>\n        <p>\n          Inside the cave, there are a bunch of fire and poison types waiting to be caught:\n        </p>\n        <pre>Grimer → Lv. 38 → Muk\nKoffing → Lv. 35 → Weezing\nSlugma → Lv. 38 → Magcargo\nTorkoal</pre>\n\n        <h5>Route 113</h5>\n        <p>\n          Exit through Fiery Path and go north and then west to the ash-covered Route 113.\n        </p>\n        <pre>Spinda\nSkarmory\nSandshrew → Lv. 22 → Sandslash</pre>\n\n        <h5>Route 114</h5>\n        <p>\n          Go past Fallarbor Town to Route 114 to catch:\n        </p>\n        <pre>Swablu → Lv. 35 → Altaria\nSeviper</pre>\n\n        <h5>Meteor Falls</h5>\n        <p>\n          Only one pokemon to catch here at the moment:\n        </p>\n        <pre>Lunatone</pre>\n        <p>\n          You can also pick up a Moon Stone here which we can use to evolve Skitty. If you’re playing Ruby, you can also get a Sun Stone which Solrock may be holding. You can either catch one or use a stealing move (Thief/Covet) to obtain one. With this you can evolve Gloom\n        </p>\n        <pre>Skitty → Moon Stone → Delcatty</pre>\n\n        <h5>Jagged Pass</h5>\n        <p>\n          After encountering Team Aqua, head back to the base of the volcano and take the cable car. Clear out Team Aqua on top of the volcano and then head down through Jagged Pass to find one available pokemon.\n        </p>\n        <pre>Spoink → Lv. 32 → Grumpig</pre>\n\n        <h5>Lavaridge Town</h5>\n        <p>\n          Talk to the old lady by the hot springs to receive an egg which contains Wynaut!\n        </p>\n        <pre>Wynaut → Lv. 15 → Wobbuffet</pre>\n\n        <p>Nothing left to do but evolve some pokemon.</p>\n\n        <h5>Levelling Tips</h5>\n        <p>\n          Go back to defeating Roselia and Volbeat/Illumise! The majority of pokemon in this section evolve in their late thirties, thankfully they’re primarily good against bug and grass types.\n        </p>\n\n        <p>\n          <strong>End of part 3:</strong><br/>\n          Caught 92, Remaining 110\n        </p>\n\n        \n      <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/11szWXYGe7h9SgX8LVKPs7EWHJ2SZeeaAR8__8tRuCCk/edit?tab=t.0#heading=h.gjdgxs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "choices": [],
+      "entries": [
+        {
+          "id": "nosepass",
+          "name": "Nosepass",
+          "dex": 299,
+          "method": "Granite Cave lower floors — Rock Smash rocks"
+        },
+        {
+          "id": "numel",
+          "name": "Numel",
+          "dex": 322,
+          "method": "Route 112 (outside Fiery Path)"
+        },
+        {
+          "id": "camerupt",
+          "name": "Camerupt",
+          "dex": 323,
+          "method": "Evolve from Numel at level 33"
+        },
+        {
+          "id": "machop",
+          "name": "Machop",
+          "dex": 66,
+          "method": "Route 112 (outside Fiery Path)"
+        },
+        {
+          "id": "machoke",
+          "name": "Machoke",
+          "dex": 67,
+          "method": "Evolve from Machop at level 28"
+        },
+        {
+          "id": "grimer",
+          "name": "Grimer",
+          "dex": 88,
+          "method": "Fiery Path"
+        },
+        {
+          "id": "muk",
+          "name": "Muk",
+          "dex": 89,
+          "method": "Evolve from Grimer at level 38"
+        },
+        {
+          "id": "koffing",
+          "name": "Koffing",
+          "dex": 109,
+          "method": "Fiery Path"
+        },
+        {
+          "id": "weezing",
+          "name": "Weezing",
+          "dex": 110,
+          "method": "Evolve from Koffing at level 35"
+        },
+        {
+          "id": "slugma",
+          "name": "Slugma",
+          "dex": 218,
+          "method": "Fiery Path"
+        },
+        {
+          "id": "magcargo",
+          "name": "Magcargo",
+          "dex": 219,
+          "method": "Evolve from Slugma at level 38"
+        },
+        {
+          "id": "torkoal",
+          "name": "Torkoal",
+          "dex": 324,
+          "method": "Fiery Path"
+        },
+        {
+          "id": "spinda",
+          "name": "Spinda",
+          "dex": 327,
+          "method": "Route 113 (ash-covered grass)"
+        },
+        {
+          "id": "skarmory",
+          "name": "Skarmory",
+          "dex": 227,
+          "method": "Route 113 (rare)"
+        },
+        {
+          "id": "sandshrew",
+          "name": "Sandshrew",
+          "dex": 27,
+          "method": "Route 113"
+        },
+        {
+          "id": "sandslash",
+          "name": "Sandslash",
+          "dex": 28,
+          "method": "Evolve from Sandshrew at level 22"
+        },
+        {
+          "id": "swablu",
+          "name": "Swablu",
+          "dex": 333,
+          "method": "Route 114"
+        },
+        {
+          "id": "altaria",
+          "name": "Altaria",
+          "dex": 334,
+          "method": "Evolve from Swablu at level 35"
+        },
+        {
+          "id": "seviper",
+          "name": "Seviper",
+          "dex": 336,
+          "method": "Route 114"
+        },
+        {
+          "id": "lunatone",
+          "name": "Lunatone",
+          "dex": 337,
+          "method": "Meteor Falls"
+        },
+        {
+          "id": "delcatty",
+          "name": "Delcatty",
+          "dex": 301,
+          "method": "Use a Moon Stone on Skitty (Meteor Falls)"
+        },
+        {
+          "id": "spoink",
+          "name": "Spoink",
+          "dex": 325,
+          "method": "Jagged Pass"
+        },
+        {
+          "id": "grumpig",
+          "name": "Grumpig",
+          "dex": 326,
+          "method": "Evolve from Spoink at level 32"
+        },
+        {
+          "id": "wynaut",
+          "name": "Wynaut",
+          "dex": 360,
+          "method": "Egg from old lady by hot springs (Lavaridge Town)"
+        },
+        {
+          "id": "wobbuffet",
+          "name": "Wobbuffet",
+          "dex": 202,
+          "method": "Evolve from Wynaut at level 15"
+        }
+      ]
+    },
+    {
+      "id": "brawly-norman",
+      "label": "Pre Badge 4 & 5 - Brawley and Norman",
+      "summaryShort": "Defeat Flannery. The next gym in linear order would be Norman, however he won’t battle you without 4 badges which means we’ll have to defeat Brawly, but there are some things we can do first!",
+      "summaryHtml": "<h5>Route 111 Desert</h5>\n        <p>\n          Now you can use Strength, go back to Fiery Path and collect the Fire Stone for later. With the Go-Goggles now in hand, you can finally enter the desert which yields 9 more pokemon in total:\n        </p>\n        <pre>Cacnea → Lv. 32 → Cacturne\nBaltoy → Lv. 36 → Claydol\nTrapinch → Lv. 35 → Vibrava → Lv. 45 → Flygon</pre>\n        <p>\n          You can also collect either the Root or Claw Fossil from the desert and take it back to Rustboro City’s Devon Corporation to resurrect it.\n        </p>\n        <pre>Anorith → Lv. 40 → Armaldo\nOR\nLileep → Lv. 40 → Cradily</pre>\n        <p>\n          NOW you can go and defeat Brawly and then Norman for badges 4 and 5.\n        </p>\n\n        <h5>Levelling Tips</h5>\n        <p>\n          Unfortunately there’s still no reliable training spots other than defeating more Roselia and Volbeat/Illumise…Don’t worry, the next section helps avoid this :)\n        </p>\n\n        <p>\n          Congrats, your pokedex is exactly 50% complete!\n        </p>\n\n        <p>\n          <strong>End of part 4:</strong><br/>\n          Caught 101, Remaining 101<br/>\n        </p>\n\n        \n      <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/11szWXYGe7h9SgX8LVKPs7EWHJ2SZeeaAR8__8tRuCCk/edit?tab=t.0#heading=h.gjdgxs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "choices": [
+        {
+          "key": "desert-fossil",
+          "title": null,
+          "cap": 1,
+          "options": [
+            {
+              "value": "anorith",
+              "name": "Anorith",
+              "dex": 347,
+              "method": "Choose the Claw Fossil (revive at Devon Corp, Rustboro)"
+            },
+            {
+              "value": "lileep",
+              "name": "Lileep",
+              "dex": 345,
+              "method": "Choose the Root Fossil (revive at Devon Corp, Rustboro)"
+            }
+          ]
+        }
+      ],
+      "entries": [
+        {
+          "id": "cacnea",
+          "name": "Cacnea",
+          "dex": 331,
+          "method": "Route 111 Desert"
+        },
+        {
+          "id": "cacturne",
+          "name": "Cacturne",
+          "dex": 332,
+          "method": "Evolve from Cacnea at level 32"
+        },
+        {
+          "id": "baltoy",
+          "name": "Baltoy",
+          "dex": 343,
+          "method": "Route 111 Desert"
+        },
+        {
+          "id": "claydol",
+          "name": "Claydol",
+          "dex": 344,
+          "method": "Evolve from Baltoy at level 36"
+        },
+        {
+          "id": "trapinch",
+          "name": "Trapinch",
+          "dex": 328,
+          "method": "Route 111 Desert"
+        },
+        {
+          "id": "vibrava",
+          "name": "Vibrava",
+          "dex": 329,
+          "method": "Evolve from Trapinch at level 35"
+        },
+        {
+          "id": "flygon",
+          "name": "Flygon",
+          "dex": 330,
+          "method": "Evolve from Vibrava at level 45"
+        },
+        {
+          "id": "anorith",
+          "name": "Anorith",
+          "dex": 347,
+          "method": "Revive Claw Fossil at Devon Corp",
+          "requires": [
+            {
+              "key": "desert-fossil",
+              "value": "anorith"
+            }
+          ]
+        },
+        {
+          "id": "armaldo",
+          "name": "Armaldo",
+          "dex": 348,
+          "method": "Evolve from Anorith at level 40",
+          "requires": [
+            {
+              "key": "desert-fossil",
+              "value": "anorith"
+            }
+          ]
+        },
+        {
+          "id": "lileep",
+          "name": "Lileep",
+          "dex": 345,
+          "method": "Revive Root Fossil at Devon Corp",
+          "requires": [
+            {
+              "key": "desert-fossil",
+              "value": "lileep"
+            }
+          ]
+        },
+        {
+          "id": "cradily",
+          "name": "Cradily",
+          "dex": 346,
+          "method": "Evolve from Lileep at level 40",
+          "requires": [
+            {
+              "key": "desert-fossil",
+              "value": "lileep"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mossdeep",
+      "label": "Pre Badge 6 - Tate and Liza",
+      "summaryShort": "As with most games, having access to Surf opens up most of the remainder of the region which means there’s lots to do before the next badge. Trainer’s Eye also activates for some higher levelled rematches, but getting them to want to battle you is annoying…",
+      "summaryHtml": "<h5>Revisiting old areas</h5>\n        <p>\n          Go to Route 115 (north of Rustboro) and Surf up to a hidden section of the route. In the grass you can catch Jigglypuff. Try to catch a female for breeding. You’ll need a Moon Stone to evolve it but we have none left. Use the TM for Thief (I used mine on Muk) and try to steal one from a wild Lunatone in Meteor Falls.\n        </p>\n        <pre>Jigglypuff → Moon Stone → Wigglytuff</pre>\n        <p>\n          Breed a female Jigglypuff with a male one or any other pokemon in the same egg group to hatch an Igglybuff:\n        </p>\n        <pre>Jigglypuff/Wigglytuff → Breed → Igglybuff</pre>\n        <p>\n          Go to Mauville City and Wattson will greet you outside the Pokemon Centre and give you the key to New Mauville which can be found in a cave along the water of Route 110. Inside you’ll find:\n        </p>\n        <pre>Magnemite → Lv. 30 → Magneton\nVoltorb → Lv. 30 → Electrode</pre>\n        <p>\n          You can find their evolved forms here too but they’re very rare. Pick up the Thunder Stone here for later.\n        </p>\n\n        <h5>Fishing Tour</h5>\n        <p>\n          Surf east from Mauville City and on the opposite bank there is a fisherman who will give you the Good Rod. Fishing in the following old areas will catch you:\n        </p>\n        <pre>(Route 103) Wailmer → Lv. 40 → Wailord\n(Route 102) Corphish → Lv. 30 → Crawdaunt\n(Route 111) Barboach → Lv. 30 → Whiscash\n(Route 118) Carvanha → Lv. 30 → Sharpedo</pre>\n\n        <h5>Route 118</h5>\n        <p>\n          Surf back over to where you got the Good Rod and you can catch a Kecleon in the grass, though you will have some forced encounters later on (before the next badge).\n        </p>\n        <pre>Kecleon</pre>\n\n        <h5>Route 119</h5>\n        <p>\n          North from Route 118 you can catch a Tropius in the tall grass.\n        </p>\n        <pre>Tropius</pre>\n        <p>\n          Route 119 is also the famous fishing spot of Feebas…Out of every water tile on this route, only 6 will have Feebas in them. This gets changed whenever the trendy phrase is changed in Dewford Town. Strategically you’ll want to go in a zig zag pattern along the route so you fish in every spot. I started from the base of the waterfall. You can catch it with any rod so I prefer the Old Rod as it’s easier to reel in. If Feebas is there it’ll appear 50% of the time so if you fish 2 or 3 times per tile, you’ll have a good chance of encountering it. Luckily I caught it within about 30 tiles. If you’re unlucky enough to sweep all the water tiles available right now and don’t find Feebas, you’ll simply have to try again. Then you have the trouble of getting it to evolve. We’re going to assume that you can’t evolve it at this point as the best pokeblocks to get it to evolve are made in Lilycove City which we will be visiting before the next badge. You’ll want a specific nature for Feebas, specifically a Rash, Quiet, Modest or Mild one as the pole blocks to raise its beauty are more effective. Once you find the spot you could theoretically keep catching them until you get one with the right nature or just catch a female and breed one later.\n        </p>\n        <pre>Feebas</pre>\n        <p>\n          Further up the route you’ll encounter Team Aqua at the Weather Institute. After defeating them, the head scientist will give you a Castform if you have space in your party.\n        </p>\n        <pre>Castform</pre>\n\n        <h5>Route 120</h5>\n        <p>\n          Once you reach Fortree City you can pass right through as there’s another skippable gym leader. In fact you don’t even need to defeat Winona until you need your 8th badge! The only drawback to this is the lack of Fly which, given Hoenn’s structure, can be a pain. I would recommend keeping a pokemon with Teleport in your party and strategically stopping off at pokemon centers that you want to fast travel back to. On the other side of Fortree City on Route 120, you can find the Disaster pokemon, Absol. You will also be forced to battle a Kecleon, so if you didn’t catch it earlier, now’s your chance.\n        </p>\n        <pre>Absol</pre>\n\n        <h5>Route 121</h5>\n        <p>\n          You’re at the junction between the Safari Zone, Lilycove City and Mt Pyre. There is a ghost Pokémon to be caught here but it’s easiest to just go south to My Pyre and catch it there. This is a good route to catch another Gloom (or Oddish and evolve it) to evolve into either Vileplume or Bellossom.\n        </p>\n\n        <h5>Mt. Pyre</h5>\n        <p>\n          On the lower floors you’ll only find either Shuppet or Duskull depending on your version. The other ghost can only be found higher up in the tower.\n        </p>\n        <pre>Duskull → Lv. 37 → Dusclops\nShuppet → Lv. 37 → Banette</pre>\n        <p>\n          From the top, fall through the holes in the floor and you can pick up the Sea Incense on the way down. This means you can now head back to the daycare and breed for an Azurill but you need to go back to a previous are shortly so we’ll hold off for now. Go to the outside area of Mt Pyre (left of the entrance) to find patches of grass which house a few new pokemon:\n        </p>\n        <pre>Vulpix → Fire Stone → Ninetales\nMeditite → Lv. 37 → Medicham\nChimecho</pre>\n        <p>\n          Chimecho is very rare so you may be up here for a while…Use the Fire Stone you picked up in Fiery Path to evolve Vulpix. Proceed to the very top of the tower and confront Team Aqua to progress the story.\n        </p>\n\n        <h5>Safari Zone</h5>\n        <p>\n          Time for a big catching spree in the Safari Zone! You’ll need to swap bikes to access all the areas. Specifically the North East area which needs the Acro Bike and the North West which needs the Mach Bike. If you STILL don’t have another Gloom to evolve into Bellossom, you can catch one here too. In the South East are where you enter, catch the following pokemon:\n        </p>\n        <pre>Doduo → Lv. 31 → Dodrio\nGirafarig\nNatu → Lv. 25 → Xatu\nPikachu → Thunder Stone → Raichu</pre>\n        <p>\n          Use the Thunder Stone from New Mauville to evolve Pikachu. Ideally you’ll want a female Pikachu so you can breed it. No other new pokemon are in the grass in the South West area, though you can Surf here for a Psyduck.\n        </p>\n        <pre>Psyduck → Lv. 33 → Golduck</pre>\n        <p>\n          In the North West area:\n        </p>\n        <pre>Rhyhorn → Lv. 42 → Rhydon\nPinsir</pre>\n        <p>\n          And finally in the North East area:\n        </p>\n        <pre>Heracross\nPhanpy → Lv. 25 → Donphan</pre>\n\n        <h5>A couple of places to revisit</h5>\n        <p>\n          You will want to use the Teleport strategy to get back to either Fortree or Lilycove for this to prevent a lot of back tracking. Go to Slateport City and investigate the crowd outside the submarine dock. Talk to Captain Stern and Team Aqua will steal the sub. This is necessary to both advance the plot and to let you leave Lilycove City.\n        </p>\n        <p>\n          Now is the chance to head back to the daycare for Azurill and Pichu. Slap the Sea Incense on a female Marill/Azumarill and breed it with a compatible partner. If you haven’t got a female, Marill can be found on the same route as the daycare. Repeat the process with Pikachu/Raichu (no item required). Now may also be a good chance to breed that Feebas for the right nature to evolve. Unfortunately you cannot determine the nature through breeding with an Everstone until Emerald so it’s completely at random in this version so keep hatching until you get one of the four natures required (Rash, Quiet, Modest or Mild). Once you’re done, head to Lilycove City.\n        </p>\n        <pre>Marill/Azumarill → Breed holding Sea Incense → Azurill\nPikachu/Raichu → Breed → Pichu</pre>\n\n        <h5>Lilycove City</h5>\n        <p>\n          On the east side of the city you can Surf into the Team Aqua hideout and turf them out. Make sure you pick up the Master Ball while you’re here. Defeating Team Aqua will unlock the sea routes for exploration. While you’re in Lilycove, visit the contest hall and use the berry blender to make blue/indigo pokeblocks for Feebas using blue berries. Save your game before doing this, if you feed Feebas too many pokeblocks to fill it up and it hasn’t reached the required Beauty level, you’ll have to do it again. Once Feebas has a high enough beauty level, let it level up and it will evolve into Milotic.\n        </p>\n        <pre>Feebas → Level up with high Beauty stat (170+) → Milotic</pre>\n\n        <h5>Mossdeep City</h5>\n        <p>\n          Surf east from Lilycove all the way to Mossdeep City. A couple of things to grab, get HM08 from Steven’s house, the Super Rod from the fisherman and a Sun Stone from the space center if you’re playing Sapphire.\n        </p>\n        <pre>Gloom → Sun Stone → Bellossom</pre>\n\n        <h5>Shoal Cave</h5>\n        <p>\n          Spheal can be found throughout the cave while Snorunt specifically is found on the lowest floor (ice room).\n        </p>\n        <pre>Spheal → Lv. 32 → Sealeo → Lv. 44 → Walrein\nSnorunt → Lv. 42 → Glalie</pre>\n\n        <h5>Fishing Tour</h5>\n        <p>\n          Return to Lilycove City and fish from the beach to catch a Staryu. We’ll have the Water Stone soon.\n        </p>\n        <pre>Staryu</pre>\n        <p>\n          Head down to the far south eastern part of the sea routes to the base of the waterfall at Evergrande City. With the Super Rod you can catch a couple of single stage pokemon:\n        </p>\n        <pre>Corsola\nLuvdisc</pre>\n        <p>\n          Finally, pass through Pacifidlog Town to Route 132 and fish with the Super Rod for Horsea.\n        </p>\n        <pre>Horsea → Lv. 32 → Seadra</pre>\n\n        <p>\n          This is the end of this long part! Everything else you can do requires either Dive or Waterfall (the latter of which can’t be done until you can use Dive.\n        </p>\n\n        <h5>Levelling Tips</h5>\n        <p>\n          You can finally leave the Roselia/Volbeat area! There are a lot of water pokemon to catch in this section. I don’t know about you but I pretty much always teach every water pokemon Surf for a powerful move. For general wild pokemon grinding, I found Mt Pyre indoors as a good place to train. Only one pokemon at the entrance floor (Shuppet) so as long as you have moves to hit it, it’s not too much of a threat. In fact, using Curse is sometimes more of a blessing than a…well…curse! Curse will reduce its HP by 50% regardless of whether it even has that much left so more often than not it was defeating itself before the Curse was making me lose health.\n        </p>\n        <p>\n          Other than that, Trainers Eye is available to you now. The best bet would be to just run around to all the trainers that already want a rematch with you. I found that trying to rematch the same trainer, knowing that you have the type advantage, was too much of a hassle that involved endlessly running in and out of the same route hoping it would trigger the rematch. The only disadvantage to this is that you may not be prepared for the pokemon they send out. Again, battling all the trainers on the sea routes is good for exp but this is obviously hard when you’re primarily training up water/ice types.\n        </p>\n\n        <p>\n          <strong>End of part 5:</strong><br/>\n          Caught 160, Remaining 42<br/>\n        </p>\n\n        \n      <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/11szWXYGe7h9SgX8LVKPs7EWHJ2SZeeaAR8__8tRuCCk/edit?tab=t.0#heading=h.gjdgxs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "choices": [],
+      "entries": [
+        {
+          "id": "jigglypuff",
+          "name": "Jigglypuff",
+          "dex": 39,
+          "method": "Route 115 hidden section (Surf)"
+        },
+        {
+          "id": "wigglytuff",
+          "name": "Wigglytuff",
+          "dex": 40,
+          "method": "Use a Moon Stone on Jigglypuff (steal from Lunatone)"
+        },
+        {
+          "id": "igglybuff",
+          "name": "Igglybuff",
+          "dex": 174,
+          "method": "Breed Jigglypuff/Wigglytuff"
+        },
+        {
+          "id": "magnemite",
+          "name": "Magnemite",
+          "dex": 81,
+          "method": "New Mauville"
+        },
+        {
+          "id": "magneton",
+          "name": "Magneton",
+          "dex": 82,
+          "method": "Evolve from Magnemite at level 30 (or rare wild)"
+        },
+        {
+          "id": "voltorb",
+          "name": "Voltorb",
+          "dex": 100,
+          "method": "New Mauville"
+        },
+        {
+          "id": "electrode",
+          "name": "Electrode",
+          "dex": 101,
+          "method": "Evolve from Voltorb at level 30 (or rare wild)"
+        },
+        {
+          "id": "wailmer",
+          "name": "Wailmer",
+          "dex": 320,
+          "method": "Good Rod — Route 103"
+        },
+        {
+          "id": "wailord",
+          "name": "Wailord",
+          "dex": 321,
+          "method": "Evolve from Wailmer at level 40"
+        },
+        {
+          "id": "corphish",
+          "name": "Corphish",
+          "dex": 341,
+          "method": "Good Rod — Route 102"
+        },
+        {
+          "id": "crawdaunt",
+          "name": "Crawdaunt",
+          "dex": 342,
+          "method": "Evolve from Corphish at level 30"
+        },
+        {
+          "id": "barboach",
+          "name": "Barboach",
+          "dex": 339,
+          "method": "Good Rod — Route 111"
+        },
+        {
+          "id": "whiscash",
+          "name": "Whiscash",
+          "dex": 340,
+          "method": "Evolve from Barboach at level 30"
+        },
+        {
+          "id": "carvanha",
+          "name": "Carvanha",
+          "dex": 318,
+          "method": "Good Rod — Route 118"
+        },
+        {
+          "id": "sharpedo",
+          "name": "Sharpedo",
+          "dex": 319,
+          "method": "Evolve from Carvanha at level 30"
+        },
+        {
+          "id": "kecleon",
+          "name": "Kecleon",
+          "dex": 352,
+          "method": "Route 118 grass (or forced encounter later)"
+        },
+        {
+          "id": "tropius",
+          "name": "Tropius",
+          "dex": 357,
+          "method": "Route 119 tall grass"
+        },
+        {
+          "id": "feebas",
+          "name": "Feebas",
+          "dex": 349,
+          "method": "Route 119 fishing (6 secret tiles; Old/Good/Super Rod)"
+        },
+        {
+          "id": "castform",
+          "name": "Castform",
+          "dex": 351,
+          "method": "Gift from Weather Institute (party slot required)"
+        },
+        {
+          "id": "vileplume",
+          "name": "Vileplume",
+          "dex": 45,
+          "method": "Use a Leaf Stone on Gloom (single Leaf Stone)"
+        },
+        {
+          "id": "absol",
+          "name": "Absol",
+          "dex": 359,
+          "method": "Route 120 grass"
+        },
+        {
+          "id": "duskull",
+          "name": "Duskull",
+          "dex": 355,
+          "method": "Mt. Pyre lower floors (version-dependent)"
+        },
+        {
+          "id": "dusclops",
+          "name": "Dusclops",
+          "dex": 356,
+          "method": "Evolve from Duskull at level 37"
+        },
+        {
+          "id": "shuppet",
+          "name": "Shuppet",
+          "dex": 353,
+          "method": "Mt. Pyre lower floors (version-dependent)"
+        },
+        {
+          "id": "banette",
+          "name": "Banette",
+          "dex": 354,
+          "method": "Evolve from Shuppet at level 37"
+        },
+        {
+          "id": "vulpix",
+          "name": "Vulpix",
+          "dex": 37,
+          "method": "Mt. Pyre exterior grass"
+        },
+        {
+          "id": "ninetales",
+          "name": "Ninetales",
+          "dex": 38,
+          "method": "Use a Fire Stone on Vulpix"
+        },
+        {
+          "id": "meditite",
+          "name": "Meditite",
+          "dex": 307,
+          "method": "Mt. Pyre exterior grass"
+        },
+        {
+          "id": "medicham",
+          "name": "Medicham",
+          "dex": 308,
+          "method": "Evolve from Meditite at level 37"
+        },
+        {
+          "id": "chimecho",
+          "name": "Chimecho",
+          "dex": 358,
+          "method": "Mt. Pyre exterior trees (very rare)"
+        },
+        {
+          "id": "doduo",
+          "name": "Doduo",
+          "dex": 84,
+          "method": "Safari Zone (SE area)"
+        },
+        {
+          "id": "dodrio",
+          "name": "Dodrio",
+          "dex": 85,
+          "method": "Evolve from Doduo at level 31"
+        },
+        {
+          "id": "girafarig",
+          "name": "Girafarig",
+          "dex": 203,
+          "method": "Safari Zone"
+        },
+        {
+          "id": "natu",
+          "name": "Natu",
+          "dex": 177,
+          "method": "Safari Zone"
+        },
+        {
+          "id": "xatu",
+          "name": "Xatu",
+          "dex": 178,
+          "method": "Evolve from Natu at level 25"
+        },
+        {
+          "id": "pikachu",
+          "name": "Pikachu",
+          "dex": 25,
+          "method": "Safari Zone (SE)"
+        },
+        {
+          "id": "raichu",
+          "name": "Raichu",
+          "dex": 26,
+          "method": "Use a Thunder Stone on Pikachu (from New Mauville)"
+        },
+        {
+          "id": "psyduck",
+          "name": "Psyduck",
+          "dex": 54,
+          "method": "Safari Zone (SW via Surf)"
+        },
+        {
+          "id": "golduck",
+          "name": "Golduck",
+          "dex": 55,
+          "method": "Evolve from Psyduck at level 33"
+        },
+        {
+          "id": "rhyhorn",
+          "name": "Rhyhorn",
+          "dex": 111,
+          "method": "Safari Zone (NW)"
+        },
+        {
+          "id": "rhydon",
+          "name": "Rhydon",
+          "dex": 112,
+          "method": "Evolve from Rhyhorn at level 42"
+        },
+        {
+          "id": "pinsir",
+          "name": "Pinsir",
+          "dex": 127,
+          "method": "Safari Zone (NW)"
+        },
+        {
+          "id": "heracross",
+          "name": "Heracross",
+          "dex": 214,
+          "method": "Safari Zone (NE)"
+        },
+        {
+          "id": "phanpy",
+          "name": "Phanpy",
+          "dex": 231,
+          "method": "Safari Zone (NE)"
+        },
+        {
+          "id": "donphan",
+          "name": "Donphan",
+          "dex": 232,
+          "method": "Evolve from Phanpy at level 25"
+        },
+        {
+          "id": "azurill",
+          "name": "Azurill",
+          "dex": 298,
+          "method": "Breed Marill/Azumarill holding Sea Incense"
+        },
+        {
+          "id": "pichu",
+          "name": "Pichu",
+          "dex": 172,
+          "method": "Breed Pikachu or Raichu"
+        },
+        {
+          "id": "milotic",
+          "name": "Milotic",
+          "dex": 350,
+          "method": "Evolve Feebas by levelling with Beauty ≥ 170 (Pokéblocks)"
+        },
+        {
+          "id": "bellossom",
+          "name": "Bellossom",
+          "dex": 182,
+          "method": "Use a Sun Stone on Gloom (Mossdeep Space Center)"
+        },
+        {
+          "id": "spheal",
+          "name": "Spheal",
+          "dex": 363,
+          "method": "Shoal Cave"
+        },
+        {
+          "id": "sealeo",
+          "name": "Sealeo",
+          "dex": 364,
+          "method": "Evolve from Spheal at level 32"
+        },
+        {
+          "id": "walrein",
+          "name": "Walrein",
+          "dex": 365,
+          "method": "Evolve from Sealeo at level 44"
+        },
+        {
+          "id": "snorunt",
+          "name": "Snorunt",
+          "dex": 361,
+          "method": "Shoal Cave (lowest ice room)"
+        },
+        {
+          "id": "glalie",
+          "name": "Glalie",
+          "dex": 362,
+          "method": "Evolve from Snorunt at level 42"
+        },
+        {
+          "id": "staryu",
+          "name": "Staryu",
+          "dex": 120,
+          "method": "Fish at Lilycove beach"
+        },
+        {
+          "id": "corsola",
+          "name": "Corsola",
+          "dex": 222,
+          "method": "Super Rod — Evergrande base waterfall area"
+        },
+        {
+          "id": "luvdisc",
+          "name": "Luvdisc",
+          "dex": 370,
+          "method": "Super Rod — Evergrande base waterfall area"
+        },
+        {
+          "id": "horsea",
+          "name": "Horsea",
+          "dex": 116,
+          "method": "Super Rod — Route 132 (Pacifidlog area)"
+        },
+        {
+          "id": "seadra",
+          "name": "Seadra",
+          "dex": 117,
+          "method": "Evolve from Horsea at level 32"
+        }
+      ]
+    },
+    {
+      "id": "sootopolis",
+      "label": "Pre Badge 7 - Wallace",
+      "summaryShort": "Defeating Tate and Liza now lets you Dive underwater. Dive down there to search for some underwater pokemon! The best place would be outside Sootopolis City where you fill find in the seaweed:",
+      "summaryHtml": "<p>\n      The best place would be outside Sootopolis City where you fill find in the seaweed:\n      </p>  \n      <pre>Chinchou → Lv. 27 → Lanturn<br/>\nRelicanth<br/>\nClamperl</pre>\n\n        <p>\n          You can also get the shards needed to trade the treasure hunter who lives just west of Mossdeep City for some evolution stones. Shards can be found underwater in hidden spots (look for lone rocks or ‘circles’ in the sand) or by resurfacing in places you can’t normally access over sea level. Another option is using Thief to steal the shards off of various sea pokemon. Relicanth has Green Shards, Chinchou has Yellow, Clamperl has Blue and Corsola has Red. These can be traded for Leaf, Thunder, Water and Fire stones respectively. You only need two Water Stones for Staryu and Lombre. Note that there is a Water Stone in the Abandoned Ship which requires Dive.\n        </p>\n        <pre>Staryu → Water Stone → Starmie\nLombre → Water Stone → Ludicolo\nGloom→ Leaf Stone → Vileplume</pre>\n\n        <h5>The Regis</h5>\n        <p>\n          With a Relicanth and a Wailord in your party and a pokemon with Dig you can start the quest for the three Regis. Surf west from Pacifidlog Town and if you can take the correct path through the currents you will end up at a spot of deep water you can Dive in to access the Sealed Chamber. Read the braille message and surface there to reach the cave. Examine the text at the back of the room and then use Dig to open the door. In the next chamber, ensure that Wailord is last in your party and Relicanth is first. Examine the text at the back of the room and you should get a message saying that the doors have opened. Stock up on Ultra Balls and Timer Balls.\n        </p>\n        <p>\n          Go to the desert on Route 111 to find a cave. Examine the text and take two steps right, then two steps down and then use Strength to open the door. Here you’ll find the first of the trio. Lower its HP into the red as much as possible, inflict a status (preferably Sleep) and throw Ultra Balls. If you’ve spend many turns throwing Ultra Balls and putting Regirock back to sleep, try using a Timer Ball every few turns. This is the preferred strategy for catching all legendaries.\n        </p>\n        <pre>Regirock</pre>\n        <p>\n          To the northwest of Dewford Town on Route 105 is another cave that you can Surf to. Inside, examine the text on the back wall and stay still for two minutes. The door will open. Catch the second golem:\n        </p>\n        <pre>Regice</pre>\n        <p>\n          We can access the cave for the final Regi but it requires Fly, and even though we’re not actually flying anywhere, we can’t unlock the door without that badge from Winona. But that’s not yet!\n        </p>\n\n        <h5>Route 128</h5>\n        <p>\n          Underwater on this route you’ll find the submarine that was stolen from Slateport City. Surface here and knock the socks off of Team Aqua. You’ll encounter Kyogre and kick off the rain storms around Hoenn.\n        </p>\n\n        <h5>Sootopolis City</h5>\n        <p>\n          Dive underwater in Route 126 to find the entrance to Sootopolis City. Go to the west side of the city and head north, following the path round to reach the Cave of Origin. Be prepared to catch Kyogre! It’s a straight forward path (using Flash is optional). Make sure you pick up the HM for Waterfall in here. Eventually you’ll find the game’s box legendary…Use the same strategy as the Regis, but you have the option of using Net Balls too. I would highly recommend NOT using the Master Ball here.\n        </p>\n        <pre>Kyogre</pre>\n        <p>\n          Capturing Groudon/Kyogre will restore peace to the tropical land of Hoenn and will open the Sootopolis Gym which is where you will head next!\n        </p>\n\n        <h5>Levelling Tips</h5>\n        <p>\n          There’s only one pokemon you are evolving in this section (Chinchou) so there’s not much to say here.\n        </p>\n\n        <p>\n          <strong>End of part 6:</strong><br/>\n          Caught 169, Remaining 33<br/>\n        </p>\n\n        \n      <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/11szWXYGe7h9SgX8LVKPs7EWHJ2SZeeaAR8__8tRuCCk/edit?tab=t.0#heading=h.gjdgxs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "choices": [],
+      "entries": [
+        {
+          "id": "chinchou",
+          "name": "Chinchou",
+          "dex": 170,
+          "method": "Underwater seaweed outside Sootopolis"
+        },
+        {
+          "id": "lanturn",
+          "name": "Lanturn",
+          "dex": 171,
+          "method": "Evolve from Chinchou at level 27"
+        },
+        {
+          "id": "relicanth",
+          "name": "Relicanth",
+          "dex": 369,
+          "method": "Underwater seaweed; also holds Green Shard"
+        },
+        {
+          "id": "clamperl",
+          "name": "Clamperl",
+          "dex": 366,
+          "method": "Underwater seaweed; also holds Blue Shard"
+        },
+        {
+          "id": "starmie",
+          "name": "Starmie",
+          "dex": 121,
+          "method": "Use a Water Stone on Staryu (shard trade or Abandoned Ship)"
+        },
+        {
+          "id": "ludicolo",
+          "name": "Ludicolo",
+          "dex": 272,
+          "method": "Use a Water Stone on Lombre"
+        },
+        {
+          "id": "regirock",
+          "name": "Regirock",
+          "dex": 377,
+          "method": "Desert Ruins on Route 111 (Regi puzzle)"
+        },
+        {
+          "id": "regice",
+          "name": "Regice",
+          "dex": 378,
+          "method": "Island Cave on Route 105 (wait 2 minutes after reading text)"
+        },
+        {
+          "id": "kyogre",
+          "name": "Kyogre",
+          "dex": 382,
+          "method": "Cave of Origin encounter"
+        }
+      ]
+    },
+    {
+      "id": "winona",
+      "label": "Pre Badge 8 - Winona",
+      "summaryShort": "With your penultimate badge you can now use Waterfall to get to the pokemon league in Evergrande City. This is a very short section with only three pokemon available.",
+      "summaryHtml": "<h5>Meteor Falls</h5>\n        <p>\n          Teach Waterfall to a pokemon and you can get to the small room at the back of the cave which has a rare pokemon, Bagon!\n        </p>\n        <pre>Bagon → Lv. 30 → Shelgon → Lv. 50 → Salamence</pre>\n        <p>\n          With that taken care of, go and defeat Winona in Fortree City for your final badge!\n        </p>\n\n        <h5>Levelling Tips</h5>\n        <p>\n          This is one heck of a grind fest to evolve this little dragon. It should evolve soon enough into Shelgon but it’s getting it to Salamence that’s the problem. The problem gets worse when you realise that it doesn’t really learn any powerful moves. I ended up using the TM for Dragon Claw even though it would eventually learn it just to make things easier. Trainers Eye is again your best friend, busting ghosts in Mt Pyre is also good training for its attack stat and Victory Road houses the highest leveled pokemon you can train against, though Hariyama’s Whirlwind gets old really fast. Consider having a bunch of Zigzagoon with Pickup to help farm some Rare Candies. On the plus side, once you have that funky Salamence it will help you rip through the Elite Four.\n        </p>\n\n        <p>\n          <strong>End of part 7:</strong><br/>\n          Caught 172, Remaining 30<br/>\n        </p>\n\n        \n      <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/11szWXYGe7h9SgX8LVKPs7EWHJ2SZeeaAR8__8tRuCCk/edit?tab=t.0#heading=h.gjdgxs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "choices": [],
+      "entries": [
+        {
+          "id": "bagon",
+          "name": "Bagon",
+          "dex": 371,
+          "method": "Meteor Falls back room (Waterfall required)"
+        },
+        {
+          "id": "shelgon",
+          "name": "Shelgon",
+          "dex": 372,
+          "method": "Evolve from Bagon at level 30"
+        },
+        {
+          "id": "salamence",
+          "name": "Salamence",
+          "dex": 373,
+          "method": "Evolve from Shelgon at level 50"
+        }
+      ]
+    },
+    {
+      "id": "pre-elite-four",
+      "label": "Pre Elite Four",
+      "summaryShort": "Now you can freely Fly around Hoenn at your will. There’s unfortunately only one pokemon left to catch before the Elite four.",
+      "summaryHtml": "<p>\n          Head over to the south part of Route 120 to find the final Regi cave. Examine the text on the back wall, walk into the center of the room and use Fly to unlock the room where Registeel lies…\n        </p>\n        <pre>Registeel</pre>\n        <p>\n          With that done, it’s time to progress through Victory Road and prepare for the Elite Four…\n        </p>\n\n        <p>\n          <strong>End of part 8:</strong><br/>\n          Caught 173, Remaining 29<br/>\n        </p>\n\n        \n      <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/11szWXYGe7h9SgX8LVKPs7EWHJ2SZeeaAR8__8tRuCCk/edit?tab=t.0#heading=h.gjdgxs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "choices": [],
+      "entries": [
+        {
+          "id": "registeel",
+          "name": "Registeel",
+          "dex": 379,
+          "method": "Ancient Tomb on Route 120 (Fly used in center of room after Regi puzzle)"
+        }
+      ]
+    },
+    {
+      "id": "post-game",
+      "label": "Post Game",
+      "summaryShort": "Like the original gen 1 games, Ruby and Sapphire have a pretty poor post game to them. There’s no extra pokemon to catch that weren’t in the regional dex and no new areas aside from the Battle Tower and Sky Pillar (you’ve already caught everything in here). All that’s left to do is for you to complete your Hoenn Dex as much as possible and there’s only a few pokemon left.",
+      "summaryHtml": "<p>\n          Fly to Mossdeep City and go to Steven’s house. There’s a pokeball on the table containing the second pseudo-legendary line of the region.\n        </p>\n        <pre>Beldum → Lv. 20 → Metang → Lv. 45 → Metagross</pre>\n\n        <h5>A couple of legendary dragons</h5>\n        <p>\n          Two legendary pokemon are left – Latias/Latios and Rayquaza. We’ll start with Latias/Latios. Check out the TV at your house to get a news report of a red pokemon flying around Hoenn. You MUST do this or Latias/Latios will not appear. It can be tracked via your pokedex IF you have seen it, so the most annoying part is trying to find it the first time.\n        </p>\n\n        <pre>Latias</pre>\n\n        <p>\n          Finally we have the 200th pokemon in the Hoenn Dex, Rayquaza. It’s at Lv. 70 so if you don’t feel up to the challenge yet, you may want to re-challenge the Elite Four a few times. Stock up on Ultra Balls and Timer Balls, grab your Mach Bike (essential) and your strongest team. Surf east from Pacifidlog a short while to find a new area on the north part of the route which goes to Sky Pillar. Cycle up the tower until you reach its peak. Save before Rayquaza in case you mess up and hit it hard.\n        </p>\n        <pre>Rayquaza</pre>\n\n        <h5>Levelling Tips</h5>\n        <p>\n          Evolving Beldum all the way to Metagross is a tough road. Having only Take Down at the start is not good for its HP. Once it evolves into Metang things get a bit easier. Being a Steel type it’s quite resistant so you can go up against most pokemon without too much concern. Abuse Trainers Eye over and over until you reach that sweet point where it’s finally ready to evolve into Metagross.\n        </p>\n\n        <p>\n          <strong>End of the challenge:</strong><br/>\n          Hoenn Dex Caught 178, Remaining 24<br/>\n        </p>\n\n        \n      <p class=\"tips-source\">\n        <a href=\"https://docs.google.com/document/d/11szWXYGe7h9SgX8LVKPs7EWHJ2SZeeaAR8__8tRuCCk/edit?tab=t.0#heading=h.gjdgxs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Source: Professor Oak Challenge Guide (Google Doc)\n        </a>\n      </p>",
+      "choices": [],
+      "entries": [
+        {
+          "id": "beldum",
+          "name": "Beldum",
+          "dex": 374,
+          "method": "Gift from Steven’s house (Mossdeep City)"
+        },
+        {
+          "id": "metang",
+          "name": "Metang",
+          "dex": 375,
+          "method": "Evolve from Beldum at level 20"
+        },
+        {
+          "id": "metagross",
+          "name": "Metagross",
+          "dex": 376,
+          "method": "Evolve from Metang at level 45"
+        },
+        {
+          "id": "latias",
+          "name": "Latias",
+          "dex": 380,
+          "method": "Roaming legendary after watching TV report"
+        },
+        {
+          "id": "rayquaza",
+          "name": "Rayquaza",
+          "dex": 384,
+          "method": "Sky Pillar summit (Mach Bike required; level 70)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,83 +1,82 @@
-export const METHOD_LABELS = {
-  catch: "Catch",
-  evolve: "Level up",
-  stone: "Stone",
-  "trade-evolve": "Trade evo",
-  gift: "Gift",
-  fossil: "Fossil",
-  static: "Static",
-  "in-game-trade": "NPC trade",
-  prize: "Prize",
-  trade: "Trade",
-  event: "Event",
+const SPRITES = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites";
+
+export const formatDex = (dex) => (dex ? `#${String(dex).padStart(3, "0")}` : "");
+
+// Game-accurate sprite when the guide names a sprite set, the modern sprite otherwise.
+export const spriteUrl = (guide, { dex, item }) => {
+  if (item) return `${SPRITES}/items/${item}.png`;
+  if (!dex) return null;
+  return guide?.spriteSet ? `${SPRITES}/pokemon/versions/${guide.spriteSet}/${dex}.png` : `${SPRITES}/pokemon/${dex}.png`;
 };
 
-// Methods that can't be finished alone in one cartridge.
-export const NEEDS_TRADE = new Set(["trade-evolve", "trade"]);
+export const fallbackSpriteUrl = (dex) => (dex ? `${SPRITES}/pokemon/${dex}.png` : null);
 
-export const dexNumber = (entryId) => Number(entryId.slice(0, 4));
+// Same rule as the source tracker: every `requires` pair is selected, no `requiresNot` pair is.
+export const meetsRequirements = (entry, choices) => {
+  const has = ({ key, value }) => (choices?.[key] ?? []).includes(value);
+  return (entry.requires ?? []).every(has) && !(entry.requiresNot ?? []).some(has);
+};
 
-export const formatDex = (entryId) => `#${String(dexNumber(entryId)).padStart(3, "0")}`;
+export const eligibleEntries = (section, choices) => (section.entries ?? []).filter((e) => meetsRequirements(e, choices));
 
-// Regional forms ("0052-alola") need a sprite id map once such guides exist; base sprite until then.
-export const spriteUrl = (entryId) =>
-  `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${dexNumber(entryId)}.png`;
-
-export const isInVersion = (entry, version) => !entry.versions || entry.versions.includes(version);
-
-export const versionLabel = (guide, versionIds) =>
-  versionIds.map((id) => guide.versions.find((v) => v.id === id)?.name ?? id).join("/");
-
-export function countProgress(entries, version, caught) {
+export function countProgress(sections, choices, caught) {
   let total = 0;
   let done = 0;
-  for (const entry of entries) {
-    if (!isInVersion(entry, version)) continue;
-    total += 1;
-    if (caught.has(entry.id)) done += 1;
+  for (const section of sections) {
+    for (const entry of eligibleEntries(section, choices)) {
+      total += 1;
+      if (caught.has(entry.id)) done += 1;
+    }
   }
   return { caught: done, total };
 }
 
-export const allEntries = (guide) => guide.sections.flatMap((s) => s.entries);
+// "moon-stone-1" -> "Moon stone"
+const humanize = (key) => {
+  const words = key.replace(/[-_]+\d*$/, "").replace(/[-_]+/g, " ").trim();
+  return words ? words[0].toUpperCase() + words.slice(1) : key;
+};
 
-export function matchesFilters(entry, filters, version, caught) {
-  const { query = "", method = "all", missingOnly = false, showOtherVersions = false } = filters;
-  if (!showOtherVersions && !isInVersion(entry, version)) return false;
-  if (missingOnly && caught.has(entry.id)) return false;
-  if (method !== "all" && entry.method !== method) return false;
-  const q = query.trim().toLowerCase();
-  if (q) {
-    const haystack = `${entry.name} ${entry.location} ${formatDex(entry.id)} ${dexNumber(entry.id)}`.toLowerCase();
-    if (!haystack.includes(q)) return false;
-  }
-  return true;
+// The guide's own title when it has one; otherwise a label built from the choice key.
+export const choiceLabel = (choice) =>
+  choice.title || `${humanize(choice.key)}: ${choice.cap === 1 ? "choose one" : `choose ${choice.cap}`}`;
+
+// Choice blocks in a section that still have open picks.
+export const pendingChoices = (section, choices) =>
+  (section.choices ?? []).filter((c) => (choices?.[c.key]?.length ?? 0) < c.cap);
+
+export function nextChoiceValues(choice, current, value) {
+  const selected = current ?? [];
+  if (selected.includes(value)) return selected.filter((v) => v !== value);
+  if (choice.cap === 1) return [value];
+  return selected.length < choice.cap ? [...selected, value] : selected;
 }
 
-// Evolutions happen wherever the player is, so they are not tied to a place.
-export const EVOLUTION_METHODS = new Set(["evolve", "stone", "trade-evolve"]);
-export const EVOLUTIONS_GROUP = "Evolutions";
+export function matchesFilters(entry, { query = "", missingOnly = false }, caught) {
+  if (missingOnly && caught.has(entry.id)) return false;
+  const q = query.trim().toLowerCase();
+  if (!q) return true;
+  return `${entry.name} ${entry.method} ${formatDex(entry.dex)} ${entry.dex ?? ""}`.toLowerCase().includes(q);
+}
 
-// Groups entries by location, ordered by the first milestone where each location appears.
-// Evolutions are collected into one trailing group.
-export function groupByLocation(guide, keep) {
+// Rows obtained by evolving or using an item happen wherever the player is, so they are not tied to a place.
+const EVOLUTION = /^(evolve|use |level up|trade )/i;
+export const EVOLUTIONS_GROUP = "Evolutions and items";
+
+// "Catch on Route 1" and "Catch in Viridian Forest" group under the place as the guide wrote it.
+export const placeOf = (entry) =>
+  EVOLUTION.test(entry.method) ? EVOLUTIONS_GROUP : entry.method.replace(/^catch (on|in|at)\s+/i, "").trim() || "Other";
+
+// Groups rows by place, ordered by the first section where each place appears; evolutions go last.
+export function groupByPlace(sections, keep) {
   const groups = new Map();
-  const evolutions = { location: EVOLUTIONS_GROUP, firstSection: Infinity, entries: [] };
-  guide.sections.forEach((section, sectionIndex) => {
+  sections.forEach((section, sectionIndex) => {
     for (const entry of section.entries) {
       if (!keep(entry)) continue;
-      if (EVOLUTION_METHODS.has(entry.method)) {
-        evolutions.entries.push({ entry, sectionIndex });
-        continue;
-      }
-      if (!groups.has(entry.location)) {
-        groups.set(entry.location, { location: entry.location, firstSection: sectionIndex, entries: [] });
-      }
-      groups.get(entry.location).entries.push({ entry, sectionIndex });
+      const place = placeOf(entry);
+      if (!groups.has(place)) groups.set(place, { place, firstSection: place === EVOLUTIONS_GROUP ? Infinity : sectionIndex, entries: [] });
+      groups.get(place).entries.push({ entry, sectionIndex });
     }
   });
-  const sorted = [...groups.values()].sort(
-    (a, b) => a.firstSection - b.firstSection || a.location.localeCompare(b.location),
-  );
-  return evolutions.entries.length ? [...sorted, evolutions] : sorted;
+  return [...groups.values()].sort((a, b) => a.firstSection - b.firstSection || a.place.localeCompare(b.place));
 }

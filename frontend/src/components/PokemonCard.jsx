@@ -1,40 +1,25 @@
 import { memo } from "react";
-import { METHOD_LABELS, NEEDS_TRADE, formatDex, spriteUrl } from "../lib/guide.js";
+import { formatDex } from "../lib/guide.js";
+import Sprite from "./Sprite.jsx";
 import styles from "./PokemonCard.module.css";
 
-function PokemonCard({ entry, caught, readOnly, otherVersion, versionBadge, sectionLabel, showLocation = true, onToggle }) {
-  const classes = [styles.card, caught && styles.caught, otherVersion && styles.otherVersion].filter(Boolean).join(" ");
+function PokemonCard({ guide, entry, caught, readOnly, sectionLabel, onToggle }) {
   return (
     <li>
       <button
         type="button"
-        className={classes}
+        className={`${styles.card} ${caught ? styles.caught : ""}`}
         aria-pressed={caught}
         disabled={readOnly}
         onClick={() => onToggle(entry, !caught)}
       >
-        <img
-          className={styles.sprite}
-          src={spriteUrl(entry.id)}
-          alt=""
-          width="56"
-          height="56"
-          loading="lazy"
-          onError={(e) => { e.currentTarget.style.visibility = "hidden"; }}
-        />
+        <Sprite guide={guide} dex={entry.dex} className={styles.sprite} />
         <span className={styles.body}>
           <span className={styles.title}>
-            <span className={styles.dex}>{formatDex(entry.id)}</span> {entry.name}
+            {entry.dex && <span className={styles.dex}>{formatDex(entry.dex)}</span>} {entry.name}
           </span>
-          {showLocation && <span className={styles.location}>{entry.location}</span>}
-          {sectionLabel && <span className={styles.location}>{sectionLabel}</span>}
-          <span className={styles.badges}>
-            <span className={`${styles.badge} ${NEEDS_TRADE.has(entry.method) ? styles.badgeTrade : ""}`}>
-              {METHOD_LABELS[entry.method] ?? entry.method}
-            </span>
-            {versionBadge && <span className={`${styles.badge} ${styles.badgeVersion}`}>{versionBadge} only</span>}
-          </span>
-          {entry.notes && <span className={styles.notes}>{entry.notes}</span>}
+          <span className={styles.method}>{entry.method}</span>
+          {sectionLabel && <span className={styles.section}>{sectionLabel}</span>}
         </span>
         <span className={styles.check} aria-hidden="true">{caught ? "✓" : ""}</span>
       </button>

@@ -2,28 +2,49 @@
   "id": "fixture",
   "name": "Fixture Game",
   "generation": 1,
-  "versions": [{ "id": "a", "name": "Version A" }, { "id": "b", "name": "Version B" }],
-  "verified": false,
-  "source": { "name": "Test fixture, not challenge data" },
+  "versions": [{ "id": "fixture", "name": "Fixture" }],
+  "source": { "data": { "name": "Test fixture, not challenge data" } },
   "sections": [
     {
       "id": "first",
       "label": "Before Leader One",
-      "leader": "Leader One",
+      "choices": [
+        {
+          "key": "starter",
+          "title": null,
+          "cap": 1,
+          "options": [
+            { "value": "bulbasaur", "name": "Bulbasaur", "dex": 1, "method": "Pick" },
+            { "value": "charmander", "name": "Charmander", "dex": 4, "method": "Pick" }
+          ]
+        }
+      ],
       "entries": [
-        { "id": "0016", "name": "Pidgey", "location": "Route A", "method": "catch" },
-        { "id": "0019", "name": "Rattata", "location": "Route A", "method": "catch" },
-        { "id": "0025", "name": "Pikachu", "location": "Forest A", "method": "catch" },
-        { "id": "0023", "name": "Ekans", "location": "Route B", "method": "catch", "versions": ["a"] },
-        { "id": "0027", "name": "Sandshrew", "location": "Route B", "method": "catch", "versions": ["b"] }
+        { "id": "bulbasaur", "name": "Bulbasaur", "dex": 1, "method": "Starter", "requires": [{ "key": "starter", "value": "bulbasaur" }] },
+        { "id": "charmander", "name": "Charmander", "dex": 4, "method": "Starter", "requires": [{ "key": "starter", "value": "charmander" }] },
+        { "id": "pidgey", "name": "Pidgey", "dex": 16, "method": "Catch on Route A" },
+        { "id": "rattata", "name": "Rattata", "dex": 19, "method": "Catch on Route A" },
+        { "id": "pikachu", "name": "Pikachu", "dex": 25, "method": "Catch in Forest A" }
       ]
     },
     {
       "id": "second",
       "label": "Before Leader Two",
-      "leader": "Leader Two",
+      "choices": [
+        {
+          "key": "stones",
+          "title": "Pick two",
+          "cap": 2,
+          "options": [
+            { "value": "a", "name": "Clefable", "dex": 36, "method": "Stone" },
+            { "value": "b", "name": "Wigglytuff", "dex": 40, "method": "Stone" },
+            { "value": "c", "name": "Nidoking", "dex": 34, "method": "Stone" }
+          ]
+        }
+      ],
       "entries": [
-        { "id": "0001", "name": "Bulbasaur", "location": "Town A", "method": "gift" }
+        { "id": "nidoran-f", "name": "Nidoran♀", "dex": 29, "method": "Catch on Route B" },
+        { "id": "spearow", "name": "Spearow", "dex": 21, "method": "Catch on Route B", "requiresNot": [{ "key": "starter", "value": "charmander" }] }
       ]
     }
   ]

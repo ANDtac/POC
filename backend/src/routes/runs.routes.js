@@ -2,7 +2,7 @@ import { Router } from "express";
 import { verifyToken, optionalAuth } from "../middlewares/auth.middleware.js";
 import {
   loadRun, listRuns, createRun, getRun, updateRun, deleteRun,
-  markCaught, unmarkCaught, bulkCaught,
+  markCaught, unmarkCaught, bulkCaught, setChoice,
 } from "../controllers/runs.controller.js";
 
 const router = Router();
@@ -14,6 +14,7 @@ router.get("/:id", optionalAuth, loadRun({ allowPublic: true }), getRun);
 router.patch("/:id", ...ownRun, updateRun);
 router.delete("/:id", ...ownRun, deleteRun);
 router.patch("/:id/caught", ...ownRun, bulkCaught);
+router.put("/:id/choices/:key", ...ownRun, setChoice);
 router.put("/:id/caught/:pokemon_id", ...ownRun, markCaught);
 router.delete("/:id/caught/:pokemon_id", ...ownRun, unmarkCaught);
 

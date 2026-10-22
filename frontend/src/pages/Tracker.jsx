@@ -2,11 +2,12 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useParams } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, storage } from "../api.js";
-import ProgressBar from "../components/ProgressBar.jsx";
+import ChoiceBlock from "../components/ChoiceBlock.jsx";
+import GuideHtml from "../components/GuideHtml.jsx";
 import PokemonCard from "../components/PokemonCard.jsx";
+import ProgressBar from "../components/ProgressBar.jsx";
 import {
-  EVOLUTIONS_GROUP, METHOD_LABELS, allEntries, countProgress, groupByLocation, isInVersion, matchesFilters,
-  versionLabel,
+  countProgress, eligibleEntries, groupByPlace, matchesFilters, meetsRequirements, pendingChoices,
 } from "../lib/guide.js";
 import styles from "./Tracker.module.css";
 
@@ -15,9 +16,9 @@ const UNDO_MS = 5000;
 
 const loadPrefs = () => {
   try {
-    return { view: "milestone", missingOnly: false, showOtherVersions: false, ...JSON.parse(storage.get(PREFS_KEY) || "{}") };
+    return { view: "milestone", missingOnly: false, ...JSON.parse(storage.get(PREFS_KEY) || "{}") };
   } catch {
-    return { view: "milestone", missingOnly: false, showOtherVersions: false };
+    return { view: "milestone", missingOnly: false };
   }
 };
 
@@ -38,7 +39,6 @@ export default function Tracker() {
 
   const [prefs, setPrefs] = useState(loadPrefs);
   const [query, setQuery] = useState("");
-  const [method, setMethod] = useState("all");
   const [openSections, setOpenSections] = useState({});
   const [toast, setToast] = useState(null);
   const searchRef = useRef(null);
@@ -73,22 +73,26 @@ export default function Tracker() {
     [queryClient, runKey],
   );
 
-  const toggle = useMutation({
-    mutationKey: ["toggle", id],
-    mutationFn: ({ entry, caught }) =>
-      api(`/api/runs/${id}/caught/${entry.id}`, { method: caught ? "PUT" : "DELETE" }),
-    onMutate: async ({ entry, caught }) => {
+  // Optimistic update with rollback, shared by the run mutations below.
+  const optimistic = (apply) => ({
+    onMutate: async (vars) => {
       await queryClient.cancelQueries({ queryKey: runKey });
       const previous = queryClient.getQueryData(runKey);
-      patchRunCache((old) => ({
-        caught: caught ? [...new Set([...old.caught, entry.id])] : old.caught.filter((c) => c !== entry.id),
-      }));
+      patchRunCache((old) => apply(old, vars));
       return { previous };
     },
     onError: (err, _vars, ctx) => {
       queryClient.setQueryData(runKey, ctx.previous);
       setToast({ message: `Not saved: ${err.message}` });
     },
+  });
+
+  const toggle = useMutation({
+    mutationKey: ["toggle", id],
+    mutationFn: ({ entry, caught }) => api(`/api/runs/${id}/caught/${entry.id}`, { method: caught ? "PUT" : "DELETE" }),
+    ...optimistic((old, { entry, caught }) => ({
+      caught: caught ? [...new Set([...old.caught, entry.id])] : old.caught.filter((c) => c !== entry.id),
+    })),
     onSettled: () => {
       // Refetch only after the last in-flight toggle, so fast taps don't flicker.
       if (queryClient.isMutating({ mutationKey: ["toggle", id] }) === 1) {
@@ -108,6 +112,17 @@ export default function Tracker() {
     [toggle.mutate], // stable across renders, keeps memoized cards from re-rendering
   );
 
+  const choose = useMutation({
+    mutationFn: ({ key, values }) => api(`/api/runs/${id}/choices/${encodeURIComponent(key)}`, { method: "PUT", body: { values } }),
+    ...optimistic((old, { key, values }) => {
+      const choices = { ...old.choices };
+      if (values.length) choices[key] = values;
+      else delete choices[key];
+      return { choices };
+    }),
+    onSuccess: (data) => patchRunCache(() => data),
+  });
+
   const bulk = useMutation({
     mutationFn: (body) => api(`/api/runs/${id}/caught`, { method: "PATCH", body }),
     onSuccess: (data) => patchRunCache(() => ({ caught: data.caught })),
@@ -116,19 +131,10 @@ export default function Tracker() {
 
   const updateRun = useMutation({
     mutationFn: (body) => api(`/api/runs/${id}`, { method: "PATCH", body }),
-    onMutate: async (body) => {
-      await queryClient.cancelQueries({ queryKey: runKey });
-      const previous = queryClient.getQueryData(runKey);
-      patchRunCache(() => body);
-      return { previous };
-    },
+    ...optimistic((_old, body) => body),
     onSuccess: (data) => {
       patchRunCache(() => data);
       queryClient.invalidateQueries({ queryKey: ["runs"] });
-    },
-    onError: (err, _body, ctx) => {
-      queryClient.setQueryData(runKey, ctx.previous);
-      setToast({ message: `Not saved: ${err.message}` });
     },
   });
 
@@ -146,32 +152,17 @@ export default function Tracker() {
   if (guideQuery.error) return <p className="error" role="alert">{guideQuery.error.message}</p>;
 
   const readOnly = !run.is_owner;
-  const filters = { query, method, missingOnly: prefs.missingOnly, showOtherVersions: prefs.showOtherVersions };
-  const keep = (entry) => matchesFilters(entry, filters, run.version, caught);
-  const filtering = Boolean(query.trim()) || method !== "all";
-  const overall = countProgress(allEntries(guide), run.version, caught);
+  const choices = run.choices ?? {};
+  const filters = { query, missingOnly: prefs.missingOnly };
+  const keep = (entry) => meetsRequirements(entry, choices) && matchesFilters(entry, filters, caught);
+  const searching = Boolean(query.trim());
+  const overall = countProgress(guide.sections, choices, caught);
   const current = Math.min(run.current_section, guide.sections.length - 1);
-  const currentSection = guide.sections[current];
   const isLast = current === guide.sections.length - 1;
-  const methodsInGuide = [...new Set(allEntries(guide).map((e) => e.method))];
-  const otherVersionCaught = allEntries(guide).filter((e) => !isInVersion(e, run.version) && caught.has(e.id)).length;
-
-  const cardProps = (entry) => {
-    const otherVersion = !isInVersion(entry, run.version);
-    return {
-      entry,
-      caught: caught.has(entry.id),
-      readOnly,
-      otherVersion,
-      versionBadge: entry.versions ? versionLabel(guide, entry.versions) : null,
-      onToggle,
-    };
-  };
-
-  // Current milestone starts open; a search or method filter opens every matching section.
-  const isOpen = (index) => openSections[index] ?? (filtering || index === current);
-
   const shareUrl = `${window.location.origin}/runs/${run.id}`;
+
+  // Current milestone starts open; a search opens every section with a match.
+  const isOpen = (index) => openSections[index] ?? (searching || index === current);
 
   return (
     <div className={styles.tracker}>
@@ -180,29 +171,26 @@ export default function Tracker() {
           <div>
             <h1 className={styles.title}>{run.title}</h1>
             <p className="muted small">
-              {guide.name} · {versionLabel(guide, [run.version])}
-              {readOnly && run.owner && <> · by {run.owner}</>}
-              {run.status !== "active" && <> · {run.status}</>}
+              {[run.title !== guide.name && guide.name, readOnly && run.owner && `by ${run.owner}`, run.status !== "active" && run.status]
+                .filter(Boolean)
+                .join(" · ")}
             </p>
           </div>
           <div className={styles.overall}>
             <span className={styles.overallCount}>{overall.caught}<span className="muted">/{overall.total}</span></span>
-            {otherVersionCaught > 0 && <span className="muted small">+{otherVersionCaught} traded</span>}
           </div>
         </div>
         <ProgressBar value={overall.caught} max={overall.total} label="Overall progress" />
         <p className={styles.nextUp}>
-          {run.status === "completed" ? "Challenge complete." : (
-            <>Working toward: <strong>{currentSection.leader ?? currentSection.label}</strong></>
-          )}
+          {run.status === "completed" ? "Challenge complete." : <>Now: <strong>{guide.sections[current].label}</strong></>}
         </p>
       </div>
 
-      {!guide.verified && (
-        <p className="notice">
-          Draft guide data. Check locations and milestones against{" "}
-          <a href={guide.source?.url} target="_blank" rel="noreferrer">{guide.source?.name ?? "the published guide"}</a>.
-        </p>
+      {guide.about && (
+        <details className={styles.about}>
+          <summary>About this guide</summary>
+          <GuideHtml html={guide.about} className={styles.prose} />
+        </details>
       )}
 
       <div className={styles.toolbar} role="search">
@@ -210,36 +198,30 @@ export default function Tracker() {
           ref={searchRef}
           type="search"
           className={styles.search}
-          placeholder="Search name, number or location ( / )"
+          placeholder="Search name, number or method ( / )"
           aria-label="Search Pokémon"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <select aria-label="Filter by method" value={method} onChange={(e) => setMethod(e.target.value)}>
-          <option value="all">All methods</option>
-          {methodsInGuide.map((m) => <option key={m} value={m}>{METHOD_LABELS[m] ?? m}</option>)}
-        </select>
         <div className={styles.segmented} role="group" aria-label="View">
-          <button type="button" aria-pressed={prefs.view === "milestone"} onClick={() => updatePrefs({ view: "milestone" })}>By gym</button>
-          <button type="button" aria-pressed={prefs.view === "location"} onClick={() => updatePrefs({ view: "location" })}>By location</button>
+          <button type="button" aria-pressed={prefs.view === "milestone"} onClick={() => updatePrefs({ view: "milestone" })}>By badge</button>
+          <button type="button" aria-pressed={prefs.view === "place"} onClick={() => updatePrefs({ view: "place" })}>By place</button>
         </div>
         <label className={styles.check}>
           <input type="checkbox" checked={prefs.missingOnly} onChange={(e) => updatePrefs({ missingOnly: e.target.checked })} />
           Missing only
-        </label>
-        <label className={styles.check}>
-          <input type="checkbox" checked={prefs.showOtherVersions} onChange={(e) => updatePrefs({ showOtherVersions: e.target.checked })} />
-          Other versions
         </label>
       </div>
 
       {prefs.view === "milestone" ? (
         <ol className={styles.sections}>
           {guide.sections.map((section, index) => {
-            const progress = countProgress(section.entries, run.version, caught);
-            const done = progress.caught === progress.total;
-            const visible = section.entries.filter(keep);
-            if (filtering && visible.length === 0) return null;
+            const eligible = eligibleEntries(section, choices);
+            const progress = { caught: eligible.filter((e) => caught.has(e.id)).length, total: eligible.length };
+            const pending = pendingChoices(section, choices);
+            const done = pending.length === 0 && progress.caught === progress.total;
+            const visible = eligible.filter((e) => matchesFilters(e, filters, caught));
+            if (searching && visible.length === 0) return null;
             const open = isOpen(index);
             const state = index < current ? "cleared" : index === current ? "current" : "upcoming";
             return (
@@ -256,7 +238,7 @@ export default function Tracker() {
                       {state === "current" && <span className="tag">Current</span>}
                       {state === "cleared" && <span className="tag tag--ok">Cleared</span>}
                     </span>
-                    {section.area && <span className="muted small">{section.area}</span>}
+                    {section.summaryShort && <span className="muted small">{section.summaryShort}</span>}
                     <span className={styles.sectionProgress}>
                       <ProgressBar value={progress.caught} max={progress.total} label={`${section.label} progress`} size="small" />
                       <span className="small tabular">{progress.caught}/{progress.total}</span>
@@ -266,42 +248,60 @@ export default function Tracker() {
 
                 {state === "current" && done && run.status === "active" && !readOnly && (
                   <div className={styles.ready}>
-                    <span>
-                      {section.leader
-                        ? <>Everything for this leg is caught. Ready for <strong>{section.leader}</strong>.</>
-                        : <>Everything in this section is caught.</>}
-                    </span>
+                    <span>Everything in this section is caught.</span>
                     <button
                       type="button"
                       className="button button--small"
                       disabled={updateRun.isPending}
                       onClick={() => updateRun.mutate(isLast ? { status: "completed" } : { current_section: current + 1 })}
                     >
-                      {isLast ? "Finish run" : section.leader ? `Beat ${section.leader}, advance` : "Advance"}
+                      {isLast ? "Finish run" : "Advance to next section"}
                     </button>
                   </div>
                 )}
 
                 {open && (
                   <div className={styles.sectionBody}>
-                    {section.entries.length === 0 ? (
-                      <p className="muted small">No new Pokémon in this leg.</p>
-                    ) : visible.length === 0 ? (
-                      <p className="muted small">Nothing left here.</p>
+                    {section.summaryHtml && (
+                      <details className={styles.notes} open={section.summaryOpen}>
+                        <summary>Guide notes</summary>
+                        <GuideHtml html={section.summaryHtml} className={styles.prose} />
+                      </details>
+                    )}
+
+                    {section.choices.map((choice) => (
+                      <ChoiceBlock
+                        key={choice.key}
+                        guide={guide}
+                        choice={choice}
+                        selected={choices[choice.key]}
+                        readOnly={readOnly}
+                        onChange={(key, values) => choose.mutate({ key, values })}
+                      />
+                    ))}
+                    {pending.length > 0 && !readOnly && (
+                      <p className="muted small">Make the choices above to show every Pokémon in this section.</p>
+                    )}
+
+                    {visible.length === 0 ? (
+                      <p className="muted small">{eligible.length === 0 ? "No Pokémon to show yet." : "Nothing left here."}</p>
                     ) : (
                       <ul className={styles.grid}>
-                        {visible.map((entry) => <PokemonCard key={entry.id} {...cardProps(entry)} showLocation />)}
+                        {visible.map((entry) => (
+                          <PokemonCard key={entry.id} guide={guide} entry={entry} caught={caught.has(entry.id)} readOnly={readOnly} onToggle={onToggle} />
+                        ))}
                       </ul>
                     )}
+
                     {!readOnly && (
                       <div className={styles.sectionActions}>
-                        {!done && (
+                        {progress.caught < progress.total && (
                           <button
                             type="button"
                             className="link-button small"
                             disabled={bulk.isPending}
                             onClick={() => {
-                              const ids = section.entries.filter((e) => isInVersion(e, run.version) && !caught.has(e.id)).map((e) => e.id);
+                              const ids = eligible.filter((e) => !caught.has(e.id)).map((e) => e.id);
                               if (window.confirm(`Mark ${ids.length} Pokémon in "${section.label}" as caught?`)) bulk.mutate({ add: ids });
                             }}
                           >
@@ -309,11 +309,7 @@ export default function Tracker() {
                           </button>
                         )}
                         {state !== "current" && run.status === "active" && (
-                          <button
-                            type="button"
-                            className="link-button small"
-                            onClick={() => updateRun.mutate({ current_section: index })}
-                          >
+                          <button type="button" className="link-button small" onClick={() => updateRun.mutate({ current_section: index })}>
                             Set as current
                           </button>
                         )}
@@ -327,10 +323,10 @@ export default function Tracker() {
         </ol>
       ) : (
         <div className={styles.sections}>
-          {groupByLocation(guide, keep).map((group) => (
-            <section key={group.location} className={styles.section}>
-              <h2 className={styles.locationHead}>
-                {group.location}
+          {groupByPlace(guide.sections, keep).map((group) => (
+            <section key={group.place} className={styles.section}>
+              <h2 className={styles.placeHead}>
+                {group.place}
                 <span className="muted small tabular">
                   {group.entries.filter((x) => caught.has(x.entry.id)).length}/{group.entries.length}
                 </span>
@@ -338,10 +334,13 @@ export default function Tracker() {
               <ul className={styles.grid}>
                 {group.entries.map(({ entry, sectionIndex }) => (
                   <PokemonCard
-                    key={entry.id}
-                    {...cardProps(entry)}
-                    showLocation={group.location === EVOLUTIONS_GROUP}
+                    key={`${entry.id}-${sectionIndex}`}
+                    guide={guide}
+                    entry={entry}
+                    caught={caught.has(entry.id)}
+                    readOnly={readOnly}
                     sectionLabel={guide.sections[sectionIndex].label}
+                    onToggle={onToggle}
                   />
                 ))}
               </ul>
@@ -354,11 +353,7 @@ export default function Tracker() {
         <section className={styles.share}>
           <h2>Sharing</h2>
           <label className={styles.check}>
-            <input
-              type="checkbox"
-              checked={run.is_public}
-              onChange={(e) => updateRun.mutate({ is_public: e.target.checked })}
-            />
+            <input type="checkbox" checked={run.is_public} onChange={(e) => updateRun.mutate({ is_public: e.target.checked })} />
             Anyone with the link can view this run (read-only)
           </label>
           {run.is_public && (
@@ -375,6 +370,18 @@ export default function Tracker() {
           )}
         </section>
       )}
+
+      <p className="muted small">
+        Guide:{" "}
+        {guide.source?.guide?.url
+          ? <a href={guide.source.guide.url} target="_blank" rel="noreferrer">{guide.source.guide.name}</a>
+          : guide.source?.guide?.name}
+        {guide.source?.data && (
+          <>
+            {" · "}Data: <a href={guide.source.data.url} target="_blank" rel="noreferrer">{guide.source.data.name}</a> ({guide.source.data.license})
+          </>
+        )}
+      </p>
 
       <div className={styles.toastRegion} role="status" aria-live="polite">
         {toast && (

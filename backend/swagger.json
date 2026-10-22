@@ -340,16 +340,12 @@
                   "game_id": {
                     "type": "string"
                   },
-                  "version": {
-                    "type": "string"
-                  },
                   "title": {
                     "type": "string"
                   }
                 },
                 "required": [
-                  "game_id",
-                  "version"
+                  "game_id"
                 ]
               }
             }
@@ -574,7 +570,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "Guide entry id, e.g. 0025"
+            "description": "Guide entry id, e.g. pikachu"
           }
         ]
       },
@@ -614,6 +610,70 @@
             }
           }
         ]
+      }
+    },
+    "/api/runs/{id}/choices/{key}": {
+      "put": {
+        "tags": [
+          "Runs"
+        ],
+        "summary": "Set a guide choice (starter, fossil, ...). Empty list clears it",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Choice key, e.g. starter"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "values": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "values"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated run"
+          },
+          "400": {
+            "description": "Unknown choice, bad value or over the limit"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
       }
     }
   },

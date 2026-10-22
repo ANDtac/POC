@@ -2,7 +2,7 @@ import request from "supertest";
 import { app } from "../src/app.js";
 import { sequelize } from "../src/models/sequelize.js";
 import { Run, Caught } from "../src/models/index.js";
-import { getGuide, validateGuide } from "../src/guides/catalog.js";
+import { validateGuide } from "../src/guides/catalog.js";
 
 const password = "Password1";
 
@@ -86,12 +86,14 @@ describe("Games catalog", () => {
     expect((await request(app).get("/api/games/nope")).status).toBe(404);
   });
 
-  test("validateGuide rejects unknown methods and duplicate entries", () => {
-    const base = { id: "g", name: "G", versions: [{ id: "a", name: "A" }] };
-    const entry = { id: "0001", name: "Bulbasaur", location: "Lab", method: "gift" };
-    expect(() => validateGuide({ ...base, sections: [{ id: "s", label: "S", entries: [{ ...entry, method: "teleport" }] }] })).toThrow();
-    expect(() => validateGuide({ ...base, sections: [{ id: "s", label: "S", entries: [entry, entry] }] })).toThrow();
-    expect(() => validateGuide({ ...base, sections: [{ id: "s", label: "S", entries: [{ ...entry, versions: ["z"] }] }] })).toThrow();
+  test("validateGuide rejects bad ids, bad choices and dangling requirements", () => {
+    const base = { id: "g", name: "G", versions: [{ id: "g", name: "G" }] };
+    const entry = { id: "bulbasaur", name: "Bulbasaur", method: "Gift" };
+    const section = (extra) => ({ ...base, sections: [{ id: "s", label: "S", choices: [], entries: [entry], ...extra }] });
+    expect(() => validateGuide(section({}))).not.toThrow();
+    expect(() => validateGuide(section({ entries: [{ ...entry, id: "Bad Id" }] }))).toThrow();
+    expect(() => validateGuide(section({ choices: [{ key: "k", cap: 0, options: [{ value: "x" }] }] }))).toThrow();
+    expect(() => validateGuide(section({ entries: [{ ...entry, requires: [{ key: "starter", value: "x" }] }] }))).toThrow();
   });
 });
 
@@ -106,35 +108,55 @@ describe("Runs", () => {
   });
 
   test("create validates game and version", async () => {
-    expect((await request(app).post("/api/runs").set(owner.auth).send({ game_id: "nope", version: "a" })).status).toBe(400);
-    expect((await request(app).post("/api/runs").set(owner.auth).send({ game_id: "fixture", version: "z" })).status).toBe(400);
-    const res = await request(app).post("/api/runs").set(owner.auth).send({ game_id: "fixture", version: "a" });
+    expect((await request(app).post("/api/runs").set(owner.auth).send({ game_id: "nope" })).status).toBe(400);
+    expect((await request(app).post("/api/runs").set(owner.auth).send({ game_id: "fixture", version: "zzz" })).status).toBe(400);
+    const res = await request(app).post("/api/runs").set(owner.auth).send({ game_id: "fixture" });
     expect(res.status).toBe(201);
-    expect(res.body.title).toBe("Fixture Game: Version A");
-    // A version-A run leaves version-B exclusives out of the total
-    const guide = getGuide("fixture");
-    const all = guide.sections.flatMap((s) => s.entries);
-    expect(res.body.progress).toEqual({ caught: 0, total: all.length - 1 });
+    expect(res.body.title).toBe("Fixture Game");
+    expect(res.body.version).toBe("fixture");
+    // Starter rows are gated until a starter is chosen
+    expect(res.body.progress).toEqual({ caught: 0, total: 5 });
     runId = res.body.id;
   });
 
   test("mark and unmark caught are idempotent", async () => {
     for (let i = 0; i < 2; i += 1) {
-      expect((await request(app).put(`/api/runs/${runId}/caught/0025`).set(owner.auth)).status).toBe(200);
+      expect((await request(app).put(`/api/runs/${runId}/caught/pikachu`).set(owner.auth)).status).toBe(200);
     }
     let run = await request(app).get(`/api/runs/${runId}`).set(owner.auth);
-    expect(run.body.caught).toEqual(["0025"]);
+    expect(run.body.caught).toEqual(["pikachu"]);
     expect(run.body.progress.caught).toBe(1);
 
     for (let i = 0; i < 2; i += 1) {
-      expect((await request(app).delete(`/api/runs/${runId}/caught/0025`).set(owner.auth)).status).toBe(200);
+      expect((await request(app).delete(`/api/runs/${runId}/caught/pikachu`).set(owner.auth)).status).toBe(200);
     }
     run = await request(app).get(`/api/runs/${runId}`).set(owner.auth);
     expect(run.body.caught).toEqual([]);
   });
 
+  test("choices gate rows and respect caps", async () => {
+    const pick = (key, values) => request(app).put(`/api/runs/${runId}/choices/${key}`).set(owner.auth).send({ values });
+    let res = await pick("starter", ["charmander"]);
+    expect(res.status).toBe(200);
+    expect(res.body.choices).toEqual({ starter: ["charmander"] });
+    // charmander row unlocked, spearow hidden by requiresNot
+    expect(res.body.progress.total).toBe(5);
+
+    res = await pick("starter", ["bulbasaur"]);
+    expect(res.body.progress.total).toBe(6);
+
+    expect((await pick("starter", ["bulbasaur", "charmander"])).status).toBe(400);
+    expect((await pick("starter", ["squirtle"])).status).toBe(400);
+    expect((await pick("nope", ["a"])).status).toBe(400);
+    expect((await pick("stones", ["a", "c"])).status).toBe(200);
+    expect((await pick("stones", ["a", "b", "c"])).status).toBe(400);
+
+    res = await pick("stones", []);
+    expect(res.body.choices).toEqual({ starter: ["bulbasaur"] });
+  });
+
   test("rejects Pokemon that are not in the guide", async () => {
-    const res = await request(app).put(`/api/runs/${runId}/caught/0152`).set(owner.auth);
+    const res = await request(app).put(`/api/runs/${runId}/caught/mewtwo`).set(owner.auth);
     expect(res.status).toBe(400);
   });
 
@@ -142,11 +164,11 @@ describe("Runs", () => {
     const res = await request(app)
       .patch(`/api/runs/${runId}/caught`)
       .set(owner.auth)
-      .send({ add: ["0016", "0019", "0016"], remove: [] });
-    expect(res.body.caught).toEqual(["0016", "0019"]);
-    const removed = await request(app).patch(`/api/runs/${runId}/caught`).set(owner.auth).send({ remove: ["0016"] });
-    expect(removed.body.caught).toEqual(["0019"]);
-    const bad = await request(app).patch(`/api/runs/${runId}/caught`).set(owner.auth).send({ add: ["9999"] });
+      .send({ add: ["pidgey", "rattata", "pidgey"], remove: [] });
+    expect(res.body.caught).toEqual(["pidgey", "rattata"]);
+    const removed = await request(app).patch(`/api/runs/${runId}/caught`).set(owner.auth).send({ remove: ["pidgey"] });
+    expect(removed.body.caught).toEqual(["rattata"]);
+    const bad = await request(app).patch(`/api/runs/${runId}/caught`).set(owner.auth).send({ add: ["missingno"] });
     expect(bad.status).toBe(400);
   });
 
@@ -165,7 +187,7 @@ describe("Runs", () => {
     expect(shared.body.is_owner).toBe(false);
     expect(shared.body.owner).toBe("red");
 
-    expect((await request(app).put(`/api/runs/${runId}/caught/0001`).set(other.auth)).status).toBe(404);
+    expect((await request(app).put(`/api/runs/${runId}/caught/pidgey`).set(other.auth)).status).toBe(404);
     expect((await request(app).patch(`/api/runs/${runId}`).set(other.auth).send({ title: "mine" })).status).toBe(404);
   });
 

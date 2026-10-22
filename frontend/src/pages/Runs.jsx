@@ -39,7 +39,7 @@ export default function Runs() {
               <Link to={`/runs/${run.id}`} className="run-card__link">
                 <span className="run-card__title">{run.title}</span>
                 <span className="muted small">
-                  {run.game_name} · {run.version} · updated {dateFormat.format(new Date(run.updatedAt))}
+                  {run.game_name} · updated {dateFormat.format(new Date(run.updatedAt))}
                   {run.is_public && " · public"}
                   {run.status !== "active" && ` · ${run.status}`}
                 </span>

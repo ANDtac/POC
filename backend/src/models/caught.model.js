@@ -11,12 +11,12 @@ export const Caught = sequelize.define("Caught", {
     type: DataTypes.UUID,
     allowNull: false,
   },
-  // Guide entry id: national dex number, optionally with a form suffix ("0052", "0052-alola").
+  // Guide entry id: the Pokémon's name as a slug ("bulbasaur", "nidoran-f", "mr-mime").
   pokemon_id: {
-    type: DataTypes.STRING(24),
+    type: DataTypes.STRING(40),
     allowNull: false,
     validate: {
-      is: /^\d{4}(-[a-z]+)?$/,
+      is: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
     },
   },
 }, {

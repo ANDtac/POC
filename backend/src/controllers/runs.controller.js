@@ -2,23 +2,9 @@ import { sequelize } from "../models/sequelize.js";
 import { Run, RUN_STATUSES } from "../models/run.model.js";
 import { Caught } from "../models/caught.model.js";
 import { User } from "../models/user.model.js";
-import { getGuide, findEntry, isInVersion } from "../guides/catalog.js";
+import { getGuide, guideIndex, progressOf } from "../guides/catalog.js";
 
 const TITLE_MAX = 60;
-
-const progressOf = (guide, version, caughtIds) => {
-  const caught = new Set(caughtIds);
-  let total = 0;
-  let done = 0;
-  for (const section of guide.sections) {
-    for (const entry of section.entries) {
-      if (!isInVersion(entry, version)) continue;
-      total += 1;
-      if (caught.has(entry.id)) done += 1;
-    }
-  }
-  return { caught: done, total };
-};
 
 const serializeRun = (run, caughtIds, extra = {}) => {
   const guide = getGuide(run.game_id);
@@ -29,11 +15,12 @@ const serializeRun = (run, caughtIds, extra = {}) => {
     version: run.version,
     title: run.title,
     current_section: run.current_section,
+    choices: run.choices ?? {},
     status: run.status,
     is_public: run.is_public,
     createdAt: run.createdAt,
     updatedAt: run.updatedAt,
-    progress: guide ? progressOf(guide, run.version, caughtIds) : { caught: caughtIds.length, total: 0 },
+    progress: guide ? progressOf(guide, run.choices ?? {}, caughtIds) : { caught: caughtIds.length, total: 0 },
     ...extra,
   };
 };
@@ -69,12 +56,13 @@ export const createRun = async (req, res) => {
   const { game_id, version, title } = req.body ?? {};
   const guide = getGuide(game_id);
   if (!guide) return res.status(400).json({ error: "Unknown game" });
-  const versionInfo = guide.versions.find((v) => v.id === version);
+  const versionInfo = guide.versions.find((v) => v.id === version)
+    ?? (version === undefined && guide.versions.length === 1 ? guide.versions[0] : null);
   if (!versionInfo) return res.status(400).json({ error: `Version must be one of: ${guide.versions.map((v) => v.id).join(", ")}` });
-  const name = (title ?? "").trim() || `${guide.name}: ${versionInfo.name}`;
+  const name = (title ?? "").trim() || (guide.versions.length > 1 ? `${guide.name}: ${versionInfo.name}` : guide.name);
   if (name.length > TITLE_MAX) return res.status(400).json({ error: `Title must be at most ${TITLE_MAX} characters` });
 
-  const run = await Run.create({ user_id: req.user.id, game_id, version, title: name });
+  const run = await Run.create({ user_id: req.user.id, game_id, version: versionInfo.id, title: name });
   res.status(201).json(serializeRun(run, []));
 };
 
@@ -128,8 +116,27 @@ export const deleteRun = async (req, res) => {
 };
 
 const unknownEntries = (run, ids) => {
-  const guide = getGuide(run.game_id);
-  return ids.filter((id) => typeof id !== "string" || !findEntry(guide, id));
+  const { entryIds } = guideIndex(getGuide(run.game_id));
+  return ids.filter((id) => typeof id !== "string" || !entryIds.has(id));
+};
+
+// PUT the selected values for one choice block (starter, fossil, Moon Stones...). Empty list clears it.
+export const setChoice = async (req, res) => {
+  const { key } = req.params;
+  const { values } = req.body ?? {};
+  const def = guideIndex(getGuide(req.run.game_id)).choices.get(key);
+  if (!def) return res.status(400).json({ error: `Unknown choice ${key}` });
+  if (!Array.isArray(values) || values.some((v) => !def.values.has(v)) || new Set(values).size !== values.length) {
+    return res.status(400).json({ error: `values must be distinct options of ${key}` });
+  }
+  if (values.length > def.cap) return res.status(400).json({ error: `Choose at most ${def.cap} for ${key}` });
+
+  const choices = { ...(req.run.choices ?? {}) };
+  if (values.length) choices[key] = values;
+  else delete choices[key];
+  req.run.choices = choices;
+  await req.run.save();
+  res.json(serializeRun(req.run, await caughtIdsOf(req.run.id)));
 };
 
 // PUT mark one Pokemon caught (idempotent)

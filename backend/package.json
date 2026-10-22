@@ -7,7 +7,8 @@
   "scripts": {
     "test": "jest",
     "start": "node --env-file-if-exists=.env server.js",
-    "dev": "nodemon --exec \"node --env-file-if-exists=.env\" server.js"
+    "dev": "nodemon --exec \"node --env-file-if-exists=.env\" server.js",
+    "import-guides": "node scripts/import-oak-tracker.js"
   },
   "repository": {
     "type": "git",

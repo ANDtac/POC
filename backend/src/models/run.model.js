@@ -38,6 +38,12 @@ export const Run = sequelize.define("Run", {
     defaultValue: "active",
     validate: { isIn: [RUN_STATUSES] },
   },
+  // Choice selections, e.g. { starter: ["bulbasaur"], "moon-stone-1": ["nidoqueen", "clefable"] }.
+  choices: {
+    type: DataTypes.JSON,
+    allowNull: false,
+    defaultValue: {},
+  },
   is_public: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
