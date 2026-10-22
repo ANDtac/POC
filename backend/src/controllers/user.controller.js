@@ -1,31 +1,18 @@
 import bcrypt from "bcrypt";
 import { User } from "../models/user.model.js";
-import { UserGuide } from "../models/userGuide.model.js";
+import { emailRegex, usernameRegex, passwordRegex, messages } from "../validation.js";
 
-User.hasMany(UserGuide, { foreignKey: "user_id" });
-UserGuide.belongsTo(User, { foreignKey: "user_id" });
-
-
-// GET user by ID
+// GET user by ID (public: no email)
 export const getUserById = async (req, res) => {
-  try {
-    const user = await User.findByPk(req.params.id, {
-      attributes: ["id", "username", "email"]
-    });
-    if (!user) return res.status(404).json({ error: "User not found" });
-    res.json(user);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+  const user = await User.findByPk(req.params.id, { attributes: ["id", "username"] });
+  if (!user) return res.status(404).json({ error: "User not found" });
+  res.json(user);
 };
-// GET all users
+
+// GET all users (authenticated, no emails)
 export const getAllUsers = async (req, res) => {
-  try {
-    const users = await User.findAll({ attributes: ["id", "username", "email"] });
-    res.json(users);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+  const users = await User.findAll({ attributes: ["id", "username"], order: [["username", "ASC"]] });
+  res.json(users);
 };
 
 // GET account
@@ -34,39 +21,43 @@ export const getProfile = (req, res) => {
   res.json({ id, username, email });
 };
 
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const usernameMaxLength = 20;
-const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
-
 // PATCH profile
 export const updateProfile = async (req, res) => {
-  const { username, email, password } = req.body;
-  // Validation
-  if (username && username.length > usernameMaxLength) {
-    return res.status(400).json({ error: "Username must be max 20 characters" });
+  const { username, email, password, current_password } = req.body ?? {};
+  if (username !== undefined && !usernameRegex.test(username)) {
+    return res.status(400).json({ error: messages.username });
   }
-  if (email && !emailRegex.test(email)) {
-    return res.status(400).json({ error: "Invalid email format" });
+  if (email !== undefined && !emailRegex.test(email)) {
+    return res.status(400).json({ error: messages.email });
   }
-  if (password && !passwordRegex.test(password)) {
-    return res.status(400).json({ error: "Password must be at least 8 characters, contain one uppercase letter and one number" });
+  if (password !== undefined) {
+    if (!passwordRegex.test(password)) {
+      return res.status(400).json({ error: messages.password });
+    }
+    // Changing the password requires the old one, so a stolen token can't lock the owner out.
+    if (!current_password || !(await bcrypt.compare(current_password, req.user.password))) {
+      return res.status(401).json({ error: "Current password is incorrect" });
+    }
   }
 
-  if (username) req.user.username = username;
-  if (email) req.user.email = email;
-  if (password) req.user.password = await bcrypt.hash(password, 10);
-  await req.user.save();
+  if (username !== undefined) req.user.username = username;
+  if (email !== undefined) req.user.email = email.toLowerCase();
+  if (password !== undefined) req.user.password = await bcrypt.hash(password, 10);
+  try {
+    await req.user.save();
+  } catch (err) {
+    if (err.name === "SequelizeUniqueConstraintError") {
+      return res.status(409).json({ error: "Username or email already in use" });
+    }
+    throw err;
+  }
   res.json({
     message: "Profile updated",
-    user: {
-      id: req.user.id,
-      username: req.user.username,
-      email: req.user.email,
-    },
+    user: { id: req.user.id, username: req.user.username, email: req.user.email },
   });
 };
 
-// DELETE account
+// DELETE account (runs and catches cascade)
 export const deleteProfile = async (req, res) => {
   await req.user.destroy();
   res.json({ message: "Account deleted" });

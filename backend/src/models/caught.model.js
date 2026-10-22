@@ -7,22 +7,23 @@ export const Caught = sequelize.define("Caught", {
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
-  guide_id: {
+  run_id: {
     type: DataTypes.UUID,
     allowNull: false,
   },
+  // Guide entry id: national dex number, optionally with a form suffix ("0052", "0052-alola").
   pokemon_id: {
-    type: DataTypes.STRING(3),
+    type: DataTypes.STRING(24),
     allowNull: false,
-    validate : {
-      is: /^[0-9]{3}$/,
+    validate: {
+      is: /^\d{4}(-[a-z]+)?$/,
     },
   },
 }, {
   indexes: [
     {
       unique: true,
-      fields: ["guide_id", "pokemon_id"],
+      fields: ["run_id", "pokemon_id"],
     },
   ],
 });

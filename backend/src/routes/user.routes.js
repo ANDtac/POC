@@ -5,7 +5,7 @@ import { getProfile, updateProfile, deleteProfile, getAllUsers, getUserById } fr
 const router = Router();
 
 router.get("/", verifyToken, getProfile);
-router.get("/all", getAllUsers);
+router.get("/all", verifyToken, getAllUsers);
 router.get("/:id", getUserById);
 router.patch("/", verifyToken, updateProfile);
 router.delete("/", verifyToken, deleteProfile);

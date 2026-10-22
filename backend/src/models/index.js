@@ -1,10 +1,12 @@
 import { User } from "./user.model.js";
-import { UserGuide } from "./userGuide.model.js";
+import { Run } from "./run.model.js";
 import { Caught } from "./caught.model.js";
 
 // Table links
-User.hasMany(UserGuide, { foreignKey: "user_id", onDelete: "CASCADE" });
-UserGuide.belongsTo(User, { foreignKey: "user_id" });
+User.hasMany(Run, { foreignKey: "user_id", onDelete: "CASCADE" });
+Run.belongsTo(User, { foreignKey: "user_id" });
 
-UserGuide.hasMany(Caught, { foreignKey: "guide_id", onDelete: "CASCADE" });
-Caught.belongsTo(UserGuide, { foreignKey: "guide_id" });
+Run.hasMany(Caught, { foreignKey: "run_id", onDelete: "CASCADE" });
+Caught.belongsTo(Run, { foreignKey: "run_id" });
+
+export { User, Run, Caught };

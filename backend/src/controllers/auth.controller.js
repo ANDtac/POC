@@ -1,54 +1,46 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { getJwtSecret, TOKEN_TTL } from "../config.js";
 import { User } from "../models/user.model.js";
+import { emailRegex, usernameRegex, passwordRegex, messages } from "../validation.js";
 
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const usernameMaxLength = 20;
-const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+const publicUser = (user) => ({ id: user.id, username: user.username, email: user.email });
+
+const signToken = (user) => jwt.sign({ id: user.id }, getJwtSecret(), { expiresIn: TOKEN_TTL });
 
 export const register = async (req, res) => {
-  const { username, email, password } = req.body;
-  // Validation
-  if (!emailRegex.test(email)) {
-    return res.status(400).json({ error: "Invalid email format" });
+  const { username, email, password } = req.body ?? {};
+  if (!usernameRegex.test(username ?? "")) {
+    return res.status(400).json({ error: messages.username });
   }
-  if (!username || username.length > usernameMaxLength) {
-    return res.status(400).json({ error: "Username must be max 20 characters" });
+  if (!emailRegex.test(email ?? "")) {
+    return res.status(400).json({ error: messages.email });
   }
-  if (!passwordRegex.test(password)) {
-    return res.status(400).json({ error: "Password must be at least 8 characters, contain one uppercase letter and one number" });
+  if (!passwordRegex.test(password ?? "")) {
+    return res.status(400).json({ error: messages.password });
   }
   try {
     const hashed = await bcrypt.hash(password, 10);
-    const user = await User.create({ username, email, password: hashed });
-    res.json({
-      message: "User registered",
-      user: { id: user.id, username, email },
-    });
+    const user = await User.create({ username, email: email.toLowerCase(), password: hashed });
+    res.status(201).json({ message: "User registered", token: signToken(user), user: publicUser(user) });
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    if (err.name === "SequelizeUniqueConstraintError") {
+      return res.status(409).json({ error: "Username or email already in use" });
+    }
+    throw err;
   }
 };
 
 export const login = async (req, res) => {
-  const { email, password } = req.body;
-  try {
-    const user = await User.findOne({ where: { email } });
-    if (!user) return res.status(400).json({ error: "User not found" });
-
-    const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return res.status(401).json({ error: "Invalid password" });
-
-    const token = jwt.sign({ id: user.id, email: user.email }, "secretkey", {
-      expiresIn: "7d",
-    });
-    res.json({ message: "Logged in", token });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+  const { email, password } = req.body ?? {};
+  const user = email && await User.findOne({ where: { email: email.toLowerCase() } });
+  // Same response for unknown email and wrong password, so accounts can't be enumerated.
+  if (!user || !password || !(await bcrypt.compare(password, user.password))) {
+    return res.status(401).json({ error: "Invalid email or password" });
   }
+  res.json({ message: "Logged in", token: signToken(user), user: publicUser(user) });
 };
 
 export const verifyTokenEndpoint = (req, res) => {
-  res.json({ message: "Token is valid", user: { id: req.user.id, email: req.user.email, username: req.user.username } });
+  res.json({ message: "Token is valid", user: publicUser(req.user) });
 };
-

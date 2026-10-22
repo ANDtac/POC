@@ -41,3 +41,7 @@ swagger.yaml
 
 # Docker
 docker-compose.override.yml
+
+# Local env and database
+.env
+*.sqlite

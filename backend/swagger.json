@@ -1,9 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "POC API",
-    "version": "1.0.0",
-    "description": "Documentation de l'API POC"
+    "title": "Professor Oak Challenge API",
+    "version": "2.0.0"
   },
   "paths": {
     "/api/auth/register": {
@@ -11,7 +10,18 @@
         "tags": [
           "Auth"
         ],
-        "summary": "Register a new user",
+        "summary": "Register and receive a JWT",
+        "responses": {
+          "201": {
+            "description": "Registered; returns token and user"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "409": {
+            "description": "Username or email in use"
+          }
+        },
         "requestBody": {
           "required": true,
           "content": {
@@ -38,14 +48,6 @@
               }
             }
           }
-        },
-        "responses": {
-          "200": {
-            "description": "User registered successfully"
-          },
-          "400": {
-            "description": "Validation error"
-          }
         }
       }
     },
@@ -55,6 +57,14 @@
           "Auth"
         ],
         "summary": "Login with email and password",
+        "responses": {
+          "200": {
+            "description": "Returns token and user"
+          },
+          "401": {
+            "description": "Invalid email or password"
+          }
+        },
         "requestBody": {
           "required": true,
           "content": {
@@ -70,22 +80,11 @@
                   }
                 },
                 "required": [
-                  "identifier",
+                  "email",
                   "password"
                 ]
               }
             }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Logged in successfully"
-          },
-          "400": {
-            "description": "User not found or invalid credentials"
-          },
-          "401": {
-            "description": "Invalid password"
           }
         }
       }
@@ -95,151 +94,61 @@
         "tags": [
           "Auth"
         ],
-        "summary": "Verify JWT token",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "summary": "Verify JWT and return the user",
         "responses": {
           "200": {
             "description": "Token is valid"
           },
           "401": {
-            "description": "Unauthorized / token invalid"
+            "description": "Unauthorized"
           }
-        }
-      }
-    },
-    "/api/user/": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "summary": "Get current authenticated user",
+        },
         "security": [
           {
             "bearerAuth": []
           }
+        ]
+      }
+    },
+    "/api/user": {
+      "get": {
+        "tags": [
+          "User"
         ],
+        "summary": "Current user profile",
         "responses": {
           "200": {
-            "description": "Authenticated user info",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "username": {
-                      "type": "string"
-                    },
-                    "email": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
+            "description": "Profile"
           },
           "401": {
             "description": "Unauthorized"
           }
-        }
-      }
-    },
-    "/api/user/{id}": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "summary": "Get user by ID",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "User ID"
-          }
-        ],
+        },
         "security": [
           {
             "bearerAuth": []
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "User found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "username": {
-                      "type": "string"
-                    },
-                    "email": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "User not found"
-          }
-        }
-      }
-    },
-    "/api/user/all": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "summary": "Get all users",
-        "responses": {
-          "200": {
-            "description": "List of users",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "integer"
-                      },
-                      "username": {
-                        "type": "string"
-                      },
-                      "email": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/user": {
+        ]
+      },
       "patch": {
         "tags": [
           "User"
         ],
-        "summary": "Update user profile",
+        "summary": "Update profile (password change needs current_password)",
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "Unauthorized or wrong current password"
+          },
+          "409": {
+            "description": "Username or email in use"
+          }
+        },
         "security": [
           {
             "bearerAuth": []
@@ -256,23 +165,17 @@
                     "type": "string"
                   },
                   "email": {
-                    "type": "string",
-                    "format": "email"
+                    "type": "string"
                   },
                   "password": {
+                    "type": "string"
+                  },
+                  "current_password": {
                     "type": "string"
                   }
                 }
               }
             }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Profile updated"
-          },
-          "400": {
-            "description": "Validation error"
           }
         }
       },
@@ -280,387 +183,145 @@
         "tags": [
           "User"
         ],
-        "summary": "Delete user account",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "summary": "Delete account, its runs and catches",
         "responses": {
           "200": {
-            "description": "Account deleted"
+            "description": "Deleted"
           },
           "401": {
             "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/api/userGuides": {
-      "post": {
-        "tags": [
-          "Guides"
-        ],
-        "summary": "Add a guide for the authenticated user",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "guide": {
-                    "type": "string",
-                    "description": "Guide name"
-                  }
-                },
-                "required": [
-                  "guide"
-                ]
-              }
-            }
           }
         },
-        "responses": {
-          "201": {
-            "description": "Guide added",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string"
-                    },
-                    "userGuide": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string",
-                          "description": "Guide UUID"
-                        },
-                        "user_id": {
-                          "type": "string",
-                          "description": "User UUID"
-                        },
-                        "guide": {
-                          "type": "string",
-                          "description": "Guide name"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Guide name required"
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/api/UserGuides/all": {
-      "get": {
-        "tags": [
-          "Guides"
-        ],
-        "summary": "Get all user guides",
-        "responses": {
-          "200": {
-            "description": "List of user guides",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "description": "Guide UUID"
-                      },
-                      "user_id": {
-                        "type": "string",
-                        "description": "User UUID"
-                      },
-                      "guide": {
-                        "type": "string",
-                        "description": "Guide name"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/userGuides/{user_id}": {
-      "get": {
-        "tags": [
-          "Guides"
-        ],
-        "summary": "Get guides by user_id",
         "security": [
           {
             "bearerAuth": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "user_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "User UUID"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of guides for user_id",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "user_id": {
-                        "type": "string"
-                      },
-                      "guide": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "User not found"
-          }
-        }
+        ]
       }
     },
-    "/api/userGuides/guide/{guide}": {
+    "/api/user/all": {
       "get": {
         "tags": [
-          "Guides"
+          "User"
         ],
-        "summary": "Get guides by guide name",
-        "parameters": [
-          {
-            "name": "guide",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Guide name"
-          }
-        ],
+        "summary": "List users (id, username)",
         "responses": {
           "200": {
-            "description": "List of guides for guide name",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "user_id": {
-                        "type": "string"
-                      },
-                      "guide": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/userGuides/username/{user_name}": {
-      "get": {
-        "tags": [
-          "Guides"
-        ],
-        "summary": "Get guides by user_name (no token)",
-        "parameters": [
-          {
-            "name": "user_name",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "User name"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of guides for user_name",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "user_id": {
-                        "type": "string"
-                      },
-                      "guide": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "User not found"
-          }
-        }
-      }
-    },
-    "/api/userGuides/{user_id}/{guide_id}": {
-      "delete": {
-        "tags": [
-          "Guides"
-        ],
-        "summary": "Delete a guide (only if user is owner)",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "user_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "User UUID (must match token)"
-          },
-          {
-            "name": "guide_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Guide UUID"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Guide deleted"
-          },
-          "403": {
-            "description": "Forbidden: You can only delete your own guides."
-          },
-          "404": {
-            "description": "Guide not found or not yours"
+            "description": "Users"
           },
           "401": {
             "description": "Unauthorized"
           }
-        }
-      }
-    },
-    "/api/caught/list/{guide_id}": {
-      "get": {
-        "tags": [
-          "Caught"
-        ],
-        "summary": "Get all Pokémon caught in a guide (owned by connected user)",
+        },
         "security": [
           {
             "bearerAuth": []
           }
+        ]
+      }
+    },
+    "/api/user/{id}": {
+      "get": {
+        "tags": [
+          "User"
         ],
+        "summary": "Public user lookup (id, username)",
+        "responses": {
+          "200": {
+            "description": "User"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
         "parameters": [
           {
-            "name": "guide_id",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/games": {
+      "get": {
+        "tags": [
+          "Games"
+        ],
+        "summary": "List games with a challenge guide",
+        "responses": {
+          "200": {
+            "description": "Games"
+          }
+        }
+      }
+    },
+    "/api/games/{id}": {
+      "get": {
+        "tags": [
+          "Games"
+        ],
+        "summary": "Full guide: versions, sections, entries",
+        "responses": {
+          "200": {
+            "description": "Guide"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "description": "Guide UUID"
+            "description": "e.g. red-blue"
           }
+        ]
+      }
+    },
+    "/api/runs": {
+      "get": {
+        "tags": [
+          "Runs"
         ],
+        "summary": "List my runs with progress",
         "responses": {
           "200": {
-            "description": "List of Pokémon IDs caught in the guide",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "guide_id": {
-                      "type": "string"
-                    },
-                    "pokemons": {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "description": "Pokémon ID (format '001' à '151')"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Guide not found"
-          },
-          "403": {
-            "description": "Access denied to this guide"
+            "description": "Runs"
           },
           "401": {
             "description": "Unauthorized"
           }
-        }
-      }
-    },
-    "/api/caught": {
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
       "post": {
         "tags": [
-          "Caught"
+          "Runs"
         ],
-        "summary": "Add a caught Pokémon for the authenticated user and guide",
+        "summary": "Start a run",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Unknown game or version"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
         "security": [
           {
             "bearerAuth": []
@@ -673,52 +334,164 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "guide_id": {
-                    "type": "string",
-                    "description": "Guide UUID"
+                  "game_id": {
+                    "type": "string"
                   },
-                  "pokemon_id": {
-                    "type": "string",
-                    "description": "Pokémon ID (format '001' à '151')"
+                  "version": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
                   }
                 },
                 "required": [
-                  "guide_id",
-                  "pokemon_id"
+                  "game_id",
+                  "version"
                 ]
               }
             }
           }
-        },
+        }
+      }
+    },
+    "/api/runs/{id}": {
+      "get": {
+        "tags": [
+          "Runs"
+        ],
+        "summary": "Run with caught list. Owner, or anyone when is_public",
         "responses": {
-          "201": {
-            "description": "Pokémon caught",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string"
-                    }
+          "200": {
+            "description": "Run"
+          },
+          "404": {
+            "description": "Not found or private"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Runs"
+        ],
+        "summary": "Update title, current_section, status or is_public",
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "current_section": {
+                    "type": "integer"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "active",
+                      "completed",
+                      "abandoned"
+                    ]
+                  },
+                  "is_public": {
+                    "type": "boolean"
                   }
                 }
               }
             }
-          },
-          "400": {
-            "description": "Validation error (missing fields, bad format, or already caught)"
-          },
-          "401": {
-            "description": "Unauthorized"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
-          "Caught"
+          "Runs"
         ],
-        "summary": "Delete a caught Pokémon for the authenticated user and guide",
+        "summary": "Delete a run",
+        "responses": {
+          "200": {
+            "description": "Deleted"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/runs/{id}/caught": {
+      "patch": {
+        "tags": [
+          "Runs"
+        ],
+        "summary": "Bulk add/remove caught entries",
+        "responses": {
+          "200": {
+            "description": "Returns the full caught list"
+          },
+          "400": {
+            "description": "Entry not in guide"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
         "security": [
           {
             "bearerAuth": []
@@ -731,70 +504,116 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "guide_id": {
-                    "type": "string",
-                    "description": "Guide UUID"
+                  "add": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
                   },
-                  "pokemon_id": {
-                    "type": "string",
-                    "description": "Pokémon ID (format '001' à '151')"
-                  }
-                },
-                "required": [
-                  "guide_id",
-                  "pokemon_id"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Pokémon deleted from guide",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
+                  "remove": {
+                    "type": "array",
+                    "items": {
                       "type": "string"
                     }
                   }
                 }
               }
             }
-          },
-          "404": {
-            "description": "Pokémon not found in guide"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/runs/{id}/caught/{pokemon_id}": {
+      "put": {
+        "tags": [
+          "Runs"
+        ],
+        "summary": "Mark caught (idempotent)",
+        "responses": {
+          "200": {
+            "description": "Caught"
           },
           "400": {
-            "description": "Validation error (missing fields, bad format)"
+            "description": "Entry not in guide"
           },
-          "401": {
-            "description": "Unauthorized"
+          "404": {
+            "description": "Not found"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pokemon_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Guide entry id, e.g. 0025"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Runs"
+        ],
+        "summary": "Unmark caught (idempotent)",
+        "responses": {
+          "200": {
+            "description": "Uncaught"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pokemon_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     }
   },
-  "tags": [
-    {
-      "name": "Auth",
-      "description": "Authentication routes"
-    },
-    {
-      "name": "User",
-      "description": "User management routes"
-    },
-    {
-      "name": "Guides",
-      "description": "User guides managements"
-    },
-    {
-      "name": "Caught",
-      "description": "Pokémon caught management"
-    }
-  ],
   "components": {
     "securitySchemes": {
       "bearerAuth": {
